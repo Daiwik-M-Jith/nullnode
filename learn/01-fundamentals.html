@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Fundamentals - NullSector</title>
+    <link rel="icon" type="image/svg+xml" href="../logo.svg">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="../index.html" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+                    <img src="../logo.svg" alt="NullSector Logo" class="logo">
+                    <span class="brand-text">NullSector</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="../roadmap.html" class="nav-link">Roadmap</a>
+                <a href="../faq.html" class="nav-link">FAQ</a>
+                <a href="https://discord.gg/Tz9Y3wea32" target="_blank" class="nav-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z"/>
+                    </svg>
+                </a>
+                <a href="https://github.com/Daiwik-M-Jith" target="_blank" class="nav-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search...">
+                <span class="search-shortcut">CTRL K</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Learning Content -->
+    <div class="learn-container">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / <a href="../roadmap.html">Roadmap</a> / <span>The Fundamentals</span>
+        </div>
+
+        <h1 class="page-title">The Fundamentals</h1>
+        <p class="page-subtitle">Building a solid foundation in computer science basics</p>
+
+        <div class="learn-content">
+            <aside class="learn-sidebar">
+                <h3>Topics</h3>
+                <ul class="learn-nav">
+                    <li><a href="#operating-systems" class="active">Operating Systems</a></li>
+                    <li><a href="#networking">Networking Basics</a></li>
+                    <li><a href="#programming">Programming</a></li>
+                    <li><a href="#command-line">Command Line</a></li>
+                    <li><a href="#hardware">Hardware Basics</a></li>
+                    <li><a href="#practice">Practice Terminal</a></li>
+                </ul>
+            </aside>
+
+            <main class="learn-main">
+                <!-- Operating Systems Section -->
+                <section id="operating-systems" class="learn-section">
+                    <h2>Operating Systems</h2>
+                    
+                    <p>An operating system (OS) is the software that manages all hardware and software on a computer. Understanding how operating systems work is crucial for cybersecurity.</p>
+
+                    <h3>What is an Operating System?</h3>
+                    <p>The OS is the bridge between you and the computer hardware. It manages:</p>
+                    <ul>
+                        <li><strong>Memory:</strong> Allocating RAM to programs</li>
+                        <li><strong>CPU:</strong> Scheduling which processes run</li>
+                        <li><strong>Storage:</strong> Managing files and directories</li>
+                        <li><strong>Input/Output:</strong> Handling keyboard, mouse, display</li>
+                        <li><strong>Security:</strong> User permissions and access control</li>
+                    </ul>
+
+                    <h3>Major Operating Systems</h3>
+                    
+                    <div class="info-box">
+                        <p><strong>🐧 Linux</strong> - Open-source, most popular for servers and security work</p>
+                    </div>
+
+                    <div class="info-box">
+                        <p><strong>🪟 Windows</strong> - Most common desktop OS, used in corporate environments</p>
+                    </div>
+
+                    <div class="info-box">
+                        <p><strong>🍎 macOS</strong> - Unix-based, popular among developers</p>
+                    </div>
+
+                    <h3>Key OS Concepts</h3>
+                    
+                    <h4>1. Processes and Threads</h4>
+                    <p>A <strong>process</strong> is a running instance of a program. Each process has:</p>
+                    <ul>
+                        <li>Its own memory space</li>
+                        <li>Process ID (PID)</li>
+                        <li>State (running, sleeping, stopped)</li>
+                        <li>Priority level</li>
+                    </ul>
+
+                    <div class="code-block">
+                        <pre><code># View running processes
+ps aux
+
+# View processes with hierarchy
+ps auxf
+
+# Real-time process monitoring
+top</code></pre>
+                    </div>
+
+                    <h4>2. File Systems</h4>
+                    <p>File systems organize how data is stored on disk:</p>
+                    <ul>
+                        <li><strong>ext4</strong> - Default Linux file system</li>
+                        <li><strong>NTFS</strong> - Windows file system</li>
+                        <li><strong>APFS</strong> - macOS file system</li>
+                        <li><strong>FAT32</strong> - Universal but limited</li>
+                    </ul>
+
+                    <div class="code-block">
+                        <pre><code># Check disk space
+df -h
+
+# View file system type
+mount | grep "^/dev"
+
+# Check inode usage
+df -i</code></pre>
+                    </div>
+
+                    <h4>3. Permissions and Access Control</h4>
+                    <p>Linux uses a permission system with three types of users:</p>
+                    <ul>
+                        <li><strong>Owner (u)</strong> - The file creator</li>
+                        <li><strong>Group (g)</strong> - Users in the file's group</li>
+                        <li><strong>Others (o)</strong> - Everyone else</li>
+                    </ul>
+
+                    <p>Three permission types:</p>
+                    <ul>
+                        <li><strong>Read (r)</strong> - View file contents (4)</li>
+                        <li><strong>Write (w)</strong> - Modify file (2)</li>
+                        <li><strong>Execute (x)</strong> - Run file as program (1)</li>
+                    </ul>
+
+                    <div class="code-block">
+                        <pre><code># View permissions
+ls -la
+
+# Change permissions (symbolic)
+chmod u+x script.sh      # Add execute for owner
+chmod go-w file.txt      # Remove write for group and others
+
+# Change permissions (numeric)
+chmod 755 script.sh      # rwxr-xr-x
+chmod 644 file.txt       # rw-r--r--
+
+# Change ownership
+chown user:group file.txt</code></pre>
+                    </div>
+
+                    <div class="success-box">
+                        <p><strong>Security Tip:</strong> Never run scripts with 777 permissions in production. This allows anyone to read, write, and execute your files!</p>
+                    </div>
+                </section>
+
+                <!-- Networking Section -->
+                <section id="networking" class="learn-section">
+                    <h2>Networking Basics</h2>
+                    
+                    <p>Networking is how computers communicate. Most cyber attacks happen over networks, so understanding networking is essential.</p>
+
+                    <h3>The OSI Model</h3>
+                    <p>The OSI (Open Systems Interconnection) model has 7 layers:</p>
+                    <ol>
+                        <li><strong>Physical</strong> - Cables, signals, hardware</li>
+                        <li><strong>Data Link</strong> - MAC addresses, switches</li>
+                        <li><strong>Network</strong> - IP addresses, routers</li>
+                        <li><strong>Transport</strong> - TCP/UDP, ports</li>
+                        <li><strong>Session</strong> - Connection management</li>
+                        <li><strong>Presentation</strong> - Data formatting, encryption</li>
+                        <li><strong>Application</strong> - HTTP, FTP, SSH, DNS</li>
+                    </ol>
+
+                    <h3>IP Addresses</h3>
+                    <p>IP addresses identify devices on a network:</p>
+                    
+                    <h4>IPv4</h4>
+                    <ul>
+                        <li>Format: 192.168.1.1 (four octets, 0-255 each)</li>
+                        <li>32 bits total (~4.3 billion addresses)</li>
+                        <li><strong>Private ranges:</strong>
+                            <ul>
+                                <li>10.0.0.0/8 (10.0.0.0 - 10.255.255.255)</li>
+                                <li>172.16.0.0/12 (172.16.0.0 - 172.31.255.255)</li>
+                                <li>192.168.0.0/16 (192.168.0.0 - 192.168.255.255)</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <h4>Subnetting</h4>
+                    <p>Subnetting divides networks into smaller networks:</p>
+                    <div class="code-block">
+                        <pre><code>192.168.1.0/24 means:
+- Network: 192.168.1.0
+- Subnet mask: 255.255.255.0
+- Usable IPs: 192.168.1.1 - 192.168.1.254
+- Broadcast: 192.168.1.255
+- Total hosts: 254</code></pre>
+                    </div>
+
+                    <h3>TCP vs UDP</h3>
+                    <p><strong>TCP (Transmission Control Protocol)</strong></p>
+                    <ul>
+                        <li>Connection-oriented (3-way handshake)</li>
+                        <li>Reliable delivery with error checking</li>
+                        <li>Used by: HTTP, HTTPS, SSH, FTP</li>
+                    </ul>
+
+                    <p><strong>UDP (User Datagram Protocol)</strong></p>
+                    <ul>
+                        <li>Connectionless (fire and forget)</li>
+                        <li>Faster but no delivery guarantee</li>
+                        <li>Used by: DNS, DHCP, VoIP, streaming</li>
+                    </ul>
+
+                    <h3>Common Ports</h3>
+                    <div class="code-block">
+                        <pre><code>20/21  - FTP (File Transfer Protocol)
+22     - SSH (Secure Shell)
+23     - Telnet (Unsecure remote access)
+25     - SMTP (Email sending)
+53     - DNS (Domain Name System)
+80     - HTTP (Web traffic)
+443    - HTTPS (Secure web traffic)
+3306   - MySQL Database
+3389   - RDP (Remote Desktop Protocol)
+5432   - PostgreSQL Database
+8080   - HTTP Alternate</code></pre>
+                    </div>
+
+                    <h3>DNS (Domain Name System)</h3>
+                    <p>DNS translates domain names to IP addresses:</p>
+                    <div class="code-block">
+                        <pre><code># Query DNS records
+nslookup example.com
+dig example.com
+
+# Specific record types
+dig example.com A      # IPv4 address
+dig example.com MX     # Mail servers
+dig example.com NS     # Name servers
+dig example.com TXT    # Text records</code></pre>
+                    </div>
+
+                    <h3>Network Commands</h3>
+                    <div class="code-block">
+                        <pre><code># Show network interfaces
+ifconfig          # Linux/Mac
+ipconfig          # Windows
+ip addr show      # Modern Linux
+
+# Test connectivity
+ping 8.8.8.8
+
+# Trace route to destination
+traceroute google.com    # Linux/Mac
+tracert google.com       # Windows
+
+# Show routing table
+route -n          # Linux
+route print       # Windows
+
+# Show active connections
+netstat -tulpn    # Linux
+netstat -ano      # Windows</code></pre>
+                    </div>
+                </section>
+
+                <!-- Programming Section -->
+                <section id="programming" class="learn-section">
+                    <h2>Programming</h2>
+                    
+                    <p>Programming is essential for cybersecurity. You'll need it to write exploits, automate tasks, and understand how software works.</p>
+
+                    <h3>Why Python?</h3>
+                    <p>Python is the best first language for cybersecurity because:</p>
+                    <ul>
+                        <li>Easy to learn and read</li>
+                        <li>Powerful libraries for security (Scapy, Requests, Cryptography)</li>
+                        <li>Used in penetration testing tools</li>
+                        <li>Great for automation and scripting</li>
+                        <li>Large community and resources</li>
+                    </ul>
+
+                    <h3>Python Basics</h3>
+                    <div class="code-block">
+                        <pre><code># Variables and Data Types
+name = "Alice"           # String
+age = 25                 # Integer
+height = 5.8             # Float
+is_admin = True          # Boolean
+
+# Lists (ordered, mutable)
+ports = [80, 443, 22, 21]
+ports.append(8080)
+print(ports[0])          # Output: 80
+
+# Dictionaries (key-value pairs)
+user = {
+    "username": "alice",
+    "role": "admin",
+    "active": True
+}
+print(user["username"])  # Output: alice
+
+# Loops
+for port in ports:
+    print(f"Port {port} is open")
+
+for i in range(1, 256):
+    ip = f"192.168.1.{i}"
+    print(ip)
+
+# Functions
+def scan_port(ip, port):
+    """Check if a port is open"""
+    # Implementation here
+    return True
+
+# Conditionals
+if age >= 18:
+    print("Adult")
+else:
+    print("Minor")</code></pre>
+                    </div>
+
+                    <h3>Useful Python for Security</h3>
+                    <div class="code-block">
+                        <pre><code># Socket programming (network connections)
+import socket
+
+def port_scan(target, port):
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sock.settimeout(1)
+    result = sock.connect_ex((target, port))
+    sock.close()
+    return result == 0
+
+# HTTP requests
+import requests
+
+response = requests.get("https://example.com")
+print(response.status_code)
+print(response.text)
+
+# File operations
+with open("passwords.txt", "r") as f:
+    for line in f:
+        password = line.strip()
+        print(f"Trying: {password}")
+
+# Command execution
+import subprocess
+
+result = subprocess.run(["ls", "-la"], capture_output=True)
+print(result.stdout.decode())</code></pre>
+                    </div>
+                </section>
+
+                <!-- Command Line Section -->
+                <section id="command-line" class="learn-section">
+                    <h2>Command Line Mastery</h2>
+                    
+                    <p>The command line is your primary interface for security work. GUI tools are limited; real power is in the terminal.</p>
+
+                    <h3>Essential Linux Commands</h3>
+                    
+                    <h4>File Operations</h4>
+                    <div class="code-block">
+                        <pre><code># Navigate directories
+pwd                    # Print working directory
+cd /path/to/dir       # Change directory
+cd ..                 # Go up one level
+cd ~                  # Go to home directory
+
+# List files
+ls                    # List files
+ls -la                # List all with details
+ls -lh                # Human-readable sizes
+
+# Create/Delete
+touch file.txt        # Create empty file
+mkdir directory       # Create directory
+mkdir -p path/to/dir  # Create nested directories
+rm file.txt           # Delete file
+rm -rf directory      # Delete directory (careful!)
+
+# Copy/Move
+cp source dest        # Copy file
+cp -r dir1 dir2       # Copy directory
+mv old new            # Move/rename
+
+# View files
+cat file.txt          # Display entire file
+head file.txt         # First 10 lines
+tail file.txt         # Last 10 lines
+tail -f log.txt       # Follow file (live updates)
+less file.txt         # Paginated view</code></pre>
+                    </div>
+
+                    <h4>Text Processing</h4>
+                    <div class="code-block">
+                        <pre><code># Search in files
+grep "error" log.txt              # Find lines with "error"
+grep -r "password" /etc/          # Recursive search
+grep -i "user" file.txt           # Case-insensitive
+
+# Stream editing
+sed 's/old/new/g' file.txt        # Replace text
+sed -i 's/old/new/g' file.txt     # Edit file in-place
+
+# Text manipulation
+cut -d: -f1 /etc/passwd           # Extract first field
+sort file.txt                      # Sort lines
+uniq file.txt                      # Remove duplicates
+wc -l file.txt                     # Count lines
+
+# Piping commands
+cat access.log | grep "404" | wc -l     # Count 404 errors
+ps aux | grep python                     # Find Python processes</code></pre>
+                    </div>
+
+                    <h4>System Information</h4>
+                    <div class="code-block">
+                        <pre><code># System info
+uname -a              # System information
+hostname              # Computer name
+uptime                # How long system is running
+
+# Resource usage
+top                   # Process monitor
+htop                  # Better process monitor
+free -h               # Memory usage
+df -h                 # Disk space
+
+# User info
+whoami                # Current user
+id                    # User ID and groups
+w                     # Who is logged in
+last                  # Login history</code></pre>
+                    </div>
+
+                    <h3>Bash Scripting Basics</h3>
+                    <div class="code-block">
+                        <pre><code>#!/bin/bash
+# Simple port scanner script
+
+TARGET="192.168.1.1"
+PORTS="22 80 443 3306"
+
+echo "Scanning $TARGET..."
+
+for port in $PORTS; do
+    timeout 1 bash -c "echo >/dev/tcp/$TARGET/$port" 2>/dev/null
+    if [ $? -eq 0 ]; then
+        echo "Port $port is OPEN"
+    else
+        echo "Port $port is CLOSED"
+    fi
+done
+
+echo "Scan complete!"</code></pre>
+                    </div>
+                </section>
+
+                <!-- Hardware Section -->
+                <section id="hardware" class="learn-section">
+                    <h2>Hardware Basics</h2>
+                    
+                    <p>Understanding hardware helps you understand how attacks work at the physical level.</p>
+
+                    <h3>Key Components</h3>
+                    
+                    <h4>CPU (Central Processing Unit)</h4>
+                    <ul>
+                        <li>Executes instructions</li>
+                        <li>Clock speed measured in GHz</li>
+                        <li>Multiple cores for parallel processing</li>
+                        <li>Cache memory for fast access</li>
+                    </ul>
+
+                    <h4>RAM (Random Access Memory)</h4>
+                    <ul>
+                        <li>Temporary storage for running programs</li>
+                        <li>Volatile (data lost when powered off)</li>
+                        <li>Faster than disk but smaller</li>
+                        <li>Common types: DDR4, DDR5</li>
+                    </ul>
+
+                    <h4>Storage</h4>
+                    <ul>
+                        <li><strong>HDD:</strong> Mechanical, slower, cheaper, larger capacity</li>
+                        <li><strong>SSD:</strong> Electronic, faster, expensive, smaller capacity</li>
+                        <li><strong>NVMe:</strong> Fastest, uses PCIe interface</li>
+                    </ul>
+
+                    <h3>How Computers Execute Code</h3>
+                    <ol>
+                        <li>Program loaded from disk to RAM</li>
+                        <li>CPU fetches instructions from RAM</li>
+                        <li>CPU decodes instructions</li>
+                        <li>CPU executes instructions</li>
+                        <li>Results stored back in RAM</li>
+                        <li>Data written to disk if needed</li>
+                    </ol>
+
+                    <div class="info-box">
+                        <p><strong>Security Relevance:</strong> Buffer overflow attacks exploit how memory is managed. Understanding the stack and heap is crucial for exploit development.</p>
+                    </div>
+                </section>
+
+                <!-- Practice Terminal -->
+                <section id="practice" class="learn-section">
+                    <h2>Practice Terminal</h2>
+                    <p>Try out the commands you learned above in this simulated terminal. Type <code>help</code> to see available commands.</p>
+                    
+                    <div id="terminal1" data-terminal></div>
+
+                    <div class="success-box">
+                        <p><strong>Try these commands:</strong></p>
+                        <ul>
+                            <li><code>ls</code> - List files</li>
+                            <li><code>pwd</code> - Show current directory</li>
+                            <li><code>cat welcome.txt</code> - Read a file</li>
+                            <li><code>ping example.com</code> - Test network connectivity</li>
+                            <li><code>nmap 192.168.1.1</code> - Scan for open ports</li>
+                            <li><code>python --version</code> - Check Python version</li>
+                        </ul>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 NullSector. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="https://discord.gg/Tz9Y3wea32" target="_blank">Discord</a>
+                <a href="https://github.com/Daiwik-M-Jith" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../terminal.js"></script>
+    <script src="../script.js"></script>
+</body>
+</html>

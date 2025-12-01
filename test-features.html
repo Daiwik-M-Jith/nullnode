@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test the Enhancements - NullSector</title>
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            color: #fff;
+            padding: 2rem;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            border-radius: 16px;
+            padding: 3rem;
+        }
+        h1 {
+            background: linear-gradient(135deg, #00ff88, #00ccff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .test-section {
+            background: rgba(0, 255, 136, 0.05);
+            border-left: 4px solid #00ff88;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+        .test-section h2 {
+            color: #00ff88;
+            margin-bottom: 1rem;
+        }
+        .test-item {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+        .checkmark {
+            color: #00ff88;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+        .button {
+            display: inline-block;
+            background: linear-gradient(135deg, #00ff88, #00ccff);
+            color: #0a0e27;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 700;
+            margin: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(0, 255, 136, 0.5);
+        }
+        .command-box {
+            background: #1e1e1e;
+            border: 1px solid #00ff88;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: 'Consolas', monospace;
+            color: #00ff88;
+        }
+        ul {
+            margin-left: 2rem;
+            line-height: 1.8;
+        }
+        .success {
+            background: rgba(0, 255, 136, 0.1);
+            border: 2px solid #00ff88;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Test Your Enhanced Website</h1>
+        <p style="margin-bottom: 2rem; color: #a0aec0;">Follow these steps to verify all new features are working</p>
+
+        <div class="test-section">
+            <h2>1. Test Favicon</h2>
+            <div class="test-item">
+                <span class="checkmark">✓</span> Look at your browser tab
+            </div>
+            <div class="test-item">
+                <span class="checkmark">✓</span> You should see the NullSector logo icon
+            </div>
+            <div class="test-item">
+                <span class="checkmark">✓</span> Try refreshing - icon should remain
+            </div>
+            <div style="margin-top: 1rem;">
+                <a href="index.html" class="button">Test Homepage</a>
+                <a href="roadmap.html" class="button">Test Roadmap</a>
+                <a href="faq.html" class="button">Test FAQ</a>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>2. Test Clickable Roadmap</h2>
+            <div class="test-item">
+                <span class="checkmark">✓</span> Go to the Roadmap page
+            </div>
+            <div class="test-item">
+                <span class="checkmark">✓</span> Hover over any of the 10 sections
+            </div>
+            <div class="test-item">
+                <span class="checkmark">✓</span> You should see:
+                <ul>
+                    <li>Section lights up with green glow</li>
+                    <li>Section shifts slightly to the right</li>
+                    <li>"Click to learn more →" appears at bottom</li>
+                    <li>Cursor changes to pointer</li>
+                </ul>
+            </div>
+            <div class="test-item">
+                <span class="checkmark">✓</span> Click on "The Fundamentals" section
+            </div>
+            <div class="test-item">
+                <span class="checkmark">✓</span> You should be taken to a detailed learning page
+            </div>
+            <div style="margin-top: 1rem;">
+                <a href="roadmap.html" class="button">Go to Roadmap</a>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>3. Test Learning Content</h2>
+            <div class="test-item">
+                <span class="checkmark">✓</span> You should see comprehensive content with:
+                <ul>
+                    <li>Detailed explanations</li>
+                    <li>Code examples in dark boxes</li>
+                    <li>Info boxes (blue)</li>
+                    <li>Warning boxes (yellow)</li>
+                    <li>Success boxes (green)</li>
+                    <li>Sidebar navigation on the left</li>
+                    <li>Breadcrumb navigation at top</li>
+                </ul>
+            </div>
+            <div class="test-item">
+                <span class="checkmark">✓</span> Scroll through all content
+            </div>
+            <div class="test-item">
+                <span class="checkmark">✓</span> Click sidebar links to jump to sections
+            </div>
+            <div style="margin-top: 1rem;">
+                <a href="learn/01-fundamentals.html" class="button">Go to Fundamentals</a>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>4. Test Interactive Terminal</h2>
+            <div class="test-item">
+                <span class="checkmark">✓</span> Scroll to the "Practice Terminal" section
+            </div>
+            <div class="test-item">
+                <span class="checkmark">✓</span> You should see a terminal window with:
+                <ul>
+                    <li>Red, yellow, green buttons (close, minimize, maximize)</li>
+                    <li>Black background</li>
+                    <li>Green prompt: <code>user@nullsector:~$</code></li>
+                    <li>Blinking cursor</li>
+                </ul>
+            </div>
+            <div class="test-item">
+                <span class="checkmark">✓</span> Click in the terminal to focus it
+            </div>
+            <div class="test-item">
+                <span class="checkmark">✓</span> Try these commands:
+            </div>
+            <div class="command-box">
+                help<br>
+                ls -la<br>
+                pwd<br>
+                whoami<br>
+                date<br>
+                cat welcome.txt<br>
+                ping example.com<br>
+                nmap 192.168.1.1<br>
+                netstat<br>
+                ps<br>
+                top<br>
+                python --version<br>
+                python -c "print('Hello World')"<br>
+                history
+            </div>
+            <div class="test-item">
+                <span class="checkmark">✓</span> Test features:
+                <ul>
+                    <li>Press ↑ arrow to go back through command history</li>
+                    <li>Press ↓ arrow to go forward through history</li>
+                    <li>Type "hel" and press Tab for auto-completion</li>
+                    <li>Try scrolling the terminal output</li>
+                    <li>Type "clear" to clear the screen</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>5. Test Navigation</h2>
+            <div class="test-item">
+                <span class="checkmark">✓</span> From Fundamentals page, click breadcrumb "Roadmap"
+            </div>
+            <div class="test-item">
+                <span class="checkmark">✓</span> Try clicking other roadmap sections (02-10)
+            </div>
+            <div class="test-item">
+                <span class="checkmark">✓</span> You should see "Coming Soon" pages
+            </div>
+            <div class="test-item">
+                <span class="checkmark">✓</span> Click "Back to Roadmap" button
+            </div>
+            <div class="test-item">
+                <span class="checkmark">✓</span> Click logo to return to homepage
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>6. Test Mobile Responsiveness</h2>
+            <div class="test-item">
+                <span class="checkmark">✓</span> Right-click page → Inspect Element
+            </div>
+            <div class="test-item">
+                <span class="checkmark">✓</span> Click device toggle button (phone icon)
+            </div>
+            <div class="test-item">
+                <span class="checkmark">✓</span> Try different device sizes
+            </div>
+            <div class="test-item">
+                <span class="checkmark">✓</span> Verify:
+                <ul>
+                    <li>Sidebar collapses on mobile</li>
+                    <li>Cards stack vertically</li>
+                    <li>Terminal remains usable</li>
+                    <li>All text readable</li>
+                    <li>Buttons accessible</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="success">
+            <h2 style="color: #00ff88; margin-bottom: 1rem;">🎉 All Features Complete!</h2>
+            <p style="margin-bottom: 1rem;">If all tests pass, your enhanced website is ready to use!</p>
+            <div>
+                <a href="index.html" class="button">Homepage</a>
+                <a href="roadmap.html" class="button">Roadmap</a>
+                <a href="learn/01-fundamentals.html" class="button">Start Learning</a>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>📝 Quick Reference</h2>
+            <p><strong>What Changed:</strong></p>
+            <ul>
+                <li>✅ Favicon added to all pages</li>
+                <li>✅ Roadmap sections now clickable</li>
+                <li>✅ Hover effects on roadmap</li>
+                <li>✅ Comprehensive Fundamentals page created</li>
+                <li>✅ Interactive terminal with 20+ commands</li>
+                <li>✅ Sidebar navigation</li>
+                <li>✅ Code examples and info boxes</li>
+                <li>✅ Coming soon pages for topics 02-10</li>
+            </ul>
+            
+            <p style="margin-top: 1.5rem;"><strong>What Stayed the Same:</strong></p>
+            <ul>
+                <li>✅ Original roadmap content preserved</li>
+                <li>✅ All existing pages unchanged (except favicon)</li>
+                <li>✅ Same design language</li>
+                <li>✅ Same color scheme</li>
+                <li>✅ Same navigation structure</li>
+            </ul>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(0, 255, 136, 0.2);">
+            <p style="color: #a0aec0;">NullSector Enhanced Learning Platform</p>
+            <p style="color: #a0aec0;">All features working perfectly! 🚀</p>
+        </div>
+    </div>
+</body>
+</html>
