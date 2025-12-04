@@ -136,6 +136,12 @@ class NullTerminal {
     }
 
     createInputLine() {
+        // Remove ID from any previous input to avoid conflicts
+        const oldInput = document.getElementById('terminal-input');
+        if (oldInput) {
+            oldInput.removeAttribute('id');
+        }
+
         const promptLine = document.createElement('div');
         promptLine.className = 'terminal-prompt';
         promptLine.innerHTML = `
