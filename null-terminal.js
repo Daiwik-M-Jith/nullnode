@@ -48,7 +48,29 @@ class NullTerminal {
     }
 
     init() {
-        this.outputElement = document.getElementById('terminal-output');
+        this.outputElement = document.getElementById('terminal-output') || document.querySelector('.terminal-body');
+        // Fallback: If the terminal output element is not present for any reason,
+        // attempt to recover by setting a stable reference or creating the element.
+        if (!this.outputElement) {
+            console.warn('[NullTerminal] terminal-output element not found; attempting to create fallback.');
+            const terminalWindow = document.querySelector('.terminal-window');
+            if (terminalWindow) {
+                const wrapper = document.createElement('div');
+                wrapper.className = 'terminal-body';
+                wrapper.id = 'terminal-output';
+                wrapper.textContent = 'Initializing Null Terminal...';
+                terminalWindow.appendChild(wrapper);
+                this.outputElement = wrapper;
+            } else {
+                // Last resort: append to body
+                const wrapper = document.createElement('div');
+                wrapper.className = 'terminal-body';
+                wrapper.id = 'terminal-output';
+                wrapper.textContent = 'Initializing Null Terminal...';
+                document.body.appendChild(wrapper);
+                this.outputElement = wrapper;
+            }
+        }
         this.showWelcomeBanner();
         this.createInputLine();
         this.updateTime();
