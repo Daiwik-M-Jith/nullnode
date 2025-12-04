@@ -48,7 +48,10 @@ class NullTerminal {
     }
 
     init() {
+        console.log('[NullTerminal] Initializing...');
         this.outputElement = document.getElementById('terminal-output') || document.querySelector('.terminal-body');
+        console.log('[NullTerminal] outputElement:', this.outputElement);
+        
         // Fallback: If the terminal output element is not present for any reason,
         // attempt to recover by setting a stable reference or creating the element.
         if (!this.outputElement) {
@@ -71,8 +74,17 @@ class NullTerminal {
                 this.outputElement = wrapper;
             }
         }
+        
+        // Clear the loading message
+        this.outputElement.innerHTML = '';
+        console.log('[NullTerminal] Cleared loading message, about to show banner');
+        
         this.showWelcomeBanner();
+        console.log('[NullTerminal] Banner shown, creating input line');
+        
         this.createInputLine();
+        console.log('[NullTerminal] Input line created');
+        
         this.updateTime();
         setInterval(() => this.updateTime(), 1000);
         
@@ -81,6 +93,7 @@ class NullTerminal {
         if (savedHistory) {
             this.commandHistory = JSON.parse(savedHistory);
         }
+        console.log('[NullTerminal] Initialization complete!');
     }
 
     updateTime() {
