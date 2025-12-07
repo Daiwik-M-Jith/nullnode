@@ -40,136 +40,227 @@
             
             <div class="roadmap-section">
                 <div class="roadmap-number">02</div>
-                <h1 class="page-title">Chapter 02: Programming Fundamentals II</h1>
-                <p class="page-subtitle">Going Deeper: Memory, Data Structures, and Algorithms</p>
+                <h1 class="page-title">Chapter 02: The Engine Room</h1>
+                <p class="page-subtitle">Memory, Hardware, Algorithms & The "Hard" Stuff</p>
 
                 <div class="key-takeaways" style="margin-bottom:3rem;">
                     <h3>What You'll Learn:</h3>
                     <ul>
-                        <li>How computer memory actually works (Stack vs Heap)</li>
-                        <li>Data Structures: How to organize data efficiently</li>
-                        <li>Algorithms & Big O Notation: Measuring code performance</li>
-                        <li>Compiled vs Interpreted languages: The deep dive</li>
+                        <li><strong>The Hardware:</strong> CPU, Binary, and Hexadecimal</li>
+                        <li><strong>Memory Deep Dive:</strong> The Stack vs The Heap (and Pointers)</li>
+                        <li><strong>Data Structures:</strong> Arrays, Lists, Maps, Trees, and Graphs</li>
+                        <li><strong>Algorithms:</strong> Big O, Sorting, and Recursion</li>
+                        <li><strong>Bitwise Logic:</strong> Thinking in 1s and 0s</li>
                     </ul>
                 </div>
 
-                <!-- Topic 1: Memory Management -->
-                <div class="topic-section" style="background: linear-gradient(135deg, rgba(0,255,136,0.05) 0%, rgba(0,204,255,0.05) 100%); padding: 3rem; border-radius: 20px; margin: 3rem 0;">
-                    <h2 style="color: #00ff88; font-size: 2.2rem; margin-bottom: 2rem;">1. Memory Management: Under the Hood</h2>
+                <!-- Topic 1: The Hardware Layer -->
+                <div class="topic-section" style="background: linear-gradient(135deg, rgba(255,200,0,0.05) 0%, rgba(255,100,100,0.05) 100%); padding: 3rem; border-radius: 20px; margin: 3rem 0;">
+                    <h2 style="color: #ffc800; font-size: 2.2rem; margin-bottom: 2rem;">1. The Hardware: How Computers Think</h2>
                     
                     <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 15px; margin: 2rem 0; font-size: 1.15rem; line-height: 1.9;">
                         <p style="margin: 0; font-size: 1.25rem;">
-                            When you create a variable like <code>x = 10</code>, where does it go? 
-                            Understanding memory is what separates "coders" from "software engineers".
+                            Before we talk about code, we must talk about the machine. 
+                            Your computer is just a rock that we tricked into thinking by putting lightning inside it.
                         </p>
                     </div>
 
-                    <h3 style="color: #00ccff; font-size: 1.8rem; margin-top: 3rem;">Stack vs. Heap</h3>
+                    <div style="display: grid; gap: 2rem; margin-top: 2rem;">
+                        <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 10px; border-left: 4px solid #ffc800;">
+                            <h4 style="color: #ffc800; margin: 0 0 1rem 0; font-size: 1.6rem;">Binary & Hexadecimal</h4>
+                            <p style="font-size: 1.1rem; line-height: 1.8;">
+                                Computers only understand <strong>Voltage</strong> (On/Off). We represent this as <strong>1</strong> and <strong>0</strong> (Binary).
+                            </p>
+                            <ul style="font-size: 1.1rem; line-height: 1.8; margin-top: 1rem;">
+                                <li><strong>Bit:</strong> A single 1 or 0.</li>
+                                <li><strong>Byte:</strong> 8 bits (e.g., <code>10110011</code>). Can represent numbers 0-255.</li>
+                                <li><strong>Hexadecimal (Hex):</strong> Binary is hard for humans to read. Hex is a shortcut. Instead of 0-9, we use 0-9 and A-F.
+                                    <br><code>1111 1111</code> (Binary) = <code>255</code> (Decimal) = <code>FF</code> (Hex).
+                                    <br>You'll see Hex everywhere in colors (<code>#FFFFFF</code>) and memory addresses (<code>0x7fff5b</code>).
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 10px; border-left: 4px solid #ff6464;">
+                            <h4 style="color: #ff6464; margin: 0 0 1rem 0; font-size: 1.6rem;">The CPU Cycle</h4>
+                            <p style="font-size: 1.1rem; line-height: 1.8;">
+                                The CPU is the brain. It does three things, billions of times per second:
+                            </p>
+                            <ol style="font-size: 1.1rem; line-height: 1.8; margin-top: 1rem;">
+                                <li><strong>Fetch:</strong> Get the next instruction from RAM.</li>
+                                <li><strong>Decode:</strong> Figure out what the instruction means (e.g., "Add these two numbers").</li>
+                                <li><strong>Execute:</strong> Do it.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Topic 2: Memory Management -->
+                <div class="topic-section" style="background: linear-gradient(135deg, rgba(0,255,136,0.05) 0%, rgba(0,204,255,0.05) 100%); padding: 3rem; border-radius: 20px; margin: 3rem 0;">
+                    <h2 style="color: #00ff88; font-size: 2.2rem; margin-bottom: 2rem;">2. Memory: The Stack vs The Heap</h2>
                     
+                    <p style="font-size: 1.15rem; line-height: 1.8; margin-bottom: 2rem;">
+                        RAM isn't just a bucket. It's organized into two regions. Understanding this prevents crashes.
+                    </p>
+
                     <div style="display: grid; gap: 2rem; margin: 2rem 0;">
                         <div style="background: rgba(0,255,136,0.15); padding: 2.5rem; border-radius: 15px;">
-                            <h4 style="color: #00ff88; font-size: 1.6rem; margin: 0 0 1rem 0;">The Stack (Ordered & Fast)</h4>
-                            <p style="font-size: 1.15rem; line-height: 1.8;">
-                                Think of a stack of plates. You can only add to the top and remove from the top.
+                            <h4 style="color: #00ff88; font-size: 1.6rem; margin: 0 0 1rem 0;">The Stack (Fast & Strict)</h4>
+                            <p style="font-size: 1.15rem; line-height: 1.8; margin-bottom: 1rem;">
+                                <strong>Analogy:</strong> A stack of plates. You can only touch the top one.
                             </p>
-                            <ul style="font-size: 1.1rem; line-height: 1.9; margin-top: 1rem;">
-                                <li><strong>What goes here:</strong> Local variables, function calls.</li>
-                                <li><strong>Speed:</strong> Extremely fast access.</li>
-                                <li><strong>Management:</strong> Automatic. When a function ends, its data is "popped" off.</li>
-                                <li><strong>Limit:</strong> Small size. If you use too much (infinite recursion), you get a <strong>Stack Overflow</strong>.</li>
+                            <ul style="font-size: 1.1rem; line-height: 1.9;">
+                                <li><strong>Storage:</strong> Local variables, function calls.</li>
+                                <li><strong>Speed:</strong> Instant. The CPU has a special register pointing to the top.</li>
+                                <li><strong>Limit:</strong> Small. If you recurse too deep, you get a <strong>Stack Overflow</strong>.</li>
+                                <li><strong>Cleanup:</strong> Automatic. When a function ends, its data is popped off.</li>
                             </ul>
                         </div>
 
                         <div style="background: rgba(0,204,255,0.15); padding: 2.5rem; border-radius: 15px;">
-                            <h4 style="color: #00ccff; font-size: 1.6rem; margin: 0 0 1rem 0;">The Heap (Chaotic & Large)</h4>
-                            <p style="font-size: 1.15rem; line-height: 1.8;">
-                                Think of a giant messy room where you can throw things anywhere.
+                            <h4 style="color: #00ccff; font-size: 1.6rem; margin: 0 0 1rem 0;">The Heap (Big & Messy)</h4>
+                            <p style="font-size: 1.15rem; line-height: 1.8; margin-bottom: 1rem;">
+                                <strong>Analogy:</strong> A giant warehouse where you can put boxes anywhere.
                             </p>
-                            <ul style="font-size: 1.1rem; line-height: 1.9; margin-top: 1rem;">
-                                <li><strong>What goes here:</strong> Objects, large data structures, global variables.</li>
-                                <li><strong>Speed:</strong> Slower. You need a "pointer" (address) to find your data.</li>
-                                <li><strong>Management:</strong> Manual (in C/C++) or Garbage Collected (in Python/Java).</li>
-                                <li><strong>Limit:</strong> Limited only by your physical RAM.</li>
+                            <ul style="font-size: 1.1rem; line-height: 1.9;">
+                                <li><strong>Storage:</strong> Large objects, global data, things that need to live a long time.</li>
+                                <li><strong>Speed:</strong> Slower. You need a "Pointer" (address) to find your data.</li>
+                                <li><strong>Cleanup:</strong> Manual (C++) or Garbage Collected (Python/Java). If you forget to clean up, you get a <strong>Memory Leak</strong>.</li>
                             </ul>
                         </div>
                     </div>
-                </div>
 
-                <!-- Topic 2: Data Structures -->
-                <div class="topic-section" style="background: linear-gradient(135deg, rgba(0,204,255,0.05) 0%, rgba(138,43,226,0.05) 100%); padding: 3rem; border-radius: 20px; margin: 3rem 0;">
-                    <h2 style="color: #00ccff; font-size: 2.2rem; margin-bottom: 2rem;">2. Data Structures: Organizing Chaos</h2>
-                    
-                    <p style="font-size: 1.15rem; line-height: 1.8; margin-bottom: 2rem;">
-                        A <strong>Data Structure</strong> is just a way to store data so you can use it efficiently. 
-                        Choosing the right one can make your code 100x faster.
-                    </p>
-
-                    <div style="display: grid; gap: 1.5rem;">
-                        <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 10px; border-left: 4px solid #00ff88;">
-                            <h4 style="color: #00ff88; margin: 0 0 1rem 0; font-size: 1.4rem;">Arrays (Lists)</h4>
-                            <p style="font-size: 1.1rem; line-height: 1.8;">
-                                <strong>Concept:</strong> Items stored side-by-side in memory.<br>
-                                <strong>Good for:</strong> Accessing items by index (<code>list[5]</code> is instant).<br>
-                                <strong>Bad for:</strong> Inserting/deleting items in the middle (everything else has to shift).
-                            </p>
-                        </div>
-
-                        <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 10px; border-left: 4px solid #00ccff;">
-                            <h4 style="color: #00ccff; margin: 0 0 1rem 0; font-size: 1.4rem;">Linked Lists</h4>
-                            <p style="font-size: 1.1rem; line-height: 1.8;">
-                                <strong>Concept:</strong> A chain where each item holds the data and a "pointer" to the next item.<br>
-                                <strong>Good for:</strong> Inserting/deleting items (just change the pointer).<br>
-                                <strong>Bad for:</strong> Finding the 100th item (you have to walk the whole chain).
-                            </p>
-                        </div>
-
-                        <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 10px; border-left: 4px solid #ffc800;">
-                            <h4 style="color: #ffc800; margin: 0 0 1rem 0; font-size: 1.4rem;">Hash Maps (Dictionaries)</h4>
-                            <p style="font-size: 1.1rem; line-height: 1.8;">
-                                <strong>Concept:</strong> Key-Value pairs. Like a real dictionary.<br>
-                                <strong>Good for:</strong> Finding data instantly by key (<code>user["name"]</code>).<br>
-                                <strong>The Magic:</strong> It uses a "hash function" to turn the key into a memory address directly.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Topic 3: Algorithms & Big O -->
-                <div class="topic-section" style="background: linear-gradient(135deg, rgba(138,43,226,0.05) 0%, rgba(255,100,100,0.05) 100%); padding: 3rem; border-radius: 20px; margin: 3rem 0;">
-                    <h2 style="color: #ff6464; font-size: 2.2rem; margin-bottom: 2rem;">3. Algorithms & Big O Notation</h2>
-                    
-                    <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 15px; margin: 2rem 0; font-size: 1.15rem; line-height: 1.9;">
-                        <p style="margin: 0; font-size: 1.25rem;">
-                            An <strong>Algorithm</strong> is a step-by-step recipe to solve a problem. 
-                            <strong>Big O Notation</strong> is how we measure how "fast" or "slow" an algorithm is as the data grows.
+                    <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 10px; border-left: 4px solid #00ff88; margin-top: 2rem;">
+                        <h4 style="color: #00ff88; margin: 0 0 1rem 0; font-size: 1.4rem;">What is a Pointer?</h4>
+                        <p style="font-size: 1.1rem; line-height: 1.8;">
+                            A pointer is just a variable that holds a <strong>memory address</strong> instead of a value.
+                            <br>Instead of holding the number <code>42</code>, it holds <code>0x7fff5b</code> (the location where 42 is stored).
+                            <br><em>Why?</em> Passing a pointer to a 1GB video file is instant. Passing the file itself copies 1GB of data (slow).
                         </p>
                     </div>
+                </div>
 
-                    <div style="display: grid; gap: 1.5rem; margin-top: 2rem;">
-                        <div style="background: rgba(0,255,136,0.1); padding: 1.5rem; border-radius: 8px; border-left: 3px solid #00ff88;">
-                            <h5 style="color: #00ff88; margin: 0 0 0.5rem 0; font-size: 1.3rem;">O(1) - Constant Time (The Best)</h5>
-                            <p style="font-size: 1.1rem; line-height: 1.7; margin: 0;">
-                                Takes the same time regardless of data size.<br>
-                                <em>Example: Accessing an array index.</em>
+                <!-- Topic 3: Data Structures -->
+                <div class="topic-section" style="background: linear-gradient(135deg, rgba(0,204,255,0.05) 0%, rgba(138,43,226,0.05) 100%); padding: 3rem; border-radius: 20px; margin: 3rem 0;">
+                    <h2 style="color: #00ccff; font-size: 2.2rem; margin-bottom: 2rem;">3. Data Structures: The Toolbox</h2>
+                    
+                    <div style="display: grid; gap: 2rem; margin-top: 2rem;">
+                        <!-- Array -->
+                        <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 10px; border-left: 4px solid #00ff88;">
+                            <h4 style="color: #00ff88; margin: 0 0 1rem 0; font-size: 1.6rem;">1. Arrays (The Egg Carton)</h4>
+                            <p style="font-size: 1.1rem; line-height: 1.8;">
+                                Fixed size, contiguous memory.
+                                <br><strong>Good:</strong> Instant access (O(1)).
+                                <br><strong>Bad:</strong> Can't grow easily. Inserting in the middle is slow (O(n)).
                             </p>
                         </div>
 
-                        <div style="background: rgba(0,204,255,0.1); padding: 1.5rem; border-radius: 8px; border-left: 3px solid #00ccff;">
-                            <h5 style="color: #00ccff; margin: 0 0 0.5rem 0; font-size: 1.3rem;">O(n) - Linear Time (Okay)</h5>
-                            <p style="font-size: 1.1rem; line-height: 1.7; margin: 0;">
-                                Time grows directly with data size. 10 items = 10 seconds. 100 items = 100 seconds.<br>
-                                <em>Example: Looping through a list to find a value.</em>
+                        <!-- Linked List -->
+                        <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 10px; border-left: 4px solid #00ccff;">
+                            <h4 style="color: #00ccff; margin: 0 0 1rem 0; font-size: 1.6rem;">2. Linked Lists (The Treasure Hunt)</h4>
+                            <p style="font-size: 1.1rem; line-height: 1.8;">
+                                Nodes scattered in memory, each pointing to the next.
+                                <br><strong>Good:</strong> Fast insertion/deletion (O(1)).
+                                <br><strong>Bad:</strong> Slow access (O(n)) - you have to walk the chain.
                             </p>
                         </div>
 
-                        <div style="background: rgba(255,100,100,0.1); padding: 1.5rem; border-radius: 8px; border-left: 3px solid #ff6464;">
-                            <h5 style="color: #ff6464; margin: 0 0 0.5rem 0; font-size: 1.3rem;">O(n²) - Quadratic Time (Bad)</h5>
-                            <p style="font-size: 1.1rem; line-height: 1.7; margin: 0;">
-                                Time grows exponentially. A loop inside a loop.<br>
-                                <em>Example: Comparing every item in a list with every other item.</em>
+                        <!-- Hash Map -->
+                        <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 10px; border-left: 4px solid #ffc800;">
+                            <h4 style="color: #ffc800; margin: 0 0 1rem 0; font-size: 1.6rem;">3. Hash Maps (The Teleporter)</h4>
+                            <p style="font-size: 1.1rem; line-height: 1.8;">
+                                Key-Value pairs. Uses math to find location.
+                                <br><strong>Good:</strong> Instant lookup (O(1)).
+                                <br><strong>Bad:</strong> Unordered. Collisions can happen.
+                            </p>
+                        </div>
+
+                        <!-- Trees -->
+                        <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 10px; border-left: 4px solid #ff6464;">
+                            <h4 style="color: #ff6464; margin: 0 0 1rem 0; font-size: 1.6rem;">4. Trees (The Hierarchy)</h4>
+                            <p style="font-size: 1.1rem; line-height: 1.8;">
+                                Data with a parent-child relationship.
+                                <br><strong>Example:</strong> Your computer's file system (Folders inside folders). The HTML DOM.
+                                <br><strong>Binary Search Tree:</strong> A sorted tree where left is smaller, right is bigger. Allows super fast searching (O(log n)).
+                            </p>
+                        </div>
+
+                        <!-- Graphs -->
+                        <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 10px; border-left: 4px solid #8a2be2;">
+                            <h4 style="color: #8a2be2; margin: 0 0 1rem 0; font-size: 1.6rem;">5. Graphs (The Network)</h4>
+                            <p style="font-size: 1.1rem; line-height: 1.8;">
+                                Nodes connected by edges. No hierarchy.
+                                <br><strong>Example:</strong> Social Networks (Friends connected to friends). Google Maps (Cities connected by roads).
                             </p>
                         </div>
                     </div>
+                </div>
+
+                <!-- Topic 4: Algorithms -->
+                <div class="topic-section" style="background: linear-gradient(135deg, rgba(138,43,226,0.05) 0%, rgba(255,100,100,0.05) 100%); padding: 3rem; border-radius: 20px; margin: 3rem 0;">
+                    <h2 style="color: #ff6464; font-size: 2.2rem; margin-bottom: 2rem;">4. Algorithms: The Recipes</h2>
+                    
+                    <div style="display: grid; gap: 1.5rem; margin-top: 2rem;">
+                        <div style="background: rgba(0,0,0,0.4); padding: 1.5rem; border-radius: 8px;">
+                            <h5 style="color: #ff6464; margin: 0 0 0.5rem 0; font-size: 1.4rem;">Big O Notation</h5>
+                            <p style="font-size: 1.1rem; line-height: 1.7;">
+                                Measuring how code slows down as data grows.
+                                <br><strong>O(1):</strong> Instant.
+                                <br><strong>O(log n):</strong> Fast (halving the problem).
+                                <br><strong>O(n):</strong> Linear (reading a book).
+                                <br><strong>O(n²):</strong> Slow (nested loops).
+                            </p>
+                        </div>
+
+                        <div style="background: rgba(0,0,0,0.4); padding: 1.5rem; border-radius: 8px;">
+                            <h5 style="color: #ff6464; margin: 0 0 0.5rem 0; font-size: 1.4rem;">Sorting Algorithms</h5>
+                            <p style="font-size: 1.1rem; line-height: 1.7;">
+                                <strong>Bubble Sort:</strong> Swapping neighbors repeatedly. Slow (O(n²)).
+                                <br><strong>Merge Sort:</strong> Splitting list in half, sorting, and merging. Fast (O(n log n)).
+                                <br><em>Why sort?</em> You can't use Binary Search on unsorted data.
+                            </p>
+                        </div>
+
+                        <div style="background: rgba(0,0,0,0.4); padding: 1.5rem; border-radius: 8px;">
+                            <h5 style="color: #ff6464; margin: 0 0 0.5rem 0; font-size: 1.4rem;">Recursion</h5>
+                            <p style="font-size: 1.1rem; line-height: 1.7;">
+                                A function that calls itself.
+                                <br>Used for traversing Trees and Graphs.
+                                <br><strong>Danger:</strong> Infinite recursion = Stack Overflow.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Topic 5: Bitwise Operations -->
+                <div class="topic-section" style="background: linear-gradient(135deg, rgba(0,255,136,0.05) 0%, rgba(255,200,0,0.05) 100%); padding: 3rem; border-radius: 20px; margin: 3rem 0;">
+                    <h2 style="color: #00ff88; font-size: 2.2rem; margin-bottom: 2rem;">5. Bitwise Operations: Hacker Math</h2>
+                    
+                    <p style="font-size: 1.15rem; line-height: 1.8; margin-bottom: 2rem;">
+                        Manipulating individual bits. This is how encryption and compression work.
+                    </p>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                        <div style="background: rgba(0,0,0,0.4); padding: 1.5rem; border-radius: 8px;">
+                            <strong style="color: #00ff88; font-size: 1.2rem;">AND (&)</strong>
+                            <p>Both must be 1.<br>1 & 1 = 1<br>1 & 0 = 0</p>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.4); padding: 1.5rem; border-radius: 8px;">
+                            <strong style="color: #00ff88; font-size: 1.2rem;">OR (|)</strong>
+                            <p>Either can be 1.<br>1 | 0 = 1<br>0 | 0 = 0</p>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.4); padding: 1.5rem; border-radius: 8px;">
+                            <strong style="color: #00ff88; font-size: 1.2rem;">XOR (^)</strong>
+                            <p>Must be different.<br>1 ^ 0 = 1<br>1 ^ 1 = 0</p>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.4); padding: 1.5rem; border-radius: 8px;">
+                            <strong style="color: #00ff88; font-size: 1.2rem;">NOT (~)</strong>
+                            <p>Flip everything.<br>~1 = 0<br>~0 = 1</p>
+                        </div>
+                    </div>
+                    <p style="margin-top: 1rem; font-size: 1.1rem;">
+                        <strong>Fun Fact:</strong> XOR is used in encryption because it's reversible. <code>(A ^ Key) ^ Key = A</code>.
+                    </p>
                 </div>
 
                 <!-- Mastery Checklist -->
@@ -178,23 +269,26 @@
                     
                     <div style="display: grid; gap: 1rem;">
                         <div style="background: rgba(0,0,0,0.4); padding: 1.5rem; border-radius: 10px; font-size: 1.1rem;">
-                            ☐ I understand the difference between Stack and Heap memory
+                            ☐ I understand Binary, Hex, and how the CPU fetches instructions.
                         </div>
                         <div style="background: rgba(0,0,0,0.4); padding: 1.5rem; border-radius: 10px; font-size: 1.1rem;">
-                            ☐ I know when to use an Array vs a Linked List
+                            ☐ I know the difference between Stack (Static) and Heap (Dynamic) memory.
                         </div>
                         <div style="background: rgba(0,0,0,0.4); padding: 1.5rem; border-radius: 10px; font-size: 1.1rem;">
-                            ☐ I can explain what a Hash Map is and why it's fast
+                            ☐ I can explain Arrays, Linked Lists, Hash Maps, Trees, and Graphs.
                         </div>
                         <div style="background: rgba(0,0,0,0.4); padding: 1.5rem; border-radius: 10px; font-size: 1.1rem;">
-                            ☐ I understand Big O notation (O(1), O(n), O(n²))
+                            ☐ I understand Big O notation and why O(n²) is bad.
+                        </div>
+                        <div style="background: rgba(0,0,0,0.4); padding: 1.5rem; border-radius: 10px; font-size: 1.1rem;">
+                            ☐ I know how XOR works and why it's useful.
                         </div>
                     </div>
                     
                     <div style="background: rgba(0,255,136,0.2); padding: 2rem; border-radius: 15px; margin-top: 3rem; border: 2px solid rgba(0,255,136,0.5);">
                         <h3 style="color: #00ff88; margin-top: 0; font-size: 1.6rem;">✅ Level Up!</h3>
                         <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 1rem;">
-                            <strong>Congratulations!</strong> You've just learned the concepts that are asked in Google/Facebook interviews.
+                            <strong>Congratulations!</strong> This was a massive chapter. You now know more about computer science than many bootcamp graduates.
                         </p>
                         <p style="font-size: 1.15rem; line-height: 1.8;">
                             <strong style="color: #00ff88;">Next up:</strong> <a href="programming-ch03.html" style="color: #00ccff; text-decoration: underline;">Chapter 03: Algorithms & Problem Solving</a>

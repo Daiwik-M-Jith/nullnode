@@ -40,116 +40,227 @@
             
             <div class="roadmap-section">
                 <div class="roadmap-number">02</div>
-                <h1 class="page-title">Chapter 02: Deep Dive - Advanced Fundamentals</h1>
-                <p class="page-subtitle">Deep Dive: Networking, OS Architecture, and Cryptography</p>
+                <h1 class="page-title">Chapter 02: The Invisible World (Expanded)</h1>
+                <p class="page-subtitle">Networking, OS Architecture, Web, Crypto & The Hacker Mindset</p>
 
                 <div class="key-takeaways" style="margin-bottom:3rem;">
-                    <h3>What You'll Learn:</h3>
+                    <h3>The Mega-Checklist:</h3>
                     <ul>
-                        <li>The OSI Model: How the internet actually works</li>
-                        <li>OS Architecture: Kernel vs User Space</li>
-                        <li>Cryptography: Encryption, Hashing, and why they matter</li>
-                        <li>Web Architecture: How browsers talk to servers</li>
+                        <li><strong>Networking:</strong> IP Addressing, Subnets, NAT, and the Packet Anatomy</li>
+                        <li><strong>The Web:</strong> HTTP Headers, Cookies, Sessions, and the URL Structure</li>
+                        <li><strong>Linux/OS:</strong> The File System Hierarchy, Pipes, Redirection, and Processes</li>
+                        <li><strong>Crypto & Encoding:</strong> Base64 vs Hex vs Hashing vs Encryption</li>
+                        <li><strong>Theory:</strong> The CIA Triad and Authentication vs Authorization</li>
                     </ul>
                 </div>
 
                 <!-- Topic 1: Networking Deep Dive -->
                 <div class="topic-section" style="background: linear-gradient(135deg, rgba(0,255,136,0.05) 0%, rgba(0,204,255,0.05) 100%); padding: 3rem; border-radius: 20px; margin: 3rem 0;">
-                    <h2 style="color: #00ff88; font-size: 2.2rem; margin-bottom: 2rem;">1. Networking: The OSI Model</h2>
+                    <h2 style="color: #00ff88; font-size: 2.2rem; margin-bottom: 2rem;">1. Networking: The Nervous System</h2>
                     
                     <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 15px; margin: 2rem 0; font-size: 1.15rem; line-height: 1.9;">
                         <p style="margin: 0; font-size: 1.25rem;">
-                            To hack a network, you must understand how data moves. The <strong>OSI Model</strong> breaks this down into 7 layers.
+                            The internet is a web of pipes. If you want to break into a house, you need to know where the doors, windows, and vents are.
                         </p>
                     </div>
 
-                    <div style="display: grid; gap: 1.5rem; margin-top: 2rem;">
-                        <div style="background: rgba(0,255,136,0.1); padding: 1.5rem; border-radius: 8px; border-left: 3px solid #00ff88;">
-                            <h5 style="color: #00ff88; margin: 0 0 0.5rem 0; font-size: 1.3rem;">Layer 7: Application</h5>
-                            <p style="font-size: 1.1rem; line-height: 1.7; margin: 0;">
-                                What you see. HTTP (Web), SMTP (Email), FTP (Files).<br>
-                                <em>Attack Vector: SQL Injection, XSS, Phishing.</em>
+                    <div style="display: grid; gap: 2rem; margin-top: 2rem;">
+                        <!-- IP Addressing -->
+                        <div style="background: rgba(0,255,136,0.1); padding: 2rem; border-radius: 10px; border-left: 4px solid #00ff88;">
+                            <h4 style="color: #00ff88; margin: 0 0 1rem 0; font-size: 1.6rem;">IP Addressing & NAT</h4>
+                            <p style="font-size: 1.1rem; line-height: 1.8;">
+                                Every device needs an address. But there are two types:
                             </p>
+                            <ul style="font-size: 1.1rem; line-height: 1.8; margin-top: 1rem;">
+                                <li><strong>Public IP:</strong> Your house's address on the internet (e.g., <code>8.8.8.8</code>). Unique worldwide.</li>
+                                <li><strong>Private IP:</strong> Your laptop's address inside your house (e.g., <code>192.168.1.5</code>). Not unique. Millions of people use this same IP at home.</li>
+                                <li><strong>NAT (Network Address Translation):</strong> The Router's job. It translates your private requests into public ones. To the outside world, all devices in your house look like ONE IP.</li>
+                                <li><strong>Localhost:</strong> <code>127.0.0.1</code>. This means "Me". "There's no place like 127.0.0.1".</li>
+                            </ul>
                         </div>
-                        <div style="background: rgba(0,204,255,0.1); padding: 1.5rem; border-radius: 8px; border-left: 3px solid #00ccff;">
-                            <h5 style="color: #00ccff; margin: 0 0 0.5rem 0; font-size: 1.3rem;">Layer 4: Transport</h5>
-                            <p style="font-size: 1.1rem; line-height: 1.7; margin: 0;">
-                                How data is sent. TCP (Reliable) vs UDP (Fast).<br>
-                                <em>Attack Vector: Port Scanning, DoS, SYN Flood.</em>
+
+                        <!-- Subnets -->
+                        <div style="background: rgba(0,204,255,0.1); padding: 2rem; border-radius: 10px; border-left: 4px solid #00ccff;">
+                            <h4 style="color: #00ccff; margin: 0 0 1rem 0; font-size: 1.6rem;">Subnets & CIDR (/24)</h4>
+                            <p style="font-size: 1.1rem; line-height: 1.8;">
+                                Networks are split into smaller chunks called Subnets. You'll see this notation everywhere: <code>192.168.1.0/24</code>.
                             </p>
+                            <ul style="font-size: 1.1rem; line-height: 1.8; margin-top: 1rem;">
+                                <li><strong>/24:</strong> Means the first 3 parts (192.168.1) are fixed. The last part changes.</li>
+                                <li><strong>Range:</strong> <code>192.168.1.1</code> to <code>192.168.1.254</code>. (254 usable hosts).</li>
+                                <li><strong>Why hackers care:</strong> When you scan a network, you scan the subnet. "I'll scan 10.0.0.0/8" means scanning millions of IPs (loud). "I'll scan 192.168.1.0/24" means scanning 254 IPs (quiet).</li>
+                            </ul>
                         </div>
-                        <div style="background: rgba(255,100,100,0.1); padding: 1.5rem; border-radius: 8px; border-left: 3px solid #ff6464;">
-                            <h5 style="color: #ff6464; margin: 0 0 0.5rem 0; font-size: 1.3rem;">Layer 3: Network</h5>
-                            <p style="font-size: 1.1rem; line-height: 1.7; margin: 0;">
-                                Addressing and Routing. IP Addresses.<br>
-                                <em>Attack Vector: IP Spoofing, Man-in-the-Middle.</em>
+
+                        <!-- Ports -->
+                        <div style="background: rgba(255,200,0,0.1); padding: 2rem; border-radius: 10px; border-left: 4px solid #ffc800;">
+                            <h4 style="color: #ffc800; margin: 0 0 1rem 0; font-size: 1.6rem;">The Top 10 Ports</h4>
+                            <p style="font-size: 1.1rem; line-height: 1.8;">
+                                Memorize these. You will see them every day.
                             </p>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; font-family: monospace; font-size: 1.1rem;">
+                                <div>21: FTP (File Transfer)</div>
+                                <div>22: SSH (Secure Shell)</div>
+                                <div>23: Telnet (Insecure SSH)</div>
+                                <div>25: SMTP (Email Sending)</div>
+                                <div>53: DNS (Domain Names)</div>
+                                <div>80: HTTP (Web)</div>
+                                <div>110: POP3 (Email Receiving)</div>
+                                <div>139/445: SMB (Windows Shares)</div>
+                                <div>443: HTTPS (Secure Web)</div>
+                                <div>3306: MySQL (Database)</div>
+                            </div>
                         </div>
-                        <div style="background: rgba(255,200,0,0.1); padding: 1.5rem; border-radius: 8px; border-left: 3px solid #ffc800;">
-                            <h5 style="color: #ffc800; margin: 0 0 0.5rem 0; font-size: 1.3rem;">Layer 2: Data Link</h5>
-                            <p style="font-size: 1.1rem; line-height: 1.7; margin: 0;">
-                                Physical addressing. MAC Addresses.<br>
-                                <em>Attack Vector: MAC Spoofing, ARP Poisoning.</em>
+                    </div>
+                </div>
+
+                <!-- Topic 2: The Web -->
+                <div class="topic-section" style="background: linear-gradient(135deg, rgba(255,100,100,0.05) 0%, rgba(255,200,0,0.05) 100%); padding: 3rem; border-radius: 20px; margin: 3rem 0;">
+                    <h2 style="color: #ff6464; font-size: 2.2rem; margin-bottom: 2rem;">2. The Web: The Face of the Internet</h2>
+                    
+                    <div style="display: grid; gap: 2rem;">
+                        <!-- URL Anatomy -->
+                        <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 10px; border-left: 4px solid #ff6464;">
+                            <h4 style="color: #ff6464; margin: 0 0 1rem 0; font-size: 1.6rem;">Anatomy of a URL</h4>
+                            <div style="background: rgba(255,100,100,0.1); padding: 1rem; border-radius: 8px; margin: 1rem 0; font-family: monospace; font-size: 1.2rem;">
+                                https://www.example.com:8080/path/to/file?search=hacking#section2
+                            </div>
+                            <ul style="font-size: 1.1rem; line-height: 1.8;">
+                                <li><strong>Protocol:</strong> <code>https://</code> (How we talk)</li>
+                                <li><strong>Domain:</strong> <code>www.example.com</code> (Who we talk to)</li>
+                                <li><strong>Port:</strong> <code>:8080</code> (Which door to knock on - usually hidden)</li>
+                                <li><strong>Path:</strong> <code>/path/to/file</code> (Where the file is)</li>
+                                <li><strong>Query:</strong> <code>?search=hacking</code> (Parameters sent to the server - <strong>Attack Vector!</strong>)</li>
+                                <li><strong>Fragment:</strong> <code>#section2</code> (Scroll position - stays in browser)</li>
+                            </ul>
+                        </div>
+
+                        <!-- Cookies & Sessions -->
+                        <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 10px; border-left: 4px solid #ffc800;">
+                            <h4 style="color: #ffc800; margin: 0 0 1rem 0; font-size: 1.6rem;">Cookies & Sessions</h4>
+                            <p style="font-size: 1.1rem; line-height: 1.8;">
+                                HTTP is <strong>Stateless</strong>. The server forgets you immediately after sending a page.
+                                <br>To remember you (keep you logged in), we use <strong>Cookies</strong>.
+                            </p>
+                            <ul style="font-size: 1.1rem; line-height: 1.8; margin-top: 1rem;">
+                                <li><strong>Cookie:</strong> A small text file the server gives your browser. "Here, hold this ID card."</li>
+                                <li><strong>Session ID:</strong> The random number on that ID card.</li>
+                                <li><strong>Session Hijacking:</strong> If a hacker steals your Session ID (Cookie), they <em>become</em> you. They don't need your password.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Topic 3: Linux & OS -->
+                <div class="topic-section" style="background: linear-gradient(135deg, rgba(0,204,255,0.05) 0%, rgba(138,43,226,0.05) 100%); padding: 3rem; border-radius: 20px; margin: 3rem 0;">
+                    <h2 style="color: #00ccff; font-size: 2.2rem; margin-bottom: 2rem;">3. Linux & OS: The Soul</h2>
+                    
+                    <p style="font-size: 1.15rem; line-height: 1.8; margin-bottom: 2rem;">
+                        You cannot hack if you cannot use Linux. It is the OS of the internet.
+                    </p>
+
+                    <div style="display: grid; gap: 2rem;">
+                        <!-- File System -->
+                        <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 10px; border-left: 4px solid #00ccff;">
+                            <h4 style="color: #00ccff; margin: 0 0 1rem 0; font-size: 1.6rem;">The File System Hierarchy</h4>
+                            <p style="font-size: 1.1rem; line-height: 1.8;">
+                                Windows has <code>C:\</code>. Linux has <code>/</code> (Root).
+                            </p>
+                            <ul style="font-size: 1.1rem; line-height: 1.8; margin-top: 1rem;">
+                                <li><code>/bin</code>: Binaries (Programs like ls, cat, ping).</li>
+                                <li><code>/etc</code>: Configuration files (Where the secrets live). <code>/etc/passwd</code>, <code>/etc/shadow</code>.</li>
+                                <li><code>/home</code>: User folders (like C:\Users).</li>
+                                <li><code>/var</code>: Variable data (Logs, Websites). <code>/var/log</code>, <code>/var/www/html</code>.</li>
+                                <li><code>/tmp</code>: Temporary files (Often used by hackers to store scripts because anyone can write here).</li>
+                            </ul>
+                        </div>
+
+                        <!-- Pipes & Redirection -->
+                        <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 10px; border-left: 4px solid #8a2be2;">
+                            <h4 style="color: #8a2be2; margin: 0 0 1rem 0; font-size: 1.6rem;">The Power of the Shell</h4>
+                            <p style="font-size: 1.1rem; line-height: 1.8;">
+                                Linux tools are like Lego bricks. You connect them with <strong>Pipes (|)</strong>.
+                            </p>
+                            <div style="background: rgba(138,43,226,0.1); padding: 1rem; border-radius: 8px; margin: 1rem 0; font-family: monospace; font-size: 1.1rem;">
+                                cat access.log | grep "password" | sort | uniq
+                            </div>
+                            <p style="font-size: 1.1rem; line-height: 1.8;">
+                                1. Read the log.<br>
+                                2. Filter for lines containing "password".<br>
+                                3. Sort them alphabetically.<br>
+                                4. Remove duplicates.<br>
+                                <strong>Redirection (>):</strong> <code>echo "hacked" > index.html</code> (Overwrites the file).
                             </p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Topic 2: OS Architecture -->
-                <div class="topic-section" style="background: linear-gradient(135deg, rgba(0,204,255,0.05) 0%, rgba(138,43,226,0.05) 100%); padding: 3rem; border-radius: 20px; margin: 3rem 0;">
-                    <h2 style="color: #00ccff; font-size: 2.2rem; margin-bottom: 2rem;">2. OS Architecture: Kernel vs User Space</h2>
+                <!-- Topic 4: Crypto & Encoding -->
+                <div class="topic-section" style="background: linear-gradient(135deg, rgba(138,43,226,0.05) 0%, rgba(255,100,100,0.05) 100%); padding: 3rem; border-radius: 20px; margin: 3rem 0;">
+                    <h2 style="color: #ff6464; font-size: 2.2rem; margin-bottom: 2rem;">4. Crypto & Encoding: The Code</h2>
                     
-                    <p style="font-size: 1.15rem; line-height: 1.8; margin-bottom: 2rem;">
-                        Your Operating System isn't just one big program. It's divided into two main rings of power.
-                    </p>
+                    <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 15px; margin: 2rem 0; font-size: 1.15rem; line-height: 1.9;">
+                        <p style="margin: 0; font-size: 1.25rem;">
+                            <strong>CRITICAL:</strong> Encoding is NOT Encryption.
+                        </p>
+                    </div>
 
+                    <div style="display: grid; gap: 1.5rem; margin-top: 2rem;">
+                        <!-- Encoding -->
+                        <div style="background: rgba(0,255,136,0.1); padding: 1.5rem; border-radius: 8px; border-left: 3px solid #00ff88;">
+                            <h5 style="color: #00ff88; margin: 0 0 0.5rem 0; font-size: 1.4rem;">Encoding (No Key)</h5>
+                            <p style="font-size: 1.1rem; line-height: 1.7;">
+                                Changing data format so computers can read it. <strong>Anyone can decode it.</strong>
+                                <br><strong>Base64:</strong> Ends with <code>=</code>. Used for email attachments and basic auth. <code>SGVsbG8=</code>
+                                <br><strong>URL Encoding:</strong> <code>%20</code> for space. <code>%3C</code> for <code>&lt;</code>.
+                                <br><strong>Hex:</strong> <code>48 65 6c 6c 6f</code>.
+                            </p>
+                        </div>
+
+                        <!-- Hashing -->
+                        <div style="background: rgba(255,200,0,0.1); padding: 1.5rem; border-radius: 8px; border-left: 3px solid #ffc800;">
+                            <h5 style="color: #ffc800; margin: 0 0 0.5rem 0; font-size: 1.4rem;">Hashing (One-Way)</h5>
+                            <p style="font-size: 1.1rem; line-height: 1.7;">
+                                A fingerprint. Used for integrity and passwords.
+                                <br><strong>MD5:</strong> Old, broken. Fast.
+                                <br><strong>SHA-256:</strong> Standard. Secure.
+                                <br><strong>Bcrypt:</strong> Slow. Designed for passwords.
+                            </p>
+                        </div>
+
+                        <!-- Encryption -->
+                        <div style="background: rgba(255,100,100,0.1); padding: 1.5rem; border-radius: 8px; border-left: 3px solid #ff6464;">
+                            <h5 style="color: #ff6464; margin: 0 0 0.5rem 0; font-size: 1.4rem;">Encryption (Requires Key)</h5>
+                            <p style="font-size: 1.1rem; line-height: 1.7;">
+                                Scrambling data for confidentiality.
+                                <br><strong>AES:</strong> Symmetric (Same key). Used for WiFi (WPA2) and File Encryption.
+                                <br><strong>RSA:</strong> Asymmetric (Public/Private). Used for SSL/TLS and SSH.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Topic 5: Security Theory -->
+                <div class="topic-section" style="background: linear-gradient(135deg, rgba(0,204,255,0.05) 0%, rgba(0,255,136,0.05) 100%); padding: 3rem; border-radius: 20px; margin: 3rem 0;">
+                    <h2 style="color: #00ccff; font-size: 2.2rem; margin-bottom: 2rem;">5. Security Theory: The Mindset</h2>
+                    
                     <div style="display: grid; gap: 2rem;">
-                        <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 10px; border-left: 4px solid #ff6464;">
-                            <h4 style="color: #ff6464; margin: 0 0 1rem 0; font-size: 1.4rem;">The Kernel (Ring 0)</h4>
+                        <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 10px; border-left: 4px solid #00ccff;">
+                            <h4 style="color: #00ccff; margin: 0 0 1rem 0; font-size: 1.4rem;">The CIA Triad</h4>
                             <p style="font-size: 1.1rem; line-height: 1.8;">
-                                The heart of the OS. It has complete control over everything (CPU, RAM, Hardware).<br>
-                                <strong>Danger:</strong> If the kernel crashes, the whole computer crashes (Blue Screen).<br>
-                                <strong>Hacking:</strong> Kernel exploits (Rootkits) give you God-mode access.
+                                The three goals of security.
+                                <br><strong>Confidentiality:</strong> Only authorized people can see it. (Encryption).
+                                <br><strong>Integrity:</strong> The data hasn't been changed. (Hashing).
+                                <br><strong>Availability:</strong> The system is up and running. (DDoS protection).
                             </p>
                         </div>
 
                         <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 10px; border-left: 4px solid #00ff88;">
-                            <h4 style="color: #00ff88; margin: 0 0 1rem 0; font-size: 1.4rem;">User Space (Ring 3)</h4>
+                            <h4 style="color: #00ff88; margin: 0 0 1rem 0; font-size: 1.4rem;">AuthN vs AuthZ</h4>
                             <p style="font-size: 1.1rem; line-height: 1.8;">
-                                Where your apps run (Chrome, Discord, Games).<br>
-                                <strong>Safety:</strong> Apps can't touch hardware directly. They must ask the Kernel nicely (System Calls).<br>
-                                <strong>Hacking:</strong> Most malware runs here. Easier to detect and remove.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Topic 3: Cryptography -->
-                <div class="topic-section" style="background: linear-gradient(135deg, rgba(138,43,226,0.05) 0%, rgba(255,100,100,0.05) 100%); padding: 3rem; border-radius: 20px; margin: 3rem 0;">
-                    <h2 style="color: #ff6464; font-size: 2.2rem; margin-bottom: 2rem;">3. Cryptography Basics</h2>
-                    
-                    <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 15px; margin: 2rem 0; font-size: 1.15rem; line-height: 1.9;">
-                        <p style="margin: 0; font-size: 1.25rem;">
-                            Cryptography is the art of writing secret codes. In hacking, it's about breaking them.
-                        </p>
-                    </div>
-
-                    <div style="display: grid; gap: 1.5rem; margin-top: 2rem;">
-                        <div style="background: rgba(0,255,136,0.1); padding: 1.5rem; border-radius: 8px; border-left: 3px solid #00ff88;">
-                            <h5 style="color: #00ff88; margin: 0 0 0.5rem 0; font-size: 1.3rem;">Encryption (Two-Way)</h5>
-                            <p style="font-size: 1.1rem; line-height: 1.7; margin: 0;">
-                                Scrambling data so only someone with a key can read it.<br>
-                                <strong>Symmetric:</strong> Same key locks and unlocks (Fast, like a house key).<br>
-                                <strong>Asymmetric:</strong> Public key locks, Private key unlocks (Secure, like SSL/HTTPS).
-                            </p>
-                        </div>
-
-                        <div style="background: rgba(255,100,100,0.1); padding: 1.5rem; border-radius: 8px; border-left: 3px solid #ff6464;">
-                            <h5 style="color: #ff6464; margin: 0 0 0.5rem 0; font-size: 1.3rem;">Hashing (One-Way)</h5>
-                            <p style="font-size: 1.1rem; line-height: 1.7; margin: 0;">
-                                Turning data into a unique fingerprint. You CANNOT turn a hash back into data.<br>
-                                <strong>Use Case:</strong> Storing passwords. You don't save "password123", you save its hash.<br>
-                                <strong>Hacking:</strong> You can't "decrypt" a hash. You have to guess the password, hash it, and see if it matches (Brute Force).
+                                <strong>Authentication (AuthN):</strong> "Who are you?" (Password, Fingerprint).
+                                <br><strong>Authorization (AuthZ):</strong> "What are you allowed to do?" (Admin vs User).
+                                <br><em>Broken Access Control</em> (hacking AuthZ) is the #1 vulnerability on the web.
                             </p>
                         </div>
                     </div>
@@ -161,23 +272,27 @@
                     
                     <div style="display: grid; gap: 1rem;">
                         <div style="background: rgba(0,0,0,0.4); padding: 1.5rem; border-radius: 10px; font-size: 1.1rem;">
-                            ☐ I can explain the 7 layers of the OSI Model
+                            ☐ I know the difference between Public and Private IPs, and what NAT does.
                         </div>
                         <div style="background: rgba(0,0,0,0.4); padding: 1.5rem; border-radius: 10px; font-size: 1.1rem;">
-                            ☐ I understand the difference between Kernel Mode and User Mode
+                            ☐ I can identify the parts of a URL and why Query Parameters are dangerous.
                         </div>
                         <div style="background: rgba(0,0,0,0.4); padding: 1.5rem; border-radius: 10px; font-size: 1.1rem;">
-                            ☐ I know the difference between Encryption and Hashing
+                            ☐ I know what <code>/etc/passwd</code> and <code>/var/log</code> are for.
                         </div>
                         <div style="background: rgba(0,0,0,0.4); padding: 1.5rem; border-radius: 10px; font-size: 1.1rem;">
-                            ☐ I understand why ARP Poisoning works (Layer 2 attack)
+                            ☐ I understand that Base64 is NOT encryption and can be decoded by anyone.
+                        </div>
+                        <div style="background: rgba(0,0,0,0.4); padding: 1.5rem; border-radius: 10px; font-size: 1.1rem;">
+                            ☐ I know the difference between Authentication (Who) and Authorization (What).
                         </div>
                     </div>
                     
                     <div style="background: rgba(0,255,136,0.2); padding: 2rem; border-radius: 15px; margin-top: 3rem; border: 2px solid rgba(0,255,136,0.5);">
                         <h3 style="color: #00ff88; margin-top: 0; font-size: 1.6rem;">✅ Level Up!</h3>
                         <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 1rem;">
-                            <strong>Congratulations!</strong> You now understand the invisible systems that hackers exploit.
+                            <strong>Congratulations!</strong> You have just absorbed the core curriculum of a cybersecurity degree. 
+                            This knowledge is the foundation for everything that follows.
                         </p>
                         <p style="font-size: 1.15rem; line-height: 1.8;">
                             <strong style="color: #00ff88;">Next up:</strong> <a href="hacking-ch03.html" style="color: #00ccff; text-decoration: underline;">Chapter 03: Linux Mastery</a>
