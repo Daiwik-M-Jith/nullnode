@@ -1144,3 +1144,73 @@ html {
         font-size: 1.1rem;
     }
 }
+
+/* Additional mobile-first tweaks: better tap targets, stacked nav links and smaller hero */
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+        padding: 0.5rem 0 0.5rem 0;
+    }
+
+    .nav-link {
+        display: block;
+        width: 100%;
+        padding: 0.8rem 1rem;
+        border-radius: 8px;
+        text-align: left;
+        background: transparent;
+        color: var(--text-primary);
+        font-size: 1rem;
+    }
+
+    /* Hide underline decoration on narrow screen to reduce visual clutter */
+    .nav-link::after { display: none; }
+
+    .nav-container { align-items: center; }
+    .nav-brand { align-items: center; }
+
+    .logo { width: 40px; height: 40px; }
+    .brand-text { font-size: 1.1rem; }
+
+    .navbar { padding: 0.75rem 1rem; }
+
+    .page-title { font-size: 2rem; }
+    .page-subtitle { font-size: 1rem; }
+
+    .content-container { padding: 1rem; }
+    .topic-section { padding: 1.5rem !important; }
+
+    /* Make cards and CTA more touch-friendly */
+    .cta-button, .card, .card .card-title { padding: 0.9rem 1.25rem; }
+    .card-title { font-size: 1.25rem; }
+
+    /* Sidebar collapses to full width */
+    .learn-content { grid-template-columns: 1fr; }
+    .learn-sidebar { position: static; width: 100%; }
+
+    .hero { padding: 3rem 1rem; }
+    .hero-title { font-size: 2.5rem; }
+}
+
+@media (max-width: 480px) {
+    .nav-container { padding: 0.5rem 1rem; }
+    .brand-text { font-size: 1rem; }
+    .logo { width: 36px; height: 36px; }
+    .page-title { font-size: 1.6rem; }
+    .hero-title { font-size: 2rem; }
+    .card-title { font-size: 1.1rem; }
+    .card-description { font-size: 0.95rem; }
+
+    .roadmap-section { padding-left: 1rem; }
+    .roadmap-number { width: 44px; height: 44px; font-size: 1rem; }
+    .terminal-body { max-height: 400px; }
+}
+
+/* Improve touch targets for coarse pointers (touch devices) */
+@media (pointer: coarse) {
+    .nav-link { padding: 1rem; }
+    .cta-button { padding: 1rem 1.25rem; }
+}
+
