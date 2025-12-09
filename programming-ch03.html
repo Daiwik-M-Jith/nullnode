@@ -40,28 +40,764 @@
             
             <div class="roadmap-section">
                 <div class="roadmap-number">03</div>
-                <h1 class="page-title">Chapter 03: Data Types & Variables</h1>
-                <p class="page-subtitle">Complete Beginner Friendly - Comprehensive Guide</p>
+                <h1 class="page-title">Chapter 03: Algorithms & Problem Solving</h1>
+                <p class="page-subtitle">Mastering Computational Thinking & Efficiency</p>
 
-                <div style="background: linear-gradient(135deg, rgba(255,200,0,0.15) 0%, rgba(255,100,0,0.15) 100%); padding: 3rem; border-radius: 20px; margin: 3rem 0; border: 2px solid rgba(255,200,0,0.4);">
-                    <h2 style="color: #ffc800; font-size: 2rem; margin: 0 0 1.5rem 0;">📚 Chapter Content Coming Soon</h2>
-                    <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 1.5rem;">
-                        This chapter will contain <strong>8-10 comprehensive topics</strong> covering Data Types & Variables in extreme detail.
+                <!-- Introduction -->
+                <div style="background: linear-gradient(135deg, rgba(0,255,136,0.1) 0%, rgba(0,204,255,0.1) 100%); padding: 3rem; border-radius: 20px; margin: 3rem 0; border-left: 5px solid var(--primary-color);">
+                    <h2 style="color: var(--primary-color); font-size: 1.8rem; margin-bottom: 1.5rem;">🧠 Welcome to Algorithmic Thinking</h2>
+                    <p style="font-size: 1.15rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                        Writing code that <em>works</em> is one thing. Writing code that works <strong>efficiently</strong> is what separates beginners from professionals.
+                    </p>
+                    <p style="font-size: 1.15rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                        Imagine you're searching for a specific book in a library. You could check <em>every single book</em> one by one (slow). Or you could use the catalog system, narrow down the section, then find it in seconds (fast). That's the difference between a bad algorithm and a good one.
                     </p>
                     <p style="font-size: 1.15rem; line-height: 1.8;">
-                        Each topic will include:
+                        In this chapter, we'll explore <strong>how to think about problems</strong>, measure solution efficiency, and master the fundamental algorithms that power everything from Google Search to Netflix recommendations.
                     </p>
-                    <ul style="font-size: 1.1rem; line-height: 1.9; margin: 1rem 0;">
-                        <li>Complete beginner-friendly explanations</li>
-                        <li>Visual styling with colored sections and gradients</li>
-                        <li>Real working code examples</li>
-                        <li>Hands-on labs and exercises</li>
-                        <li>"Why This Matters for Programming" sections</li>
-                        <li>Quick check questions</li>
+                </div>
+
+                <!-- Topic 1: Algorithmic Thinking & Problem Decomposition -->
+                <div style="background: linear-gradient(135deg, rgba(138,43,226,0.15) 0%, rgba(75,0,130,0.15) 100%); padding: 3rem; border-radius: 20px; margin: 3rem 0; border: 2px solid rgba(138,43,226,0.3);">
+                    <h2 style="color: #8a2be2; font-size: 1.8rem; margin-bottom: 1.5rem;">🎯 Topic 1: Algorithmic Thinking — Breaking Down Problems</h2>
+                    
+                    <h3 style="color: #9370db; font-size: 1.4rem; margin: 2rem 0 1rem 0;">What IS an Algorithm?</h3>
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                        An algorithm is simply a <strong>step-by-step recipe</strong> for solving a problem. Think of it like cooking instructions:
+                    </p>
+                    <ul style="font-size: 1.05rem; line-height: 1.9; margin: 0 0 1.5rem 2rem;">
+                        <li><strong>Input:</strong> Raw ingredients (data)</li>
+                        <li><strong>Process:</strong> Cooking steps (operations)</li>
+                        <li><strong>Output:</strong> Finished dish (result)</li>
                     </ul>
-                    <p style="font-size: 1.15rem; line-height: 1.8; margin-top: 1.5rem;">
-                        <strong style="color: #00ff88;">Expected content:</strong> 15,000-40,000 words of high-quality, researched material per chapter.
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                        Every program you write is fundamentally a collection of algorithms working together.
                     </p>
+
+                    <h3 style="color: #9370db; font-size: 1.4rem; margin: 2rem 0 1rem 0;">Problem Decomposition</h3>
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                        Complex problems feel overwhelming. The secret? <strong>Break them down</strong> into tiny, manageable pieces.
+                    </p>
+                    <div style="background: rgba(0,0,0,0.3); padding: 2rem; border-radius: 15px; margin: 1.5rem 0;">
+                        <h4 style="color: #00ff88; margin-bottom: 1rem;">Example: Build a Todo List App</h4>
+                        <p style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 1rem;">
+                            Instead of thinking "I need to build an app" (scary), break it down:
+                        </p>
+                        <ol style="font-size: 1.05rem; line-height: 1.9; margin: 0 0 1rem 2rem;">
+                            <li>How do I store todos? (Array/List)</li>
+                            <li>How do I add a new todo? (Function: append to array)</li>
+                            <li>How do I display todos? (Loop through array, print each)</li>
+                            <li>How do I mark complete? (Update item property)</li>
+                            <li>How do I delete? (Remove from array)</li>
+                        </ol>
+                        <p style="font-size: 1.05rem; line-height: 1.8; margin: 0;">
+                            Each piece is simple. Together, they form the complete solution.
+                        </p>
+                    </div>
+
+                    <h3 style="color: #9370db; font-size: 1.4rem; margin: 2rem 0 1rem 0;">The Problem-Solving Process</h3>
+                    <div style="background: rgba(138,43,226,0.1); padding: 2rem; border-radius: 15px; margin: 1.5rem 0;">
+                        <ol style="font-size: 1.05rem; line-height: 1.9; margin: 0 0 0 2rem;">
+                            <li><strong>Understand:</strong> Read the problem carefully. What's the input? What's the expected output?</li>
+                            <li><strong>Plan:</strong> Sketch a solution on paper. Write pseudocode.</li>
+                            <li><strong>Divide:</strong> Break the problem into smaller subproblems.</li>
+                            <li><strong>Implement:</strong> Code each piece, test individually.</li>
+                            <li><strong>Test:</strong> Try edge cases. What if input is empty? Negative? Huge?</li>
+                            <li><strong>Optimize:</strong> Can you make it faster? Use less memory?</li>
+                        </ol>
+                    </div>
+
+                    <div style="background: rgba(255,200,0,0.15); padding: 1.5rem; border-radius: 10px; margin: 2rem 0; border-left: 4px solid #ffc800;">
+                        <h4 style="color: #ffc800; margin-bottom: 0.5rem;">💡 Why This Matters for Programming</h4>
+                        <p style="font-size: 1.05rem; line-height: 1.8; margin: 0;">
+                            Interviews at Google, Facebook, Amazon? They're testing your algorithmic thinking, not syntax memorization. Can you break down a problem? Can you reason about efficiency? Master this, and you'll ace technical interviews and build scalable systems.
+                        </p>
+                    </div>
+
+                    <div style="background: rgba(0,204,255,0.1); padding: 1.5rem; border-radius: 10px; margin: 2rem 0;">
+                        <h4 style="color: #00ccff; margin-bottom: 1rem;">🎯 Quick Check</h4>
+                        <ul style="font-size: 1.05rem; line-height: 1.9; margin: 0;">
+                            <li>What's the difference between an algorithm and a program?</li>
+                            <li>Name one benefit of breaking problems into smaller pieces.</li>
+                            <li>Why is testing edge cases important?</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Topic 2: Time Complexity & Big O -->
+                <div style="background: linear-gradient(135deg, rgba(0,204,255,0.15) 0%, rgba(0,153,204,0.15) 100%); padding: 3rem; border-radius: 20px; margin: 3rem 0; border: 2px solid rgba(0,204,255,0.3);">
+                    <h2 style="color: #00ccff; font-size: 1.8rem; margin-bottom: 1.5rem;">⏱️ Topic 2: Big O Notation — Measuring Efficiency</h2>
+                    
+                    <h3 style="color: #33d4ff; font-size: 1.4rem; margin: 2rem 0 1rem 0;">Why Efficiency Matters</h3>
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                        Imagine two sorting algorithms: Algorithm A sorts 100 items in 0.01s, Algorithm B in 0.02s. Both seem fast. But scale to 1 million: A takes 2 minutes, B takes 6 hours. <strong>Big O notation</strong> lets us predict this WITHOUT running tests.
+                    </p>
+
+                    <h3 style="color: #33d4ff; font-size: 1.4rem; margin: 2rem 0 1rem 0;">Understanding Big O</h3>
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                        Big O describes <strong>how runtime grows</strong> as input size increases. It ignores constants and focuses on the <em>dominant factor</em>.
+                    </p>
+
+                    <div style="background: rgba(0,0,0,0.3); padding: 2rem; border-radius: 15px; margin: 1.5rem 0; border-left: 4px solid #00ff88;">
+                        <h4 style="color: #00ff88; margin-bottom: 1rem;">🟢 O(1) — Constant Time</h4>
+                        <p style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 1rem;">
+                            <strong>Always takes the same time</strong>, no matter how big the input. Like accessing an array by index:
+                        </p>
+                        <pre style="background: #1a1a2e; padding: 1.5rem; border-radius: 10px; overflow-x: auto; color: #00ff88;"><code>def get_first(arr):
+    return arr[0]  # Always one operation
+
+# Works instantly for 10 items or 10 million</code></pre>
+                        <p style="font-size: 1.05rem; line-height: 1.8; margin: 1rem 0 0 0;">
+                            Real-world: Accessing a specific book when you know its shelf number.
+                        </p>
+                    </div>
+
+                    <div style="background: rgba(0,0,0,0.3); padding: 2rem; border-radius: 15px; margin: 1.5rem 0; border-left: 4px solid #33d4ff;">
+                        <h4 style="color: #33d4ff; margin-bottom: 1rem;">🔵 O(log n) — Logarithmic Time</h4>
+                        <p style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 1rem;">
+                            <strong>Cuts the problem in half</strong> each step. Like binary search in a sorted phone book:
+                        </p>
+                        <pre style="background: #1a1a2e; padding: 1.5rem; border-radius: 10px; overflow-x: auto; color: #33d4ff;"><code>def binary_search(arr, target):
+    left, right = 0, len(arr) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1
+
+# 1 million items? Only ~20 checks needed!</code></pre>
+                        <p style="font-size: 1.05rem; line-height: 1.8; margin: 1rem 0 0 0;">
+                            Real-world: Looking up a word in the dictionary by opening to the middle, then halving each time.
+                        </p>
+                    </div>
+
+                    <div style="background: rgba(0,0,0,0.3); padding: 2rem; border-radius: 15px; margin: 1.5rem 0; border-left: 4px solid #ffc800;">
+                        <h4 style="color: #ffc800; margin-bottom: 1rem;">🟡 O(n) — Linear Time</h4>
+                        <p style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 1rem;">
+                            <strong>Loops through every item once</strong>. Time grows proportionally with input size:
+                        </p>
+                        <pre style="background: #1a1a2e; padding: 1.5rem; border-radius: 10px; overflow-x: auto; color: #ffc800;"><code>def find_max(arr):
+    max_val = arr[0]
+    for num in arr:  # Checks every item
+        if num > max_val:
+            max_val = num
+    return max_val
+
+# 100 items = 100 checks. 10,000 items = 10,000 checks.</code></pre>
+                        <p style="font-size: 1.05rem; line-height: 1.8; margin: 1rem 0 0 0;">
+                            Real-world: Reading every page of a book to find a specific sentence.
+                        </p>
+                    </div>
+
+                    <div style="background: rgba(0,0,0,0.3); padding: 2rem; border-radius: 15px; margin: 1.5rem 0; border-left: 4px solid #ff6b6b;">
+                        <h4 style="color: #ff6b6b; margin-bottom: 1rem;">🔴 O(n²) — Quadratic Time</h4>
+                        <p style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 1rem;">
+                            <strong>Nested loops</strong> that check every pair of items. Gets slow FAST:
+                        </p>
+                        <pre style="background: #1a1a2e; padding: 1.5rem; border-radius: 10px; overflow-x: auto; color: #ff6b6b;"><code>def find_duplicates(arr):
+    duplicates = []
+    for i in range(len(arr)):       # Outer loop
+        for j in range(i + 1, len(arr)):  # Inner loop
+            if arr[i] == arr[j]:
+                duplicates.append(arr[i])
+    return duplicates
+
+# 100 items = 10,000 comparisons. 1,000 items = 1 MILLION!</code></pre>
+                        <p style="font-size: 1.05rem; line-height: 1.8; margin: 1rem 0 0 0;">
+                            Real-world: Comparing every person in a room with every other person (handshakes problem).
+                        </p>
+                    </div>
+
+                    <div style="background: rgba(0,0,0,0.3); padding: 2rem; border-radius: 15px; margin: 1.5rem 0; border-left: 4px solid #9370db;">
+                        <h4 style="color: #9370db; margin-bottom: 1rem;">🟣 O(2ⁿ) — Exponential Time</h4>
+                        <p style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 1rem;">
+                            <strong>Doubles with each added input</strong>. Usually means recursion without optimization:
+                        </p>
+                        <pre style="background: #1a1a2e; padding: 1.5rem; border-radius: 10px; overflow-x: auto; color: #9370db;"><code>def fibonacci(n):
+    if n <= 1:
+        return n
+    return fibonacci(n-1) + fibonacci(n-2)
+
+# fibonacci(5) = 15 calls. fibonacci(30) = 2.7 MILLION calls!</code></pre>
+                        <p style="font-size: 1.05rem; line-height: 1.8; margin: 1rem 0 0 0;">
+                            Real-world: Trying every possible password combination.
+                        </p>
+                    </div>
+
+                    <h3 style="color: #33d4ff; font-size: 1.4rem; margin: 2rem 0 1rem 0;">Visualizing Growth</h3>
+                    <div style="background: rgba(0,204,255,0.1); padding: 2rem; border-radius: 15px; margin: 1.5rem 0;">
+                        <pre style="background: #1a1a2e; padding: 1.5rem; border-radius: 10px; color: #00ccff;"><code>Input Size (n)   O(1)   O(log n)   O(n)    O(n²)      O(2ⁿ)
+──────────────────────────────────────────────────────────────
+10               1      3          10      100        1,024
+100              1      7          100     10,000     1.3×10³⁰
+1,000            1      10         1,000   1,000,000  ∞ (too big!)
+1,000,000        1      20         1M      1T         ∞ (impossible!)</code></pre>
+                    </div>
+
+                    <div style="background: rgba(255,200,0,0.15); padding: 1.5rem; border-radius: 10px; margin: 2rem 0; border-left: 4px solid #ffc800;">
+                        <h4 style="color: #ffc800; margin-bottom: 0.5rem;">💡 Why This Matters</h4>
+                        <p style="font-size: 1.05rem; line-height: 1.8; margin: 0;">
+                            Tech interviews ALWAYS ask about Big O. An O(n²) algorithm works for 100 users but crashes at 10,000. Understanding complexity prevents production disasters. When Instagram loads a feed with millions of posts, they can't use O(n²) algorithms—the app would freeze.
+                        </p>
+                    </div>
+
+                    <div style="background: rgba(0,204,255,0.1); padding: 1.5rem; border-radius: 10px; margin: 2rem 0;">
+                        <h4 style="color: #00ccff; margin-bottom: 1rem;">🎯 Quick Check</h4>
+                        <ul style="font-size: 1.05rem; line-height: 1.9; margin: 0;">
+                            <li>What's the Big O of accessing <code>arr[500]</code>?</li>
+                            <li>Why is O(log n) faster than O(n)?</li>
+                            <li>What causes O(n²) complexity?</li>
+                            <li>If an algorithm takes 1 second for n=100, how long for n=1,000 if it's O(n²)?</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Topic 3: Searching Algorithms -->
+                <div style="background: linear-gradient(135deg, rgba(255,200,0,0.15) 0%, rgba(255,150,0,0.15) 100%); padding: 3rem; border-radius: 20px; margin: 3rem 0; border: 2px solid rgba(255,200,0,0.3);">
+                    <h2 style="color: #ffc800; font-size: 1.8rem; margin-bottom: 1.5rem;">🔍 Topic 3: Searching Algorithms — Finding Needles in Haystacks</h2>
+                    
+                    <h3 style="color: #ffdb4d; font-size: 1.4rem; margin: 2rem 0 1rem 0;">Linear Search: The Brute Force Approach</h3>
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                        Check every single item until you find what you're looking for. Simple but slow for large datasets.
+                    </p>
+
+                    <div style="background: rgba(0,0,0,0.3); padding: 2rem; border-radius: 15px; margin: 1.5rem 0;">
+                        <h4 style="color: #00ff88; margin-bottom: 1rem;">Implementation</h4>
+                        <pre style="background: #1a1a2e; padding: 1.5rem; border-radius: 10px; overflow-x: auto; color: #00ff88;"><code>def linear_search(arr, target):
+    """
+    Search for target in arr by checking each element.
+    Returns index if found, -1 otherwise.
+    Time: O(n), Space: O(1)
+    """
+    for i in range(len(arr)):
+        if arr[i] == target:
+            return i  # Found it!
+    return -1  # Not found
+
+# Example usage
+numbers = [64, 34, 25, 12, 22, 11, 90]
+result = linear_search(numbers, 22)
+print(f"Found at index: {result}")  # Output: 4</code></pre>
+                    </div>
+
+                    <div style="background: rgba(255,200,0,0.15); padding: 1.5rem; border-radius: 10px; margin: 1.5rem 0;">
+                        <h4 style="color: #ffc800; margin-bottom: 0.5rem;">⚡ Performance Analysis</h4>
+                        <ul style="font-size: 1.05rem; line-height: 1.9; margin: 0;">
+                            <li><strong>Best case:</strong> O(1) — target is first item</li>
+                            <li><strong>Worst case:</strong> O(n) — target is last or not found</li>
+                            <li><strong>Average case:</strong> O(n/2) = O(n)</li>
+                            <li><strong>When to use:</strong> Small datasets, unsorted data, or when you need to search once</li>
+                        </ul>
+                    </div>
+
+                    <h3 style="color: #ffdb4d; font-size: 1.4rem; margin: 2rem 0 1rem 0;">Binary Search: The Smart Way</h3>
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                        <strong>Requires sorted data.</strong> Repeatedly divide the search space in half. Like finding a page in a book—you wouldn't start from page 1!
+                    </p>
+
+                    <div style="background: rgba(0,0,0,0.3); padding: 2rem; border-radius: 15px; margin: 1.5rem 0;">
+                        <h4 style="color: #00ccff; margin-bottom: 1rem;">How Binary Search Works</h4>
+                        <ol style="font-size: 1.05rem; line-height: 1.9; margin: 0 0 1rem 2rem;">
+                            <li>Look at the middle element</li>
+                            <li>If it's your target, done!</li>
+                            <li>If target is smaller, search the left half</li>
+                            <li>If target is larger, search the right half</li>
+                            <li>Repeat until found or no elements left</li>
+                        </ol>
+                        <pre style="background: #1a1a2e; padding: 1.5rem; border-radius: 10px; overflow-x: auto; color: #33d4ff;"><code>def binary_search(arr, target):
+    """
+    Search sorted array by repeatedly halving search space.
+    Returns index if found, -1 otherwise.
+    Time: O(log n), Space: O(1)
+    """
+    left, right = 0, len(arr) - 1
+    
+    while left <= right:
+        mid = (left + right) // 2
+        
+        if arr[mid] == target:
+            return mid  # Found it!
+        elif arr[mid] < target:
+            left = mid + 1  # Search right half
+        else:
+            right = mid - 1  # Search left half
+    
+    return -1  # Not found
+
+# Example usage (MUST be sorted!)
+numbers = [11, 12, 22, 25, 34, 64, 90]
+result = binary_search(numbers, 25)
+print(f"Found at index: {result}")  # Output: 3</code></pre>
+                    </div>
+
+                    <div style="background: rgba(0,204,255,0.15); padding: 2rem; border-radius: 15px; margin: 1.5rem 0;">
+                        <h4 style="color: #00ccff; margin-bottom: 1rem;">📊 Binary Search Visualization</h4>
+                        <p style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 1rem;">
+                            Searching for 25 in <code>[11, 12, 22, 25, 34, 64, 90]</code>:
+                        </p>
+                        <pre style="background: #1a1a2e; padding: 1.5rem; border-radius: 10px; color: #00ff88;"><code>Step 1: [11, 12, 22, |25|, 34, 64, 90]  mid=25 → Found!
+
+If searching for 64:
+Step 1: [11, 12, 22, |25|, 34, 64, 90]  mid=25 < 64 → go right
+Step 2: [34, |64|, 90]                   mid=64 → Found!
+
+Only 2 steps for 7 items! Linear would take up to 7.</code></pre>
+                    </div>
+
+                    <div style="background: rgba(255,200,0,0.15); padding: 1.5rem; border-radius: 10px; margin: 1.5rem 0;">
+                        <h4 style="color: #ffc800; margin-bottom: 0.5rem;">💡 Real-World Applications</h4>
+                        <ul style="font-size: 1.05rem; line-height: 1.9; margin: 0;">
+                            <li><strong>Databases:</strong> Finding records in indexed tables</li>
+                            <li><strong>Version control:</strong> Git uses binary search to find which commit introduced a bug (<code>git bisect</code>)</li>
+                            <li><strong>Dictionaries:</strong> Looking up words in digital dictionaries</li>
+                            <li><strong>Phone books:</strong> Finding contacts (though who uses those anymore?)</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: rgba(0,204,255,0.1); padding: 1.5rem; border-radius: 10px; margin: 2rem 0;">
+                        <h4 style="color: #00ccff; margin-bottom: 1rem;">🎯 Quick Check</h4>
+                        <ul style="font-size: 1.05rem; line-height: 1.9; margin: 0;">
+                            <li>Can you use binary search on <code>[5, 2, 8, 1, 9]</code>? Why/why not?</li>
+                            <li>How many steps to binary search 1 million items?</li>
+                            <li>When would linear search be better than binary search?</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Topic 4: Sorting Algorithms -->
+                <div style="background: linear-gradient(135deg, rgba(255,107,107,0.15) 0%, rgba(255,69,96,0.15) 100%); padding: 3rem; border-radius: 20px; margin: 3rem 0; border: 2px solid rgba(255,107,107,0.3);">
+                    <h2 style="color: #ff6b6b; font-size: 1.8rem; margin-bottom: 1.5rem;">📊 Topic 4: Sorting Algorithms — Organizing Chaos</h2>
+                    
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                        Sorting is one of the most fundamental operations in computer science. From organizing files by date to ranking search results, sorting powers countless applications.
+                    </p>
+
+                    <h3 style="color: #ff8787; font-size: 1.4rem; margin: 2rem 0 1rem 0;">Bubble Sort: The Simplest (But Slowest)</h3>
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                        Repeatedly swap adjacent elements if they're in wrong order. Like bubbles rising to the surface.
+                    </p>
+
+                    <div style="background: rgba(0,0,0,0.3); padding: 2rem; border-radius: 15px; margin: 1.5rem 0;">
+                        <pre style="background: #1a1a2e; padding: 1.5rem; border-radius: 10px; overflow-x: auto; color: #ff6b6b;"><code>def bubble_sort(arr):
+    """
+    Sort array by repeatedly swapping adjacent elements.
+    Time: O(n²), Space: O(1)
+    """
+    n = len(arr)
+    for i in range(n):
+        swapped = False
+        # Last i elements already sorted
+        for j in range(0, n - i - 1):
+            if arr[j] > arr[j + 1]:
+                # Swap if out of order
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+                swapped = True
+        # If no swaps, array is sorted
+        if not swapped:
+            break
+    return arr
+
+# Example
+numbers = [64, 34, 25, 12, 22, 11, 90]
+bubble_sort(numbers)
+print(numbers)  # [11, 12, 22, 25, 34, 64, 90]</code></pre>
+                    </div>
+
+                    <div style="background: rgba(255,107,107,0.15); padding: 1.5rem; border-radius: 10px; margin: 1.5rem 0;">
+                        <h4 style="color: #ff6b6b; margin-bottom: 0.5rem;">⚠️ Bubble Sort Analysis</h4>
+                        <ul style="font-size: 1.05rem; line-height: 1.9; margin: 0;">
+                            <li><strong>Time:</strong> O(n²) — nested loops compare all pairs</li>
+                            <li><strong>Space:</strong> O(1) — sorts in-place</li>
+                            <li><strong>Pros:</strong> Simple to understand, stable sort</li>
+                            <li><strong>Cons:</strong> VERY slow for large datasets</li>
+                            <li><strong>Use case:</strong> Teaching, or when n < 10</li>
+                        </ul>
+                    </div>
+
+                    <h3 style="color: #ff8787; font-size: 1.4rem; margin: 2rem 0 1rem 0;">Merge Sort: Divide and Conquer</h3>
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                        Split array in half recursively until single elements, then merge sorted halves. Used by Python's <code>sorted()</code> and JavaScript's <code>Array.sort()</code>.
+                    </p>
+
+                    <div style="background: rgba(0,0,0,0.3); padding: 2rem; border-radius: 15px; margin: 1.5rem 0;">
+                        <pre style="background: #1a1a2e; padding: 1.5rem; border-radius: 10px; overflow-x: auto; color: #00ff88;"><code>def merge_sort(arr):
+    """
+    Sort by recursively dividing and merging.
+    Time: O(n log n), Space: O(n)
+    """
+    if len(arr) <= 1:
+        return arr
+    
+    # Divide
+    mid = len(arr) // 2
+    left = merge_sort(arr[:mid])
+    right = merge_sort(arr[mid:])
+    
+    # Conquer (merge)
+    return merge(left, right)
+
+def merge(left, right):
+    """Merge two sorted arrays into one sorted array"""
+    result = []
+    i = j = 0
+    
+    # Compare and merge
+    while i < len(left) and j < len(right):
+        if left[i] <= right[j]:
+            result.append(left[i])
+            i += 1
+        else:
+            result.append(right[j])
+            j += 1
+    
+    # Add remaining elements
+    result.extend(left[i:])
+    result.extend(right[j:])
+    return result
+
+# Example
+numbers = [64, 34, 25, 12, 22, 11, 90]
+sorted_nums = merge_sort(numbers)
+print(sorted_nums)  # [11, 12, 22, 25, 34, 64, 90]</code></pre>
+                    </div>
+
+                    <div style="background: rgba(0,204,255,0.15); padding: 2rem; border-radius: 15px; margin: 1.5rem 0;">
+                        <h4 style="color: #00ccff; margin-bottom: 1rem;">📊 Merge Sort Visualization</h4>
+                        <pre style="background: #1a1a2e; padding: 1.5rem; border-radius: 10px; color: #00ff88;"><code>[64, 34, 25, 12, 22, 11, 90]
+        ↓ Divide
+[64, 34, 25]          [12, 22, 11, 90]
+    ↓                      ↓
+[64] [34, 25]       [12, 22] [11, 90]
+        ↓               ↓        ↓
+    [34] [25]       [12] [22] [11] [90]
+        ↓ Merge         ↓           ↓
+    [25, 34]        [12, 22]    [11, 90]
+        ↓               ↓
+[25, 34, 64]      [11, 12, 22, 90]
+        ↓ Final Merge
+[11, 12, 22, 25, 34, 64, 90]</code></pre>
+                    </div>
+
+                    <h3 style="color: #ff8787; font-size: 1.4rem; margin: 2rem 0 1rem 0;">Quick Sort: The Industry Standard</h3>
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                        Pick a pivot, partition array so smaller elements go left, larger go right. Recursively sort partitions. Average O(n log n), but O(n²) worst case.
+                    </p>
+
+                    <div style="background: rgba(0,0,0,0.3); padding: 2rem; border-radius: 15px; margin: 1.5rem 0;">
+                        <pre style="background: #1a1a2e; padding: 1.5rem; border-radius: 10px; overflow-x: auto; color: #ffc800;"><code>def quick_sort(arr):
+    """
+    Sort by partitioning around a pivot.
+    Time: O(n log n) average, O(n²) worst
+    Space: O(log n) for recursion stack
+    """
+    if len(arr) <= 1:
+        return arr
+    
+    pivot = arr[len(arr) // 2]  # Choose middle as pivot
+    left = [x for x in arr if x < pivot]
+    middle = [x for x in arr if x == pivot]
+    right = [x for x in arr if x > pivot]
+    
+    return quick_sort(left) + middle + quick_sort(right)
+
+# Example
+numbers = [64, 34, 25, 12, 22, 11, 90]
+sorted_nums = quick_sort(numbers)
+print(sorted_nums)  # [11, 12, 22, 25, 34, 64, 90]</code></pre>
+                    </div>
+
+                    <div style="background: rgba(255,200,0,0.15); padding: 1.5rem; border-radius: 10px; margin: 1.5rem 0;">
+                        <h4 style="color: #ffc800; margin-bottom: 0.5rem;">⚖️ Sorting Algorithm Comparison</h4>
+                        <pre style="background: #1a1a2e; padding: 1.5rem; border-radius: 10px; color: #00ccff;"><code>Algorithm    Best       Average    Worst      Space    Stable?
+──────────────────────────────────────────────────────────────
+Bubble       O(n)       O(n²)      O(n²)      O(1)     Yes
+Selection    O(n²)      O(n²)      O(n²)      O(1)     No
+Insertion    O(n)       O(n²)      O(n²)      O(1)     Yes
+Merge        O(n log n) O(n log n) O(n log n) O(n)     Yes
+Quick        O(n log n) O(n log n) O(n²)      O(log n) No
+Heap         O(n log n) O(n log n) O(n log n) O(1)     No</code></pre>
+                    </div>
+
+                    <div style="background: rgba(255,200,0,0.15); padding: 1.5rem; border-radius: 10px; margin: 2rem 0; border-left: 4px solid #ffc800;">
+                        <h4 style="color: #ffc800; margin-bottom: 0.5rem;">💡 Which Sort Should You Use?</h4>
+                        <ul style="font-size: 1.05rem; line-height: 1.9; margin: 0;">
+                            <li><strong>Small arrays (n < 50):</strong> Insertion sort (simple, fast for small n)</li>
+                            <li><strong>General purpose:</strong> Quick sort (fastest average case)</li>
+                            <li><strong>Guaranteed O(n log n):</strong> Merge sort (no worst case)</li>
+                            <li><strong>In production:</strong> Use built-in <code>sort()</code> — highly optimized!</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: rgba(0,204,255,0.1); padding: 1.5rem; border-radius: 10px; margin: 2rem 0;">
+                        <h4 style="color: #00ccff; margin-bottom: 1rem;">🎯 Quick Check</h4>
+                        <ul style="font-size: 1.05rem; line-height: 1.9; margin: 0;">
+                            <li>Why is bubble sort O(n²)?</li>
+                            <li>What's the key difference between merge sort and quick sort?</li>
+                            <li>When would you choose merge sort over quick sort?</li>
+                            <li>What does "stable sort" mean?</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Topic 5: Recursion -->
+                <div style="background: linear-gradient(135deg, rgba(138,43,226,0.15) 0%, rgba(218,112,214,0.15) 100%); padding: 3rem; border-radius: 20px; margin: 3rem 0; border: 2px solid rgba(138,43,226,0.3);">
+                    <h2 style="color: #8a2be2; font-size: 1.8rem; margin-bottom: 1.5rem;">🔄 Topic 5: Recursion — Functions Calling Themselves</h2>
+                    
+                    <h3 style="color: #9370db; font-size: 1.4rem; margin: 2rem 0 1rem 0;">What IS Recursion?</h3>
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                        A function that calls itself. Sounds weird? It's like standing between two mirrors—you see infinite reflections. Recursion breaks problems into smaller versions of themselves.
+                    </p>
+
+                    <div style="background: rgba(138,43,226,0.1); padding: 2rem; border-radius: 15px; margin: 1.5rem 0;">
+                        <h4 style="color: #9370db; margin-bottom: 1rem;">The Anatomy of Recursion</h4>
+                        <p style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 1rem;">
+                            Every recursive function needs TWO parts:
+                        </p>
+                        <ol style="font-size: 1.05rem; line-height: 1.9; margin: 0 0 0 2rem;">
+                            <li><strong>Base case:</strong> The stopping condition (prevents infinite loops)</li>
+                            <li><strong>Recursive case:</strong> The function calling itself with a smaller problem</li>
+                        </ol>
+                    </div>
+
+                    <h3 style="color: #9370db; font-size: 1.4rem; margin: 2rem 0 1rem 0;">Classic Example: Factorial</h3>
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                        Factorial of n (written n!) = n × (n-1) × (n-2) × ... × 1. Example: 5! = 5 × 4 × 3 × 2 × 1 = 120.
+                    </p>
+
+                    <div style="background: rgba(0,0,0,0.3); padding: 2rem; border-radius: 15px; margin: 1.5rem 0;">
+                        <h4 style="color: #00ff88; margin-bottom: 1rem;">Iterative vs Recursive</h4>
+                        <pre style="background: #1a1a2e; padding: 1.5rem; border-radius: 10px; overflow-x: auto; color: #00ff88;"><code># Iterative (using a loop)
+def factorial_iterative(n):
+    result = 1
+    for i in range(1, n + 1):
+        result *= i
+    return result
+
+# Recursive (function calls itself)
+def factorial_recursive(n):
+    # Base case: stop when n reaches 1
+    if n <= 1:
+        return 1
+    # Recursive case: n! = n × (n-1)!
+    return n * factorial_recursive(n - 1)
+
+print(factorial_recursive(5))  # 120</code></pre>
+                    </div>
+
+                    <div style="background: rgba(138,43,226,0.15); padding: 2rem; border-radius: 15px; margin: 1.5rem 0;">
+                        <h4 style="color: #9370db; margin-bottom: 1rem;">📊 Recursion Visualization</h4>
+                        <p style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 1rem;">
+                            How <code>factorial_recursive(5)</code> works:
+                        </p>
+                        <pre style="background: #1a1a2e; padding: 1.5rem; border-radius: 10px; color: #9370db;"><code>factorial(5)
+    → 5 * factorial(4)
+           → 4 * factorial(3)
+                  → 3 * factorial(2)
+                         → 2 * factorial(1)
+                                → 1 (base case!)
+                         → 2 * 1 = 2
+                  → 3 * 2 = 6
+           → 4 * 6 = 24
+    → 5 * 24 = 120</code></pre>
+                    </div>
+
+                    <h3 style="color: #9370db; font-size: 1.4rem; margin: 2rem 0 1rem 0;">Fibonacci Sequence</h3>
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                        Each number is the sum of the previous two: 0, 1, 1, 2, 3, 5, 8, 13, 21...
+                    </p>
+
+                    <div style="background: rgba(0,0,0,0.3); padding: 2rem; border-radius: 15px; margin: 1.5rem 0;">
+                        <pre style="background: #1a1a2e; padding: 1.5rem; border-radius: 10px; overflow-x: auto; color: #da70d6;"><code>def fibonacci(n):
+    """
+    Return the nth Fibonacci number.
+    Time: O(2ⁿ) - VERY SLOW without optimization!
+    """
+    # Base cases
+    if n <= 0:
+        return 0
+    if n == 1:
+        return 1
+    # Recursive case: fib(n) = fib(n-1) + fib(n-2)
+    return fibonacci(n - 1) + fibonacci(n - 2)
+
+print(fibonacci(7))  # 13
+# Sequence: 0, 1, 1, 2, 3, 5, 8, [13]</code></pre>
+                    </div>
+
+                    <div style="background: rgba(255,107,107,0.15); padding: 1.5rem; border-radius: 10px; margin: 1.5rem 0; border-left: 4px solid #ff6b6b;">
+                        <h4 style="color: #ff6b6b; margin-bottom: 0.5rem;">⚠️ The Problem with Naive Fibonacci</h4>
+                        <p style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 1rem;">
+                            This recalculates the same values over and over! <code>fibonacci(5)</code> calls <code>fibonacci(3)</code> twice, which calls <code>fibonacci(2)</code> three times... exponential explosion!
+                        </p>
+                        <pre style="background: #1a1a2e; padding: 1.5rem; border-radius: 10px; color: #ff6b6b;"><code>fib(5)
+    → fib(4) + fib(3)
+        → fib(3) + fib(2) + fib(2) + fib(1)
+            → ...so many duplicate calculations!</code></pre>
+                    </div>
+
+                    <div style="background: rgba(0,0,0,0.3); padding: 2rem; border-radius: 15px; margin: 1.5rem 0;">
+                        <h4 style="color: #00ff88; margin-bottom: 1rem;">✅ Optimized: Memoization</h4>
+                        <p style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 1rem;">
+                            Store calculated values to avoid recalculating. Turns O(2ⁿ) into O(n)!
+                        </p>
+                        <pre style="background: #1a1a2e; padding: 1.5rem; border-radius: 10px; overflow-x: auto; color: #00ff88;"><code>def fibonacci_memo(n, memo={}):
+    """
+    Fibonacci with memoization.
+    Time: O(n), Space: O(n)
+    """
+    if n in memo:
+        return memo[n]  # Already calculated!
+    
+    if n <= 0:
+        return 0
+    if n == 1:
+        return 1
+    
+    memo[n] = fibonacci_memo(n-1, memo) + fibonacci_memo(n-2, memo)
+    return memo[n]
+
+print(fibonacci_memo(50))  # Instant! Would freeze without memo.</code></pre>
+                    </div>
+
+                    <h3 style="color: #9370db; font-size: 1.4rem; margin: 2rem 0 1rem 0;">When to Use Recursion</h3>
+                    <div style="background: rgba(138,43,226,0.1); padding: 2rem; border-radius: 15px; margin: 1.5rem 0;">
+                        <ul style="font-size: 1.05rem; line-height: 1.9; margin: 0;">
+                            <li><strong>Tree/graph traversal:</strong> Navigating file systems, DOM trees, social networks</li>
+                            <li><strong>Divide and conquer:</strong> Merge sort, quick sort, binary search</li>
+                            <li><strong>Backtracking:</strong> Solving mazes, Sudoku, chess problems</li>
+                            <li><strong>Mathematical sequences:</strong> Factorial, Fibonacci, powers</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: rgba(255,200,0,0.15); padding: 1.5rem; border-radius: 10px; margin: 2rem 0; border-left: 4px solid #ffc800;">
+                        <h4 style="color: #ffc800; margin-bottom: 0.5rem;">💡 Recursion vs Iteration</h4>
+                        <ul style="font-size: 1.05rem; line-height: 1.9; margin: 0;">
+                            <li><strong>Recursion pros:</strong> Elegant, concise, natural for tree problems</li>
+                            <li><strong>Recursion cons:</strong> Stack overflow risk, slower (function call overhead)</li>
+                            <li><strong>Iteration pros:</strong> Faster, no stack overflow</li>
+                            <li><strong>Iteration cons:</strong> Sometimes more complex code</li>
+                            <li><strong>Rule of thumb:</strong> Use recursion when it makes the problem clearer, otherwise use loops</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: rgba(0,204,255,0.1); padding: 1.5rem; border-radius: 10px; margin: 2rem 0;">
+                        <h4 style="color: #00ccff; margin-bottom: 1rem;">🎯 Quick Check</h4>
+                        <ul style="font-size: 1.05rem; line-height: 1.9; margin: 0;">
+                            <li>What happens if you forget the base case?</li>
+                            <li>Why is naive Fibonacci O(2ⁿ)?</li>
+                            <li>What's memoization?</li>
+                            <li>Can every recursive function be written iteratively?</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Topic 6: Space Complexity -->
+                <div style="background: linear-gradient(135deg, rgba(0,255,136,0.15) 0%, rgba(0,204,109,0.15) 100%); padding: 3rem; border-radius: 20px; margin: 3rem 0; border: 2px solid rgba(0,255,136,0.3);">
+                    <h2 style="color: #00ff88; font-size: 1.8rem; margin-bottom: 1.5rem;">💾 Topic 6: Space Complexity — Memory Matters Too</h2>
+                    
+                    <h3 style="color: #00ff88; font-size: 1.4rem; margin: 2rem 0 1rem 0;">It's Not Just About Speed</h3>
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                        We've focused on <strong>time complexity</strong> (how fast), but <strong>space complexity</strong> (how much memory) is equally important. Running out of RAM crashes programs!
+                    </p>
+
+                    <div style="background: rgba(0,0,0,0.3); padding: 2rem; border-radius: 15px; margin: 1.5rem 0;">
+                        <h4 style="color: #00ff88; margin-bottom: 1rem;">O(1) Space — Constant Memory</h4>
+                        <p style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 1rem;">
+                            Uses a fixed amount of memory regardless of input size:
+                        </p>
+                        <pre style="background: #1a1a2e; padding: 1.5rem; border-radius: 10px; overflow-x: auto; color: #00ff88;"><code>def sum_array(arr):
+    total = 0  # Only one variable
+    for num in arr:
+        total += num
+    return total  # O(1) space!</code></pre>
+                    </div>
+
+                    <div style="background: rgba(0,0,0,0.3); padding: 2rem; border-radius: 15px; margin: 1.5rem 0;">
+                        <h4 style="color: #33d4ff; margin-bottom: 1rem;">O(n) Space — Linear Memory</h4>
+                        <p style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 1rem;">
+                            Memory grows with input size:
+                        </p>
+                        <pre style="background: #1a1a2e; padding: 1.5rem; border-radius: 10px; overflow-x: auto; color: #33d4ff;"><code>def create_copy(arr):
+    new_arr = []
+    for item in arr:
+        new_arr.append(item)  # Creating new array
+    return new_arr  # O(n) space — copied entire input</code></pre>
+                    </div>
+
+                    <div style="background: rgba(0,0,0,0.3); padding: 2rem; border-radius: 15px; margin: 1.5rem 0;">
+                        <h4 style="color: #ffc800; margin-bottom: 1rem;">Recursion & Stack Space</h4>
+                        <p style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 1rem;">
+                            Each recursive call uses stack memory:
+                        </p>
+                        <pre style="background: #1a1a2e; padding: 1.5rem; border-radius: 10px; overflow-x: auto; color: #ffc800;"><code>def factorial(n):
+    if n <= 1:
+        return 1
+    return n * factorial(n - 1)
+
+# Space: O(n) — n function calls on the stack!
+# factorial(1000) might cause stack overflow</code></pre>
+                    </div>
+
+                    <div style="background: rgba(255,200,0,0.15); padding: 1.5rem; border-radius: 10px; margin: 2rem 0; border-left: 4px solid #ffc800;">
+                        <h4 style="color: #ffc800; margin-bottom: 0.5rem;">⚖️ Time-Space Tradeoffs</h4>
+                        <p style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 1rem;">
+                            Sometimes you can trade memory for speed (or vice versa):
+                        </p>
+                        <ul style="font-size: 1.05rem; line-height: 1.9; margin: 0;">
+                            <li><strong>Memoization:</strong> Use O(n) space to turn O(2ⁿ) time into O(n)</li>
+                            <li><strong>Hash tables:</strong> Use O(n) space for O(1) lookups instead of O(n) search</li>
+                            <li><strong>Caching:</strong> Store expensive calculations in memory</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="background: linear-gradient(135deg, rgba(0,255,136,0.1) 0%, rgba(0,204,255,0.1) 100%); padding: 3rem; border-radius: 20px; margin: 3rem 0; border-left: 5px solid var(--primary-color);">
+                    <h2 style="color: var(--primary-color); font-size: 1.8rem; margin-bottom: 1.5rem;">🎓 You're Now an Algorithm Master</h2>
+                    <p style="font-size: 1.15rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                        You've learned to <strong>think algorithmically</strong>, analyze efficiency with Big O, implement searching and sorting algorithms, master recursion, and understand space complexity. These skills separate hobbyist coders from professional software engineers.
+                    </p>
+                    <p style="font-size: 1.15rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                        Google, Amazon, Facebook—they all ask algorithm questions in interviews. Why? Because writing <em>fast, scalable</em> code requires understanding these fundamentals. A junior dev might write O(n²) code that works for 100 users. A senior dev writes O(n log n) code that scales to 100 million.
+                    </p>
+                    <div style="background: rgba(0,255,136,0.15); padding: 2rem; border-radius: 15px; margin: 2rem 0;">
+                        <h3 style="color: #00ff88; margin-bottom: 1rem;">🏆 Next Steps & Practice Challenges</h3>
+                        <ul style="font-size: 1.05rem; line-height: 1.9; margin: 0;">
+                            <li><strong>LeetCode:</strong> Solve 10 Easy, 5 Medium problems</li>
+                            <li><strong>Implement from scratch:</strong> Binary search, merge sort, quick sort</li>
+                            <li><strong>Analyze your code:</strong> What's the Big O of your last project's functions?</li>
+                            <li><strong>Read:</strong> "Grokking Algorithms" by Aditya Bhargava (visual, beginner-friendly)</li>
+                            <li><strong>Watch:</strong> MIT OpenCourseWare "Introduction to Algorithms"</li>
+                            <li><strong>Practice recursion:</strong> Solve tree traversal problems on HackerRank</li>
+                            <li><strong>Join:</strong> Competitive programming on Codeforces or AtCoder</li>
+                        </ul>
+                    </div>
+                    <div style="background: rgba(0,204,255,0.15); padding: 2rem; border-radius: 15px; margin: 2rem 0;">
+                        <h3 style="color: #00ccff; margin-bottom: 1rem;">📚 What's Next?</h3>
+                        <p style="font-size: 1.05rem; line-height: 1.8;">
+                            In Chapter 04, we'll explore <strong>data structures</strong>—arrays, linked lists, stacks, queues, hash tables, trees, and graphs. These structures work hand-in-hand with algorithms. A binary search needs a sorted array. Merge sort produces a sorted list. Recursion naturally fits tree structures. Everything connects.
+                        </p>
+                    </div>
+                </div>
+
+                <div style="background: linear-gradient(135deg, rgba(0,255,136,0.1) 0%, rgba(0,204,255,0.1) 100%); padding: 3rem; border-radius: 20px; margin: 3rem 0; border-left: 5px solid var(--primary-color);">
+                    <h2 style="color: var(--primary-color); font-size: 1.8rem; margin-bottom: 1.5rem;">🎓 You're Now Thinking Like a Computer Scientist</h2>
+                    <p style="font-size: 1.15rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                        You've mastered algorithmic thinking, Big O, searching, sorting, and recursion. These tools power everything from Google Search to Netflix recommendations. Keep practicing—solve problems on LeetCode, implement algorithms from scratch, and analyze your code's efficiency.
+                    </p>
+                    <div style="background: rgba(0,255,136,0.15); padding: 2rem; border-radius: 15px; margin: 2rem 0;">
+                        <h3 style="color: #00ff88; margin-bottom: 1rem;">🏆 Practice Challenges</h3>
+                        <ul style="font-size: 1.05rem; line-height: 1.9; margin: 0;">
+                            <li>Implement binary search from scratch</li>
+                            <li>Write merge sort and test on arrays</li>
+                            <li>Solve 10 LeetCode Easy problems</li>
+                            <li>Calculate time complexity of your project's functions</li>
+                            <li>Rewrite a recursive function as iterative</li>
+                        </ul>
+                    </div>
                 </div>
 
                 <div style="display: flex; gap: 2rem; margin-top: 3rem;">
