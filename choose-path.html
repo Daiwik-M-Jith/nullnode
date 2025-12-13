@@ -53,7 +53,11 @@
         <a href="faq.html" class="nav-link">FAQ</a>
         <a href="https://discord.gg/Tz9Y3wea32" target="_blank" rel="noopener noreferrer" class="nav-link">Discord</a>
       </div>
-      <div class="search-container"><input class="search-input" placeholder="Search..." aria-label="Search site content"></div>
+                      <button id="authButton" class="nav-link" style="background: var(--accent-gradient); border: none; padding: 0.5rem 1.5rem; border-radius: 6px; font-weight: 600; cursor: pointer; color: var(--bg-dark); display: none;">Login</button>
+                <div id="userProfile" style="display: none; align-items: center; gap: 0.5rem;">
+                    <img id="userAvatar" style="width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--primary-color); cursor: pointer;" title="" />
+                    <button id="logoutButton" class="nav-link" style="background: rgba(255, 95, 87, 0.1); border: 1px solid #ff5f57; padding: 0.4rem 1rem; border-radius: 6px; font-weight: 500; cursor: pointer; color: #ff5f57;">Logout</button>
+                </div>
     </div>
   </nav>
 
@@ -120,5 +124,9 @@
   </footer>
 
   <script src="script.js"></script>
+    
+    <!-- Supabase Client & Auth -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="auth.js"></script>
 </body>
 </html>
