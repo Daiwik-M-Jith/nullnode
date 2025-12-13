@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth Debug - NullSector</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { color: #00ff88; margin-bottom: 2rem; }
+        .section {
+            background: rgba(255,255,255,0.05);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(0,255,136,0.2);
+        }
+        .section h2 { color: #00ccff; margin-bottom: 1rem; font-size: 1.2rem; }
+        .log {
+            background: #000;
+            padding: 1rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid #333;
+        }
+        .log-entry { margin: 0.25rem 0; }
+        .log-entry.error { color: #ff5f57; }
+        .log-entry.success { color: #00ff88; }
+        .log-entry.info { color: #00ccff; }
+        .log-entry.warning { color: #ffcc00; }
+        button {
+            background: linear-gradient(135deg, #00ff88 0%, #00ccff 100%);
+            color: #000;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+            transition: transform 0.2s;
+        }
+        button:hover { transform: scale(1.05); }
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        .info-label { color: #888; }
+        .info-value { color: #fff; font-family: monospace; }
+        .profile-display {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(0,255,136,0.1);
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+        .profile-display img {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            border: 2px solid #00ff88;
+        }
+        .profile-info h3 { color: #00ff88; margin-bottom: 0.25rem; }
+        .profile-info p { color: #888; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 NullSector Auth Debug Console</h1>
+
+        <div class="section">
+            <h2>Environment Info</h2>
+            <div class="info-grid">
+                <div class="info-label">Current URL:</div>
+                <div class="info-value" id="currentUrl"></div>
+                <div class="info-label">Hostname:</div>
+                <div class="info-value" id="hostname"></div>
+                <div class="info-label">Detected Env:</div>
+                <div class="info-value" id="environment"></div>
+                <div class="info-label">Site URL:</div>
+                <div class="info-value" id="siteUrl"></div>
+                <div class="info-label">Supabase Loaded:</div>
+                <div class="info-value" id="supabaseStatus"></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Authentication Controls</h2>
+            <button id="loginBtn">🔐 Login with Discord</button>
+            <button id="checkSessionBtn">🔍 Check Session</button>
+            <button id="logoutBtn" disabled>🚪 Logout</button>
+            <button id="clearCacheBtn">🗑️ Clear Cache & Reload</button>
+        </div>
+
+        <div class="section">
+            <h2>Current Session</h2>
+            <div id="profileDisplay"></div>
+        </div>
+
+        <div class="section">
+            <h2>Console Logs</h2>
+            <div class="log" id="logDisplay"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        const SUPABASE_URL = 'https://fshfvihunprbqlukbdpi.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZzaGZ2aWh1bnByYnFsdWtiZHBpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU2MTQyOTYsImV4cCI6MjA4MTE5MDI5Nn0.jyyP3VJ2nqXmRqnC5O_CbqK_GZXMdBotdhT7Nufa5j0';
+
+        const isProduction = window.location.hostname === 'nullnode.vercel.app';
+        const siteUrl = isProduction ? 'https://nullnode.vercel.app' : window.location.origin;
+
+        const supabase = window.supabase?.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+            auth: {
+                autoRefreshToken: true,
+                persistSession: true,
+                detectSessionInUrl: true,
+                flowType: 'pkce'
+            }
+        });
+
+        const logDisplay = document.getElementById('logDisplay');
+        
+        function log(message, type = 'info') {
+            const entry = document.createElement('div');
+            entry.className = `log-entry ${type}`;
+            entry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+            logDisplay.appendChild(entry);
+            logDisplay.scrollTop = logDisplay.scrollHeight;
+            console.log(message);
+        }
+
+        // Display environment info
+        document.getElementById('currentUrl').textContent = window.location.href;
+        document.getElementById('hostname').textContent = window.location.hostname;
+        document.getElementById('environment').textContent = isProduction ? 'PRODUCTION' : 'DEVELOPMENT';
+        document.getElementById('siteUrl').textContent = siteUrl;
+        document.getElementById('supabaseStatus').textContent = supabase ? '✅ Loaded' : '❌ Not Loaded';
+
+        log(`Environment: ${isProduction ? 'PRODUCTION' : 'DEVELOPMENT'}`, 'info');
+        log(`Site URL: ${siteUrl}`, 'info');
+        log(`Supabase: ${supabase ? 'Loaded' : 'Not Loaded'}`, supabase ? 'success' : 'error');
+
+        // Login button
+        document.getElementById('loginBtn').addEventListener('click', async () => {
+            log('Initiating Discord OAuth...', 'info');
+            log(`Redirect URL: ${siteUrl}`, 'info');
+            
+            const { data, error } = await supabase.auth.signInWithOAuth({
+                provider: 'discord',
+                options: {
+                    scopes: 'identify email guilds guilds.members.read',
+                    redirectTo: siteUrl
+                }
+            });
+
+            if (error) {
+                log(`OAuth Error: ${error.message}`, 'error');
+            } else {
+                log('OAuth initiated successfully', 'success');
+                log(`Redirecting to Discord...`, 'info');
+            }
+        });
+
+        // Check session button
+        document.getElementById('checkSessionBtn').addEventListener('click', checkSession);
+
+        async function checkSession() {
+            log('Checking session...', 'info');
+            
+            const { data: { session }, error } = await supabase.auth.getSession();
+            
+            if (error) {
+                log(`Session Error: ${error.message}`, 'error');
+                return;
+            }
+
+            if (session) {
+                log('✅ Active session found!', 'success');
+                log(`User ID: ${session.user.id}`, 'info');
+                log(`Email: ${session.user.email}`, 'info');
+                displayProfile(session.user);
+                document.getElementById('logoutBtn').disabled = false;
+            } else {
+                log('❌ No active session', 'warning');
+                document.getElementById('profileDisplay').innerHTML = '<p style="color: #888;">Not logged in</p>';
+                document.getElementById('logoutBtn').disabled = true;
+            }
+        }
+
+        function displayProfile(user) {
+            const avatarUrl = user.user_metadata.avatar_url || 'logo.svg';
+            const username = user.user_metadata.full_name || 
+                           user.user_metadata.custom_claims?.global_name ||
+                           user.user_metadata.name ||
+                           'User';
+            const discordId = user.user_metadata.provider_id || 'Unknown';
+
+            document.getElementById('profileDisplay').innerHTML = `
+                <div class="profile-display">
+                    <img src="${avatarUrl}" alt="${username}">
+                    <div class="profile-info">
+                        <h3>${username}</h3>
+                        <p>Discord ID: ${discordId}</p>
+                        <p>Email: ${user.email || 'Not provided'}</p>
+                    </div>
+                </div>
+            `;
+
+            log(`Profile loaded: ${username}`, 'success');
+        }
+
+        // Logout button
+        document.getElementById('logoutBtn').addEventListener('click', async () => {
+            log('Logging out...', 'info');
+            const { error } = await supabase.auth.signOut();
+            
+            if (error) {
+                log(`Logout Error: ${error.message}`, 'error');
+            } else {
+                log('Logged out successfully', 'success');
+                sessionStorage.clear();
+                document.getElementById('profileDisplay').innerHTML = '<p style="color: #888;">Not logged in</p>';
+                document.getElementById('logoutBtn').disabled = true;
+            }
+        });
+
+        // Clear cache button
+        document.getElementById('clearCacheBtn').addEventListener('click', () => {
+            log('Clearing cache and reloading...', 'info');
+            sessionStorage.clear();
+            localStorage.clear();
+            setTimeout(() => {
+                location.reload(true);
+            }, 500);
+        });
+
+        // Handle OAuth callback
+        supabase.auth.onAuthStateChange((event, session) => {
+            log(`Auth State Changed: ${event}`, event === 'SIGNED_IN' ? 'success' : 'info');
+            
+            if (event === 'SIGNED_IN' && session) {
+                log(`User signed in: ${session.user.email}`, 'success');
+                displayProfile(session.user);
+                document.getElementById('logoutBtn').disabled = false;
+            } else if (event === 'SIGNED_OUT') {
+                log('User signed out', 'info');
+                document.getElementById('profileDisplay').innerHTML = '<p style="color: #888;">Not logged in</p>';
+                document.getElementById('logoutBtn').disabled = true;
+            }
+        });
+
+        // Auto-check session on load
+        setTimeout(checkSession, 500);
+    </script>
+</body>
+</html>
