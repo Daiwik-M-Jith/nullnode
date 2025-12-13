@@ -51,12 +51,13 @@ app.use((req, res, next) => {
 
 /**
  * Generate a unique access code
- * Format: XXXXXX (6 chars, alphanumeric uppercase)
+ * Format: xxxx-xxxx (8 chars, alphanumeric lowercase with hyphen)
  */
 function generateAccessCode() {
-  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
   let code = '';
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < 8; i++) {
+    if (i === 4) code += '-';
     code += chars[Math.floor(Math.random() * chars.length)];
   }
   return code;
@@ -229,7 +230,7 @@ app.post('/api/lab/claim', async (req, res) => {
     });
   }
   
-  const codeData = accessCodes.get(code.toUpperCase().trim());
+  const codeData = accessCodes.get(code.toLowerCase().trim());
   
   if (!codeData) {
     console.log(`[Claim] Invalid code attempted: ${code} from ${clientIp}`);
