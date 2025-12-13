@@ -28,6 +28,12 @@
                 <a href="roadmap-programming.html" class="nav-link">Programming</a>
                 <a href="faq.html" class="nav-link">FAQ</a>
                 <a href="https://discord.gg/Tz9Y3wea32" target="_blank" class="nav-link">Discord</a>
+            
+                <button id="authButton" class="nav-link" style="background: var(--accent-gradient); border: none; padding: 0.5rem 1.5rem; border-radius: 6px; font-weight: 600; cursor: pointer; color: var(--bg-dark); display: none;">Login</button>
+                <div id="userProfile" style="display: none; align-items: center; gap: 0.5rem;">
+                    <img id="userAvatar" style="width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--primary-color); cursor: pointer;" title="" />
+                    <button id="logoutButton" class="nav-link" style="background: rgba(255, 95, 87, 0.1); border: 1px solid #ff5f57; padding: 0.4rem 1rem; border-radius: 6px; font-weight: 500; cursor: pointer; color: #ff5f57;">Logout</button>
+                </div>
             </div>
         </div>
     </nav>
@@ -452,11 +458,11 @@ Value:     16  8   4   2   1     (2^4, 2^3, 2^2, 2^1, 2^0)
 Binary:    1   0   1   1   0
 
 Calculation:
-  1 × 16 = 16
-  0 × 8  = 0
-  1 × 4  = 4
-  1 × 2  = 2
-  0 × 1  = 0
+  1 Ã— 16 = 16
+  0 Ã— 8  = 0
+  1 Ã— 4  = 4
+  1 Ã— 2  = 2
+  0 Ã— 1  = 0
          ----
   Total: 22 in decimal!</code></pre>
         </div>
@@ -711,9 +717,9 @@ Value:     256  16   1      (16^2, 16^1, 16^0)
 Hex:       2    A    9
 
 Calculation:
-  2 × 256 = 512
-  A × 16  = 160  (A = 10)
-  9 × 1   = 9
+  2 Ã— 256 = 512
+  A Ã— 16  = 160  (A = 10)
+  9 Ã— 1   = 9
           -----
   Total:  681 in decimal!</code></pre>
         </div>
@@ -914,21 +920,21 @@ Result: 00111111</code></pre>
         <div style="background: rgba(0,0,0,0.6); padding: 2rem; border-radius: 10px;">
             <pre style="font-size: 1.1rem; line-height: 2; color: #fff;"><code>HIGH MEMORY (0xFFFFFFFF)
 +------------------+
-¦   KERNEL SPACE   ¦ ? OS lives here (protected)
-+------------------¦
-¦      STACK       ¦ ? Grows DOWN ?
-¦        ?         ¦   Function calls, local vars
-¦                  ¦
-¦    (free space)  ¦
-¦                  ¦
-¦        ?         ¦   Dynamically allocated memory
-¦      HEAP        ¦ ? Grows UP ?
-+------------------¦
-¦   .bss (zeros)   ¦ ? Uninitialized global vars
-+------------------¦
-¦   .data          ¦ ? Initialized global vars
-+------------------¦
-¦   .text (CODE)   ¦ ? Program instructions (read-only)
+Â¦   KERNEL SPACE   Â¦ ? OS lives here (protected)
++------------------Â¦
+Â¦      STACK       Â¦ ? Grows DOWN ?
+Â¦        ?         Â¦   Function calls, local vars
+Â¦                  Â¦
+Â¦    (free space)  Â¦
+Â¦                  Â¦
+Â¦        ?         Â¦   Dynamically allocated memory
+Â¦      HEAP        Â¦ ? Grows UP ?
++------------------Â¦
+Â¦   .bss (zeros)   Â¦ ? Uninitialized global vars
++------------------Â¦
+Â¦   .data          Â¦ ? Initialized global vars
++------------------Â¦
+Â¦   .text (CODE)   Â¦ ? Program instructions (read-only)
 +------------------+
 LOW MEMORY (0x00000000)</code></pre>
         </div>

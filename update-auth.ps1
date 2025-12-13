@@ -44,6 +44,12 @@ foreach ($file in $files) {
         if ($content -match $altPattern) {
             $content = $content -replace $altPattern, $authButtonHTML
             Write-Host "Updated nav (alt) in $($file.Name)" -ForegroundColor Green
+        } else {
+            # Add auth buttons to nav-links if no search container exists
+            if ($content -match '<div class="nav-links">(.*?)</div>' -and $content -notmatch 'id="authButton"') {
+                $content = $content -replace '(<div class="nav-links">(.*?)</div>)', "`$1$authButtonHTML"
+                Write-Host "Added auth to nav-links in $($file.Name)" -ForegroundColor Yellow
+            }
         }
     }
     
