@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ch26: Hacking Fundamentals Part 2 - NullSector</title>
+    <title>Ch25: Cloud Security - NullSector</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="favicon.ico">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -25,7 +25,7 @@
             </div>
             <div class="nav-links">
                 <a href="roadmap-hacking.html" class="nav-link active">Hacking</a>
-                <a href="roadmap-programming.html" class="nav-link">Programming</a>
+                <a href="roadmap-programming.html" class="nav-link ">Programming</a>
                 <a href="faq.html" class="nav-link">FAQ</a>
                 <a href="https://discord.gg/Tz9Y3wea32" target="_blank" class="nav-link">Discord</a>
             
@@ -44,160 +44,39 @@
     <section class="content-page">
         <div class="content-container">
             <div class="breadcrumb">
-                <a href="roadmap-hacking.html">Hacking Roadmap</a> / <span>Chapter 26</span>
+                <a href="roadmap-hacking.html">Hacking Roadmap</a> / <span>Chapter 25</span>
             </div>
             
             <div class="roadmap-section">
-                <div class="roadmap-number">26</div>
-                <h1 class="page-title">Chapter 26: Hacking Fundamentals Part 2</h1>
-                <p class="page-subtitle">Deep Dive: Networking, OS Architecture, and Cryptography</p>
+                <div class="roadmap-number">25</div>
+                <h1 class="page-title">Chapter 25: Cloud Security</h1>
+                <p class="page-subtitle">Complete Beginner Friendly - Comprehensive Guide</p>
 
-                <div class="key-takeaways" style="margin-bottom:3rem;">
-                    <h3>What You'll Learn:</h3>
-                    <ul>
-                        <li>The OSI Model: How the internet actually works</li>
-                        <li>OS Architecture: Kernel vs User Space</li>
-                        <li>Cryptography: Encryption, Hashing, and why they matter</li>
-                        <li>Web Architecture: How browsers talk to servers</li>
-                    </ul>
-                </div>
-
-                <!-- Topic 1: Networking Deep Dive -->
-                <div class="topic-section" style="background: linear-gradient(135deg, rgba(0,255,136,0.05) 0%, rgba(0,204,255,0.05) 100%); padding: 3rem; border-radius: 20px; margin: 3rem 0;">
-                    <h2 style="color: #00ff88; font-size: 2.2rem; margin-bottom: 2rem;">1. Networking: The OSI Model</h2>
-                    
-                    <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 15px; margin: 2rem 0; font-size: 1.15rem; line-height: 1.9;">
-                        <p style="margin: 0; font-size: 1.25rem;">
-                            To hack a network, you must understand how data moves. The <strong>OSI Model</strong> breaks this down into 7 layers.
-                        </p>
-                    </div>
-
-                    <div style="display: grid; gap: 1.5rem; margin-top: 2rem;">
-                        <div style="background: rgba(0,255,136,0.1); padding: 1.5rem; border-radius: 8px; border-left: 3px solid #00ff88;">
-                            <h5 style="color: #00ff88; margin: 0 0 0.5rem 0; font-size: 1.3rem;">Layer 7: Application</h5>
-                            <p style="font-size: 1.1rem; line-height: 1.7; margin: 0;">
-                                What you see. HTTP (Web), SMTP (Email), FTP (Files).<br>
-                                <em>Attack Vector: SQL Injection, XSS, Phishing.</em>
-                            </p>
-                        </div>
-                        <div style="background: rgba(0,204,255,0.1); padding: 1.5rem; border-radius: 8px; border-left: 3px solid #00ccff;">
-                            <h5 style="color: #00ccff; margin: 0 0 0.5rem 0; font-size: 1.3rem;">Layer 4: Transport</h5>
-                            <p style="font-size: 1.1rem; line-height: 1.7; margin: 0;">
-                                How data is sent. TCP (Reliable) vs UDP (Fast).<br>
-                                <em>Attack Vector: Port Scanning, DoS, SYN Flood.</em>
-                            </p>
-                        </div>
-                        <div style="background: rgba(255,100,100,0.1); padding: 1.5rem; border-radius: 8px; border-left: 3px solid #ff6464;">
-                            <h5 style="color: #ff6464; margin: 0 0 0.5rem 0; font-size: 1.3rem;">Layer 3: Network</h5>
-                            <p style="font-size: 1.1rem; line-height: 1.7; margin: 0;">
-                                Addressing and Routing. IP Addresses.<br>
-                                <em>Attack Vector: IP Spoofing, Man-in-the-Middle.</em>
-                            </p>
-                        </div>
-                        <div style="background: rgba(255,200,0,0.1); padding: 1.5rem; border-radius: 8px; border-left: 3px solid #ffc800;">
-                            <h5 style="color: #ffc800; margin: 0 0 0.5rem 0; font-size: 1.3rem;">Layer 2: Data Link</h5>
-                            <p style="font-size: 1.1rem; line-height: 1.7; margin: 0;">
-                                Physical addressing. MAC Addresses.<br>
-                                <em>Attack Vector: MAC Spoofing, ARP Poisoning.</em>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Topic 2: OS Architecture -->
-                <div class="topic-section" style="background: linear-gradient(135deg, rgba(0,204,255,0.05) 0%, rgba(138,43,226,0.05) 100%); padding: 3rem; border-radius: 20px; margin: 3rem 0;">
-                    <h2 style="color: #00ccff; font-size: 2.2rem; margin-bottom: 2rem;">2. OS Architecture: Kernel vs User Space</h2>
-                    
-                    <p style="font-size: 1.15rem; line-height: 1.8; margin-bottom: 2rem;">
-                        Your Operating System isn't just one big program. It's divided into two main rings of power.
+                <div style="background: linear-gradient(135deg, rgba(255,200,0,0.15) 0%, rgba(255,100,0,0.15) 100%); padding: 3rem; border-radius: 20px; margin: 3rem 0; border: 2px solid rgba(255,200,0,0.4);">
+                    <h2 style="color: #ffc800; font-size: 2rem; margin: 0 0 1.5rem 0;">📚 Chapter Content Coming Soon</h2>
+                    <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                        This chapter will contain <strong>8-10 comprehensive topics</strong> covering Cloud Security in extreme detail.
                     </p>
-
-                    <div style="display: grid; gap: 2rem;">
-                        <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 10px; border-left: 4px solid #ff6464;">
-                            <h4 style="color: #ff6464; margin: 0 0 1rem 0; font-size: 1.4rem;">The Kernel (Ring 0)</h4>
-                            <p style="font-size: 1.1rem; line-height: 1.8;">
-                                The heart of the OS. It has complete control over everything (CPU, RAM, Hardware).<br>
-                                <strong>Danger:</strong> If the kernel crashes, the whole computer crashes (Blue Screen).<br>
-                                <strong>Hacking:</strong> Kernel exploits (Rootkits) give you God-mode access.
-                            </p>
-                        </div>
-
-                        <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 10px; border-left: 4px solid #00ff88;">
-                            <h4 style="color: #00ff88; margin: 0 0 1rem 0; font-size: 1.4rem;">User Space (Ring 3)</h4>
-                            <p style="font-size: 1.1rem; line-height: 1.8;">
-                                Where your apps run (Chrome, Discord, Games).<br>
-                                <strong>Safety:</strong> Apps can't touch hardware directly. They must ask the Kernel nicely (System Calls).<br>
-                                <strong>Hacking:</strong> Most malware runs here. Easier to detect and remove.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Topic 3: Cryptography -->
-                <div class="topic-section" style="background: linear-gradient(135deg, rgba(138,43,226,0.05) 0%, rgba(255,100,100,0.05) 100%); padding: 3rem; border-radius: 20px; margin: 3rem 0;">
-                    <h2 style="color: #ff6464; font-size: 2.2rem; margin-bottom: 2rem;">3. Cryptography Basics</h2>
-                    
-                    <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 15px; margin: 2rem 0; font-size: 1.15rem; line-height: 1.9;">
-                        <p style="margin: 0; font-size: 1.25rem;">
-                            Cryptography is the art of writing secret codes. In hacking, it's about breaking them.
-                        </p>
-                    </div>
-
-                    <div style="display: grid; gap: 1.5rem; margin-top: 2rem;">
-                        <div style="background: rgba(0,255,136,0.1); padding: 1.5rem; border-radius: 8px; border-left: 3px solid #00ff88;">
-                            <h5 style="color: #00ff88; margin: 0 0 0.5rem 0; font-size: 1.3rem;">Encryption (Two-Way)</h5>
-                            <p style="font-size: 1.1rem; line-height: 1.7; margin: 0;">
-                                Scrambling data so only someone with a key can read it.<br>
-                                <strong>Symmetric:</strong> Same key locks and unlocks (Fast, like a house key).<br>
-                                <strong>Asymmetric:</strong> Public key locks, Private key unlocks (Secure, like SSL/HTTPS).
-                            </p>
-                        </div>
-
-                        <div style="background: rgba(255,100,100,0.1); padding: 1.5rem; border-radius: 8px; border-left: 3px solid #ff6464;">
-                            <h5 style="color: #ff6464; margin: 0 0 0.5rem 0; font-size: 1.3rem;">Hashing (One-Way)</h5>
-                            <p style="font-size: 1.1rem; line-height: 1.7; margin: 0;">
-                                Turning data into a unique fingerprint. You CANNOT turn a hash back into data.<br>
-                                <strong>Use Case:</strong> Storing passwords. You don't save "password123", you save its hash.<br>
-                                <strong>Hacking:</strong> You can't "decrypt" a hash. You have to guess the password, hash it, and see if it matches (Brute Force).
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Mastery Checklist -->
-                <div style="background: linear-gradient(135deg, rgba(0,255,136,0.1) 0%, rgba(138,43,226,0.1) 100%); padding: 3rem; border-radius: 20px; margin: 4rem 0; border: 3px solid rgba(0,255,136,0.3);">
-                    <h2 style="color: #00ff88; font-size: 2rem; margin-bottom: 2rem;">🎯 Chapter 26 Mastery Checklist</h2>
-                    
-                    <div style="display: grid; gap: 1rem;">
-                        <div style="background: rgba(0,0,0,0.4); padding: 1.5rem; border-radius: 10px; font-size: 1.1rem;">
-                            ☐ I can explain the 7 layers of the OSI Model
-                        </div>
-                        <div style="background: rgba(0,0,0,0.4); padding: 1.5rem; border-radius: 10px; font-size: 1.1rem;">
-                            ☐ I understand the difference between Kernel Mode and User Mode
-                        </div>
-                        <div style="background: rgba(0,0,0,0.4); padding: 1.5rem; border-radius: 10px; font-size: 1.1rem;">
-                            ☐ I know the difference between Encryption and Hashing
-                        </div>
-                        <div style="background: rgba(0,0,0,0.4); padding: 1.5rem; border-radius: 10px; font-size: 1.1rem;">
-                            ☐ I understand why ARP Poisoning works (Layer 2 attack)
-                        </div>
-                    </div>
-                    
-                    <div style="background: rgba(0,255,136,0.2); padding: 2rem; border-radius: 15px; margin-top: 3rem; border: 2px solid rgba(0,255,136,0.5);">
-                        <h3 style="color: #00ff88; margin-top: 0; font-size: 1.6rem;">✅ Level Up!</h3>
-                        <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 1rem;">
-                            <strong>Congratulations!</strong> You now understand the invisible systems that hackers exploit.
-                        </p>
-                        <p style="font-size: 1.15rem; line-height: 1.8;">
-                            <strong style="color: #00ff88;">Next up:</strong> <a href="roadmap-hacking.html" style="color: #00ccff; text-decoration: underline;">Back to Roadmap</a>
-                        </p>
-                    </div>
+                    <p style="font-size: 1.15rem; line-height: 1.8;">
+                        Each topic will include:
+                    </p>
+                    <ul style="font-size: 1.1rem; line-height: 1.9; margin: 1rem 0;">
+                        <li>Complete beginner-friendly explanations</li>
+                        <li>Visual styling with colored sections and gradients</li>
+                        <li>Real working code examples</li>
+                        <li>Hands-on labs and exercises</li>
+                        <li>"Why This Matters for Hacking" sections</li>
+                        <li>Quick check questions</li>
+                    </ul>
+                    <p style="font-size: 1.15rem; line-height: 1.8; margin-top: 1.5rem;">
+                        <strong style="color: #00ff88;">Expected content:</strong> 15,000-40,000 words of high-quality, researched material per chapter.
+                    </p>
                 </div>
 
                 <div style="display: flex; gap: 2rem; margin-top: 3rem;">
-                    <a href="hacking-ch25.html" style="flex: 1; background: linear-gradient(135deg, rgba(0,204,255,0.2) 0%, rgba(138,43,226,0.2) 100%); padding: 2rem; border-radius: 15px; text-decoration: none; border: 2px solid rgba(0,204,255,0.4); transition: all 0.3s;">
+                    <a href="hacking-ch24.html" style="flex: 1; background: linear-gradient(135deg, rgba(0,204,255,0.2) 0%, rgba(138,43,226,0.2) 100%); padding: 2rem; border-radius: 15px; text-decoration: none; border: 2px solid rgba(0,204,255,0.4); transition: all 0.3s;">
                         <div style="color: #00ccff; font-size: 0.9rem; margin-bottom: 0.5rem;">← PREVIOUS</div>
-                        <div style="color: #fff; font-size: 1.1rem; font-weight: 600;">Chapter 25</div>
+                        <div style="color: #fff; font-size: 1.1rem; font-weight: 600;">Chapter 24</div>
                     </a>
                     <a href="roadmap-hacking.html" style="flex: 1; background: linear-gradient(135deg, rgba(0,255,136,0.2) 0%, rgba(0,204,255,0.2) 100%); padding: 2rem; border-radius: 15px; text-decoration: none; border: 2px solid rgba(0,255,136,0.4); transition: all 0.3s; text-align: right;">
                         <div style="color: #00ff88; font-size: 0.9rem; margin-bottom: 0.5rem;">NEXT →</div>

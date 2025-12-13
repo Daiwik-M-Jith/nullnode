@@ -64,84 +64,207 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">NullSector</h1>
-            <p class="hero-description">
-                NullSector (NS) is a community of tech and security enthusiasts. We're here to provide 
-                assistance where we can and educate in the Cyber Security and Programming world. 
-                Check out some of our resources below, or join us on Discord to learn more.
+    <section class="hero" style="min-height: 85vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+        <!-- Animated Background Elements -->
+        <div style="position: absolute; width: 500px; height: 500px; background: radial-gradient(circle, rgba(0,255,136,0.15) 0%, transparent 70%); border-radius: 50%; top: -250px; left: -250px; animation: float 20s infinite ease-in-out;"></div>
+        <div style="position: absolute; width: 400px; height: 400px; background: radial-gradient(circle, rgba(0,204,255,0.15) 0%, transparent 70%); border-radius: 50%; bottom: -200px; right: -200px; animation: float 25s infinite ease-in-out reverse;"></div>
+        
+        <div class="hero-content" style="max-width: 900px; text-align: center; z-index: 1;">
+            <!-- Glowing Badge -->
+            <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, rgba(0,255,136,0.1) 0%, rgba(0,204,255,0.1) 100%); border: 1px solid rgba(0,255,136,0.3); padding: 0.5rem 1.5rem; border-radius: 50px; margin-bottom: 2rem; animation: glow 3s infinite;">
+                <span style="width: 8px; height: 8px; background: #00ff88; border-radius: 50%; animation: pulse 2s infinite;"></span>
+                <span style="font-size: 0.9rem; color: #00ff88; font-weight: 600; letter-spacing: 0.5px;">LIVE COMMUNITY</span>
+            </div>
+            
+            <h1 class="hero-title" style="font-size: clamp(3rem, 8vw, 6rem); font-weight: 800; background: linear-gradient(135deg, #00ff88 0%, #00ccff 50%, #00ff88 100%); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 1.5rem; animation: shimmer 3s infinite; line-height: 1.1;">
+                NullSector
+            </h1>
+            
+            <p class="hero-description" style="font-size: clamp(1.1rem, 2vw, 1.4rem); color: rgba(255,255,255,0.8); line-height: 1.7; margin-bottom: 3rem; max-width: 700px; margin-left: auto; margin-right: auto;">
+                A <strong style="color: #00ff88;">community</strong> of tech and security enthusiasts. 
+                We provide comprehensive <strong style="color: #00ccff;">educational resources</strong> and 
+                assistance in <strong style="color: #ffc800;">Cybersecurity</strong> and <strong style="color: #ffc800;">Programming</strong>.
             </p>
+            
+            <!-- CTA Buttons -->
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 4rem;">
+                <a href="hacking-ch01.html" style="text-decoration: none; background: linear-gradient(135deg, #00ff88 0%, #00cc6f 100%); color: #000; padding: 1rem 2.5rem; border-radius: 12px; font-weight: 700; font-size: 1.1rem; transition: all 0.3s; box-shadow: 0 4px 20px rgba(0,255,136,0.3); display: inline-block;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 6px 30px rgba(0,255,136,0.5)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 20px rgba(0,255,136,0.3)'">
+                    🔒 Start Hacking Path
+                </a>
+                <a href="programming-ch01.html" style="text-decoration: none; background: linear-gradient(135deg, rgba(0,204,255,0.2) 0%, rgba(0,255,136,0.1) 100%); color: #fff; padding: 1rem 2.5rem; border-radius: 12px; font-weight: 700; font-size: 1.1rem; border: 2px solid #00ccff; transition: all 0.3s; display: inline-block;" onmouseover="this.style.background='linear-gradient(135deg, rgba(0,204,255,0.3) 0%, rgba(0,255,136,0.2) 100%)'; this.style.transform='translateY(-3px)'" onmouseout="this.style.background='linear-gradient(135deg, rgba(0,204,255,0.2) 0%, rgba(0,255,136,0.1) 100%)'; this.style.transform='translateY(0)'">
+                    💻 Start Programming Path
+                </a>
+            </div>
+            
+            <!-- Stats -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 2rem; max-width: 600px; margin: 0 auto;">
+                <div style="text-align: center;">
+                    <div style="font-size: 2.5rem; font-weight: 800; color: #00ff88; margin-bottom: 0.5rem;">27</div>
+                    <div style="color: rgba(255,255,255,0.6); font-size: 0.95rem;">Hacking Chapters</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2.5rem; font-weight: 800; color: #00ccff; margin-bottom: 0.5rem;">27</div>
+                    <div style="color: rgba(255,255,255,0.6); font-size: 0.95rem;">Programming Chapters</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2.5rem; font-weight: 800; color: #ffc800; margin-bottom: 0.5rem;">1000+</div>
+                    <div style="color: rgba(255,255,255,0.6); font-size: 0.95rem;">Hours of Content</div>
+                </div>
+            </div>
         </div>
+        
+        <!-- Custom Animations -->
+        <style>
+            @keyframes float {
+                0%, 100% { transform: translate(0, 0) rotate(0deg); }
+                33% { transform: translate(50px, -50px) rotate(120deg); }
+                66% { transform: translate(-30px, 30px) rotate(240deg); }
+            }
+            @keyframes glow {
+                0%, 100% { box-shadow: 0 0 20px rgba(0,255,136,0.3); }
+                50% { box-shadow: 0 0 30px rgba(0,255,136,0.6); }
+            }
+            @keyframes pulse {
+                0%, 100% { opacity: 1; transform: scale(1); }
+                50% { opacity: 0.5; transform: scale(1.2); }
+            }
+            @keyframes shimmer {
+                0% { background-position: 0% 50%; }
+                50% { background-position: 100% 50%; }
+                100% { background-position: 0% 50%; }
+            }
+        </style>
     </section>
 
     <!-- Cards Section -->
-    <section class="cards-section">
-        <div class="cards-container">
-            <!-- Card 1: Hacking Roadmap -->
-            <a href="hacking-ch01.html" class="card">
-                <div class="card-icon">
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                        <line x1="8" y1="21" x2="16" y2="21"></line>
-                        <line x1="12" y1="17" x2="12" y2="21"></line>
-                    </svg>
-                </div>
-                <h3 class="card-title">🔥 Ethical Hacking Roadmap</h3>
-                <p class="card-description">25 comprehensive chapters covering computer fundamentals to cloud security - Start your hacking journey!</p>
-                <div class="card-arrow">→</div>
-            </a>
+    <section class="cards-section" style="padding: 5rem 2rem; position: relative;">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            <!-- Section Header -->
+            <div style="text-align: center; margin-bottom: 4rem;">
+                <h2 style="font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.6) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 1rem;">
+                    Explore Our Resources
+                </h2>
+                <p style="color: rgba(255,255,255,0.6); font-size: 1.1rem; max-width: 600px; margin: 0 auto;">
+                    Everything you need to become a cybersecurity expert or professional developer
+                </p>
+            </div>
+            
+            <div class="cards-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto;">
+                <!-- Card 1: Hacking Roadmap -->
+                <a href="hacking-ch01.html" class="card" style="background: linear-gradient(135deg, rgba(0,255,136,0.1) 0%, rgba(0,204,255,0.05) 100%); border: 1px solid rgba(0,255,136,0.2); border-radius: 20px; padding: 2.5rem; text-decoration: none; color: inherit; transition: all 0.4s; position: relative; overflow: hidden; display: block;" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='rgba(0,255,136,0.5)'; this.style.boxShadow='0 20px 60px rgba(0,255,136,0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(0,255,136,0.2)'; this.style.boxShadow='none'">
+                    <div style="position: absolute; top: -50%; right: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(0,255,136,0.1) 0%, transparent 70%); opacity: 0; transition: opacity 0.4s;"></div>
+                    <div class="card-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, #00ff88 0%, #00cc6f 100%); border-radius: 15px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                            <line x1="8" y1="21" x2="16" y2="21"></line>
+                            <line x1="12" y1="17" x2="12" y2="21"></line>
+                        </svg>
+                    </div>
+                    <h3 class="card-title" style="font-size: 1.5rem; font-weight: 700; color: #00ff88; margin-bottom: 1rem;">🔥 Ethical Hacking Roadmap</h3>
+                    <p class="card-description" style="color: rgba(255,255,255,0.7); line-height: 1.6; margin-bottom: 1.5rem;">27 comprehensive chapters covering computer fundamentals to cloud security. Start your ethical hacking journey today!</p>
+                    <div style="display: flex; align-items: center; gap: 0.5rem; color: #00ff88; font-weight: 600;">
+                        <span>Explore Path</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </a>
 
-            <!-- Card 2: Programming Roadmap -->
-            <a href="programming-ch01.html" class="card">
-                <div class="card-icon">
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="16 18 22 12 16 6"></polyline>
-                        <polyline points="8 6 2 12 8 18"></polyline>
-                    </svg>
-                </div>
-                <h3 class="card-title">💻 Programming Roadmap</h3>
-                <p class="card-description">25 comprehensive chapters from Python basics to advanced algorithms - Build anything you can imagine!</p>
-                <div class="card-arrow">→</div>
-            </a>
+                <!-- Card 2: Programming Roadmap -->
+                <a href="programming-ch01.html" class="card" style="background: linear-gradient(135deg, rgba(0,204,255,0.1) 0%, rgba(156,39,176,0.05) 100%); border: 1px solid rgba(0,204,255,0.2); border-radius: 20px; padding: 2.5rem; text-decoration: none; color: inherit; transition: all 0.4s; position: relative; overflow: hidden; display: block;" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='rgba(0,204,255,0.5)'; this.style.boxShadow='0 20px 60px rgba(0,204,255,0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(0,204,255,0.2)'; this.style.boxShadow='none'">
+                    <div class="card-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, #00ccff 0%, #0099cc 100%); border-radius: 15px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                    </div>
+                    <h3 class="card-title" style="font-size: 1.5rem; font-weight: 700; color: #00ccff; margin-bottom: 1rem;">💻 Programming Roadmap</h3>
+                    <p class="card-description" style="color: rgba(255,255,255,0.7); line-height: 1.6; margin-bottom: 1.5rem;">27 comprehensive chapters from Python basics to advanced algorithms. Build anything you can imagine!</p>
+                    <div style="display: flex; align-items: center; gap: 0.5rem; color: #00ccff; font-weight: 600;">
+                        <span>Explore Path</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </a>
 
-            <!-- Card 4: FAQ -->
-            <a href="faq.html" class="card">
-                <div class="card-icon">
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
-                    </svg>
-                </div>
-                <h3 class="card-title">📚 FAQ</h3>
-                <p class="card-description">Answers to the most frequently asked questions in our Discord server</p>
-                <div class="card-arrow">→</div>
-            </a>
+                <!-- Card 3: FAQ -->
+                <a href="faq.html" class="card" style="background: linear-gradient(135deg, rgba(255,193,7,0.1) 0%, rgba(255,152,0,0.05) 100%); border: 1px solid rgba(255,193,7,0.2); border-radius: 20px; padding: 2.5rem; text-decoration: none; color: inherit; transition: all 0.4s; position: relative; overflow: hidden; display: block;" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='rgba(255,193,7,0.5)'; this.style.boxShadow='0 20px 60px rgba(255,193,7,0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,193,7,0.2)'; this.style.boxShadow='none'">
+                    <div class="card-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, #ffc800 0%, #ff9800 100%); border-radius: 15px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                        </svg>
+                    </div>
+                    <h3 class="card-title" style="font-size: 1.5rem; font-weight: 700; color: #ffc800; margin-bottom: 1rem;">📚 FAQ</h3>
+                    <p class="card-description" style="color: rgba(255,255,255,0.7); line-height: 1.6; margin-bottom: 1.5rem;">Answers to the most frequently asked questions from our Discord community</p>
+                    <div style="display: flex; align-items: center; gap: 0.5rem; color: #ffc800; font-weight: 600;">
+                        <span>View Answers</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </a>
 
-            <!-- Card 5: Discord -->
-            <a href="https://discord.gg/Tz9Y3wea32" target="_blank" rel="noopener noreferrer" class="card">
-                <div class="card-icon discord-icon">
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z"/>
-                    </svg>
-                </div>
-                <h3 class="card-title">Join Our Discord</h3>
-                <p class="card-description">Come join the NullSector community in our Discord server</p>
-                <div class="card-arrow">→</div>
-            </a>
+                <!-- Card 4: Discord -->
+                <a href="https://discord.gg/Tz9Y3wea32" target="_blank" rel="noopener noreferrer" class="card" style="background: linear-gradient(135deg, rgba(114,137,218,0.1) 0%, rgba(114,137,218,0.05) 100%); border: 1px solid rgba(114,137,218,0.2); border-radius: 20px; padding: 2.5rem; text-decoration: none; color: inherit; transition: all 0.4s; position: relative; overflow: hidden; display: block;" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='rgba(114,137,218,0.5)'; this.style.boxShadow='0 20px 60px rgba(114,137,218,0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(114,137,218,0.2)'; this.style.boxShadow='none'">
+                    <div class="card-icon discord-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, #7289da 0%, #5b6eae 100%); border-radius: 15px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="#fff">
+                            <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title" style="font-size: 1.5rem; font-weight: 700; color: #7289da; margin-bottom: 1rem;">Join Our Discord</h3>
+                    <p class="card-description" style="color: rgba(255,255,255,0.7); line-height: 1.6; margin-bottom: 1.5rem;">Connect with the NullSector community, get help, and share your journey</p>
+                    <div style="display: flex; align-items: center; gap: 0.5rem; color: #7289da; font-weight: 600;">
+                        <span>Join Now</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </a>
 
-            <!-- Card 4: Contribute -->
-            <a href="https://discord.gg/Tz9Y3wea32" target="_blank" rel="noopener noreferrer" class="card">
-                <div class="card-icon github-icon">
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                    </svg>
-                </div>
-                <h3 class="card-title">Contribute to This Site</h3>
-                <p class="card-description">This site and all of the information on it are made available under the MIT license. Come help us build it!</p>
-                <div class="card-arrow">→</div>
-            </a>
+                <!-- Card 5: GitHub -->
+                <a href="https://github.com/4fqr/nullnode" target="_blank" rel="noopener noreferrer" class="card" style="background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%); border: 1px solid rgba(255,255,255,0.2); border-radius: 20px; padding: 2.5rem; text-decoration: none; color: inherit; transition: all 0.4s; position: relative; overflow: hidden; display: block;" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='rgba(255,255,255,0.4)'; this.style.boxShadow='0 20px 60px rgba(255,255,255,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.2)'; this.style.boxShadow='none'">
+                    <div class="card-icon github-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, #fff 0%, #e0e0e0 100%); border-radius: 15px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="#000">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title" style="font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 1rem;">Contribute on GitHub</h3>
+                    <p class="card-description" style="color: rgba(255,255,255,0.7); line-height: 1.6; margin-bottom: 1.5rem;">Open source under MIT license. Help us build the best learning platform!</p>
+                    <div style="display: flex; align-items: center; gap: 0.5rem; color: #fff; font-weight: 600;">
+                        <span>Contribute</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </a>
+
+                <!-- Card 6: Null Terminal -->
+                <a href="null-terminal.html" class="card" style="background: linear-gradient(135deg, rgba(156,39,176,0.1) 0%, rgba(233,30,99,0.05) 100%); border: 1px solid rgba(156,39,176,0.2); border-radius: 20px; padding: 2.5rem; text-decoration: none; color: inherit; transition: all 0.4s; position: relative; overflow: hidden; display: block;" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='rgba(156,39,176,0.5)'; this.style.boxShadow='0 20px 60px rgba(156,39,176,0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(156,39,176,0.2)'; this.style.boxShadow='none'">
+                    <div class="card-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, #9c27b0 0%, #7b1fa2 100%); border-radius: 15px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
+                            <polyline points="4 17 10 11 4 5"></polyline>
+                            <line x1="12" y1="19" x2="20" y2="19"></line>
+                        </svg>
+                    </div>
+                    <h3 class="card-title" style="font-size: 1.5rem; font-weight: 700; color: #9c27b0; margin-bottom: 1rem;">⚡ Null Terminal</h3>
+                    <p class="card-description" style="color: rgba(255,255,255,0.7); line-height: 1.6; margin-bottom: 1.5rem;">Practice Linux commands in a safe, browser-based terminal environment</p>
+                    <div style="display: flex; align-items: center; gap: 0.5rem; color: #9c27b0; font-weight: 600;">
+                        <span>Launch Terminal</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </a>
+            </div>
         </div>
     </section>
 

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ch26: Programming Fundamentals Part 2 - NullSector</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+                    <img src="logo.svg" alt="NullSector Logo" class="logo">
+                    <span class="brand-text">NullSector</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="roadmap-hacking.html" class="nav-link">Hacking</a>
+                <a href="roadmap-programming.html" class="nav-link active">Programming</a>
+                <a href="faq.html" class="nav-link">FAQ</a>
+                <a href="https://discord.gg/Tz9Y3wea32" target="_blank" class="nav-link">Discord</a>
+            
+                                
+                <div id="userProfile" style="display: none; align-items: center; gap: 0.75rem;">
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <img id="userAvatar" style="width: 36px; height: 36px; border-radius: 50%; border: 2px solid var(--primary-color); cursor: pointer; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'" title="" />
+                        <span id="userName" style="color: var(--text-primary); font-weight: 500; font-size: 0.95rem; cursor: default;"></span>
+                    </div>
+                    <button id="logoutButton" class="nav-link" style="background: rgba(255, 95, 87, 0.1); border: 1px solid #ff5f57; padding: 0.4rem 1rem; border-radius: 6px; font-weight: 500; cursor: pointer; color: #ff5f57; transition: all 0.2s;" onmouseover="this.style.background='rgba(255, 95, 87, 0.2)'" onmouseout="this.style.background='rgba(255, 95, 87, 0.1)'">Logout</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="content-page">
+        <div class="content-container">
+            <div class="breadcrumb">
+                <a href="roadmap-programming.html">Programming Roadmap</a> / <span>Chapter 26</span>
+            </div>
+            
+            <div class="roadmap-section">
+                <div class="roadmap-number">26</div>
+                <h1 class="page-title">Chapter 26: Programming Fundamentals Part 2</h1>
+                <p class="page-subtitle">Going Deeper: Memory, Data Structures, and Algorithms</p>
+
+                <div class="key-takeaways" style="margin-bottom:3rem;">
+                    <h3>What You'll Learn:</h3>
+                    <ul>
+                        <li>How computer memory actually works (Stack vs Heap)</li>
+                        <li>Data Structures: How to organize data efficiently</li>
+                        <li>Algorithms & Big O Notation: Measuring code performance</li>
+                        <li>Compiled vs Interpreted languages: The deep dive</li>
+                    </ul>
+                </div>
+
+                <!-- Topic 1: Memory Management -->
+                <div class="topic-section" style="background: linear-gradient(135deg, rgba(0,255,136,0.05) 0%, rgba(0,204,255,0.05) 100%); padding: 3rem; border-radius: 20px; margin: 3rem 0;">
+                    <h2 style="color: #00ff88; font-size: 2.2rem; margin-bottom: 2rem;">1. Memory Management: Under the Hood</h2>
+                    
+                    <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 15px; margin: 2rem 0; font-size: 1.15rem; line-height: 1.9;">
+                        <p style="margin: 0; font-size: 1.25rem;">
+                            When you create a variable like <code>x = 10</code>, where does it go? 
+                            Understanding memory is what separates "coders" from "software engineers".
+                        </p>
+                    </div>
+
+                    <h3 style="color: #00ccff; font-size: 1.8rem; margin-top: 3rem;">Stack vs. Heap</h3>
+                    
+                    <div style="display: grid; gap: 2rem; margin: 2rem 0;">
+                        <div style="background: rgba(0,255,136,0.15); padding: 2.5rem; border-radius: 15px;">
+                            <h4 style="color: #00ff88; font-size: 1.6rem; margin: 0 0 1rem 0;">The Stack (Ordered & Fast)</h4>
+                            <p style="font-size: 1.15rem; line-height: 1.8;">
+                                Think of a stack of plates. You can only add to the top and remove from the top.
+                            </p>
+                            <ul style="font-size: 1.1rem; line-height: 1.9; margin-top: 1rem;">
+                                <li><strong>What goes here:</strong> Local variables, function calls.</li>
+                                <li><strong>Speed:</strong> Extremely fast access.</li>
+                                <li><strong>Management:</strong> Automatic. When a function ends, its data is "popped" off.</li>
+                                <li><strong>Limit:</strong> Small size. If you use too much (infinite recursion), you get a <strong>Stack Overflow</strong>.</li>
+                            </ul>
+                        </div>
+
+                        <div style="background: rgba(0,204,255,0.15); padding: 2.5rem; border-radius: 15px;">
+                            <h4 style="color: #00ccff; font-size: 1.6rem; margin: 0 0 1rem 0;">The Heap (Chaotic & Large)</h4>
+                            <p style="font-size: 1.15rem; line-height: 1.8;">
+                                Think of a giant messy room where you can throw things anywhere.
+                            </p>
+                            <ul style="font-size: 1.1rem; line-height: 1.9; margin-top: 1rem;">
+                                <li><strong>What goes here:</strong> Objects, large data structures, global variables.</li>
+                                <li><strong>Speed:</strong> Slower. You need a "pointer" (address) to find your data.</li>
+                                <li><strong>Management:</strong> Manual (in C/C++) or Garbage Collected (in Python/Java).</li>
+                                <li><strong>Limit:</strong> Limited only by your physical RAM.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Topic 2: Data Structures -->
+                <div class="topic-section" style="background: linear-gradient(135deg, rgba(0,204,255,0.05) 0%, rgba(138,43,226,0.05) 100%); padding: 3rem; border-radius: 20px; margin: 3rem 0;">
+                    <h2 style="color: #00ccff; font-size: 2.2rem; margin-bottom: 2rem;">2. Data Structures: Organizing Chaos</h2>
+                    
+                    <p style="font-size: 1.15rem; line-height: 1.8; margin-bottom: 2rem;">
+                        A <strong>Data Structure</strong> is just a way to store data so you can use it efficiently. 
+                        Choosing the right one can make your code 100x faster.
+                    </p>
+
+                    <div style="display: grid; gap: 1.5rem;">
+                        <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 10px; border-left: 4px solid #00ff88;">
+                            <h4 style="color: #00ff88; margin: 0 0 1rem 0; font-size: 1.4rem;">Arrays (Lists)</h4>
+                            <p style="font-size: 1.1rem; line-height: 1.8;">
+                                <strong>Concept:</strong> Items stored side-by-side in memory.<br>
+                                <strong>Good for:</strong> Accessing items by index (<code>list[5]</code> is instant).<br>
+                                <strong>Bad for:</strong> Inserting/deleting items in the middle (everything else has to shift).
+                            </p>
+                        </div>
+
+                        <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 10px; border-left: 4px solid #00ccff;">
+                            <h4 style="color: #00ccff; margin: 0 0 1rem 0; font-size: 1.4rem;">Linked Lists</h4>
+                            <p style="font-size: 1.1rem; line-height: 1.8;">
+                                <strong>Concept:</strong> A chain where each item holds the data and a "pointer" to the next item.<br>
+                                <strong>Good for:</strong> Inserting/deleting items (just change the pointer).<br>
+                                <strong>Bad for:</strong> Finding the 100th item (you have to walk the whole chain).
+                            </p>
+                        </div>
+
+                        <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 10px; border-left: 4px solid #ffc800;">
+                            <h4 style="color: #ffc800; margin: 0 0 1rem 0; font-size: 1.4rem;">Hash Maps (Dictionaries)</h4>
+                            <p style="font-size: 1.1rem; line-height: 1.8;">
+                                <strong>Concept:</strong> Key-Value pairs. Like a real dictionary.<br>
+                                <strong>Good for:</strong> Finding data instantly by key (<code>user["name"]</code>).<br>
+                                <strong>The Magic:</strong> It uses a "hash function" to turn the key into a memory address directly.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Topic 3: Algorithms & Big O -->
+                <div class="topic-section" style="background: linear-gradient(135deg, rgba(138,43,226,0.05) 0%, rgba(255,100,100,0.05) 100%); padding: 3rem; border-radius: 20px; margin: 3rem 0;">
+                    <h2 style="color: #ff6464; font-size: 2.2rem; margin-bottom: 2rem;">3. Algorithms & Big O Notation</h2>
+                    
+                    <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 15px; margin: 2rem 0; font-size: 1.15rem; line-height: 1.9;">
+                        <p style="margin: 0; font-size: 1.25rem;">
+                            An <strong>Algorithm</strong> is a step-by-step recipe to solve a problem. 
+                            <strong>Big O Notation</strong> is how we measure how "fast" or "slow" an algorithm is as the data grows.
+                        </p>
+                    </div>
+
+                    <div style="display: grid; gap: 1.5rem; margin-top: 2rem;">
+                        <div style="background: rgba(0,255,136,0.1); padding: 1.5rem; border-radius: 8px; border-left: 3px solid #00ff88;">
+                            <h5 style="color: #00ff88; margin: 0 0 0.5rem 0; font-size: 1.3rem;">O(1) - Constant Time (The Best)</h5>
+                            <p style="font-size: 1.1rem; line-height: 1.7; margin: 0;">
+                                Takes the same time regardless of data size.<br>
+                                <em>Example: Accessing an array index.</em>
+                            </p>
+                        </div>
+
+                        <div style="background: rgba(0,204,255,0.1); padding: 1.5rem; border-radius: 8px; border-left: 3px solid #00ccff;">
+                            <h5 style="color: #00ccff; margin: 0 0 0.5rem 0; font-size: 1.3rem;">O(n) - Linear Time (Okay)</h5>
+                            <p style="font-size: 1.1rem; line-height: 1.7; margin: 0;">
+                                Time grows directly with data size. 10 items = 10 seconds. 100 items = 100 seconds.<br>
+                                <em>Example: Looping through a list to find a value.</em>
+                            </p>
+                        </div>
+
+                        <div style="background: rgba(255,100,100,0.1); padding: 1.5rem; border-radius: 8px; border-left: 3px solid #ff6464;">
+                            <h5 style="color: #ff6464; margin: 0 0 0.5rem 0; font-size: 1.3rem;">O(n²) - Quadratic Time (Bad)</h5>
+                            <p style="font-size: 1.1rem; line-height: 1.7; margin: 0;">
+                                Time grows exponentially. A loop inside a loop.<br>
+                                <em>Example: Comparing every item in a list with every other item.</em>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mastery Checklist -->
+                <div style="background: linear-gradient(135deg, rgba(0,255,136,0.1) 0%, rgba(138,43,226,0.1) 100%); padding: 3rem; border-radius: 20px; margin: 4rem 0; border: 3px solid rgba(0,255,136,0.3);">
+                    <h2 style="color: #00ff88; font-size: 2rem; margin-bottom: 2rem;">🎯 Chapter 26 Mastery Checklist</h2>
+                    
+                    <div style="display: grid; gap: 1rem;">
+                        <div style="background: rgba(0,0,0,0.4); padding: 1.5rem; border-radius: 10px; font-size: 1.1rem;">
+                            ☐ I understand the difference between Stack and Heap memory
+                        </div>
+                        <div style="background: rgba(0,0,0,0.4); padding: 1.5rem; border-radius: 10px; font-size: 1.1rem;">
+                            ☐ I know when to use an Array vs a Linked List
+                        </div>
+                        <div style="background: rgba(0,0,0,0.4); padding: 1.5rem; border-radius: 10px; font-size: 1.1rem;">
+                            ☐ I can explain what a Hash Map is and why it's fast
+                        </div>
+                        <div style="background: rgba(0,0,0,0.4); padding: 1.5rem; border-radius: 10px; font-size: 1.1rem;">
+                            ☐ I understand Big O notation (O(1), O(n), O(n²))
+                        </div>
+                    </div>
+                    
+                    <div style="background: rgba(0,255,136,0.2); padding: 2rem; border-radius: 15px; margin-top: 3rem; border: 2px solid rgba(0,255,136,0.5);">
+                        <h3 style="color: #00ff88; margin-top: 0; font-size: 1.6rem;">✅ Level Up!</h3>
+                        <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 1rem;">
+                            <strong>Congratulations!</strong> You've just learned the concepts that are asked in Google/Facebook interviews.
+                        </p>
+                        <p style="font-size: 1.15rem; line-height: 1.8;">
+                            <strong style="color: #00ff88;">Next up:</strong> <a href="roadmap-programming.html" style="color: #00ccff; text-decoration: underline;">Back to Roadmap</a>
+                        </p>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 2rem; margin-top: 3rem;">
+                    <a href="programming-ch25.html" style="flex: 1; background: linear-gradient(135deg, rgba(0,204,255,0.2) 0%, rgba(138,43,226,0.2) 100%); padding: 2rem; border-radius: 15px; text-decoration: none; border: 2px solid rgba(0,204,255,0.4); transition: all 0.3s;">
+                        <div style="color: #00ccff; font-size: 0.9rem; margin-bottom: 0.5rem;">← PREVIOUS</div>
+                        <div style="color: #fff; font-size: 1.1rem; font-weight: 600;">Chapter 25</div>
+                    </a>
+                    <a href="roadmap-programming.html" style="flex: 1; background: linear-gradient(135deg, rgba(0,255,136,0.2) 0%, rgba(0,204,255,0.2) 100%); padding: 2rem; border-radius: 15px; text-decoration: none; border: 2px solid rgba(0,255,136,0.4); transition: all 0.3s; text-align: right;">
+                        <div style="color: #00ff88; font-size: 0.9rem; margin-bottom: 0.5rem;">NEXT →</div>
+                        <div style="color: #fff; font-size: 1.1rem; font-weight: 600;">Roadmap</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    
+    <!-- Supabase Client & Auth -->
+    </body>
+</html>
+
+
