@@ -4,8 +4,22 @@
 const SUPABASE_URL = 'https://fshfvihunprbqlukbdpi.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZzaGZ2aWh1bnByYnFsdWtiZHBpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU2MTQyOTYsImV4cCI6MjA4MTE5MDI5Nn0.jyyP3VJ2nqXmRqnC5O_CbqK_GZXMdBotdhT7Nufa5j0';
 
-// Initialize Supabase client
-const supabase = window.supabase?.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+// Detect production environment
+const isProduction = window.location.hostname === 'nullnode.vercel.app';
+const siteUrl = isProduction ? 'https://nullnode.vercel.app' : window.location.origin;
+
+console.log('[Auth] Environment:', isProduction ? 'PRODUCTION' : 'DEVELOPMENT');
+console.log('[Auth] Site URL:', siteUrl);
+
+// Initialize Supabase client with correct site URL
+const supabase = window.supabase?.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+    auth: {
+        autoRefreshToken: true,
+        persistSession: true,
+        detectSessionInUrl: true,
+        flowType: 'pkce'
+    }
+});
 
 // Initialize auth UI
 function initAuth() {
@@ -35,20 +49,14 @@ function initAuth() {
     // Login button handler
     authButton.addEventListener('click', async () => {
         console.log('[Auth] Login button clicked');
-        
-        // Determine redirect URL based on environment
-        const isProduction = window.location.hostname === 'nullnode.vercel.app';
-        const redirectTo = isProduction 
-            ? 'https://nullnode.vercel.app/' 
-            : window.location.origin + window.location.pathname;
-        
-        console.log('[Auth] Redirect URL:', redirectTo);
+        console.log('[Auth] Current page:', window.location.href);
+        console.log('[Auth] Using site URL:', siteUrl);
         
         const { data, error } = await supabase.auth.signInWithOAuth({
             provider: 'discord',
             options: {
                 scopes: 'identify guilds guilds.members.read',
-                redirectTo: redirectTo
+                redirectTo: siteUrl
             }
         });
         
