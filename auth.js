@@ -50,13 +50,12 @@ function initAuth() {
     authButton.addEventListener('click', async () => {
         console.log('[Auth] Login button clicked');
         console.log('[Auth] Current page:', window.location.href);
-        console.log('[Auth] Using site URL:', siteUrl);
         
         const { data, error } = await supabase.auth.signInWithOAuth({
             provider: 'discord',
             options: {
                 scopes: 'identify guilds guilds.members.read',
-                redirectTo: siteUrl
+                redirectTo: window.location.href
             }
         });
         

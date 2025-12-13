@@ -162,13 +162,14 @@
         // Login button
         document.getElementById('loginBtn').addEventListener('click', async () => {
             log('Initiating Discord OAuth...', 'info');
-            log(`Redirect URL: ${siteUrl}`, 'info');
+            const redirectUrl = window.location.href;
+            log(`Redirect URL: ${redirectUrl}`, 'info');
             
             const { data, error } = await supabase.auth.signInWithOAuth({
                 provider: 'discord',
                 options: {
                     scopes: 'identify email guilds guilds.members.read',
-                    redirectTo: siteUrl
+                    redirectTo: redirectUrl
                 }
             });
 
