@@ -478,6 +478,296 @@
                     </a>
                 </div>
             </div>
+
+            <!-- EXPANDED SECTION: Advanced Shell Scripting Techniques -->
+            <div class="topic-section" style="background: linear-gradient(135deg, rgba(156,39,176,0.05) 0%, rgba(233,30,99,0.05) 100%); padding: 3rem; border-radius: 20px; margin: 3rem 0;">
+                <h2 style="color: #9c27b0; font-size: 2.2rem; margin-bottom: 2rem;">7. Advanced Shell Scripting: Automation Mastery</h2>
+                
+                <div style="background: rgba(156,39,176,0.1); padding: 2rem; border-radius: 10px; border-left: 4px solid #9c27b0; margin-bottom: 2rem;">
+                    <h4 style="color: #9c27b0; margin: 0 0 1rem 0; font-size: 1.6rem;">Error Handling & Debugging</h4>
+                    <div style="background: #000; padding: 1.5rem; border-radius: 8px; font-family: monospace;">
+                        <p style="color: #888;">#!/bin/bash</p>
+                        <p style="color: #888;"># Enable strict error handling</p>
+                        <p style="color: #0f0;">set -euo pipefail  # Exit on error, undefined vars, pipe failures</p>
+                        <p style="color: #0f0;">set -x  # Debug mode - print each command</p>
+                        <br>
+                        <p style="color: #888;"># Custom error handler</p>
+                        <p style="color: #0f0;">error_exit() {</p>
+                        <p style="color: #0f0;">    echo "Error: $1" >&2</p>
+                        <p style="color: #0f0;">    exit 1</p>
+                        <p style="color: #0f0;">}</p>
+                        <br>
+                        <p style="color: #888;"># Trap errors and cleanup</p>
+                        <p style="color: #0f0;">cleanup() {</p>
+                        <p style="color: #0f0;">    echo "Cleaning up..."</p>
+                        <p style="color: #0f0;">    rm -f /tmp/tempfile.$$</p>
+                        <p style="color: #0f0;">}</p>
+                        <p style="color: #0f0;">trap cleanup EXIT ERR</p>
+                        <br>
+                        <p style="color: #888;"># Command existence check</p>
+                        <p style="color: #0f0;">command -v nmap >/dev/null 2>&1 || error_exit "nmap not installed"</p>
+                        <br>
+                        <p style="color: #888;"># Logging with timestamps</p>
+                        <p style="color: #0f0;">log() {</p>
+                        <p style="color: #0f0;">    echo "[$(date +'%Y-%m-%d %H:%M:%S')] $*" | tee -a scan.log</p>
+                        <p style="color: #0f0;">}</p>
+                        <p style="color: #0f0;">log "Starting network scan..."</p>
+                    </div>
+                </div>
+
+                <div style="background: rgba(233,30,99,0.1); padding: 2rem; border-radius: 10px; border-left: 4px solid #e91e63; margin-bottom: 2rem;">
+                    <h4 style="color: #e91e63; margin: 0 0 1rem 0; font-size: 1.6rem;">Real-World Penetration Testing Script</h4>
+                    <div style="background: #000; padding: 1.5rem; border-radius: 8px; font-family: monospace; font-size: 0.95rem;">
+                        <p style="color: #888;">#!/bin/bash</p>
+                        <p style="color: #888;"># Automated Recon Script for Bug Bounty / Pentesting</p>
+                        <br>
+                        <p style="color: #0f0;">TARGET="$1"</p>
+                        <p style="color: #0f0;">OUTPUT_DIR="recon_${TARGET}"</p>
+                        <br>
+                        <p style="color: #888;"># Validation</p>
+                        <p style="color: #0f0;">[[ -z "$TARGET" ]] && { echo "Usage: $0 target.com"; exit 1; }</p>
+                        <p style="color: #0f0;">mkdir -p "$OUTPUT_DIR"</p>
+                        <br>
+                        <p style="color: #888;"># Subdomain Enumeration</p>
+                        <p style="color: #0f0;">echo "[+] Finding subdomains..."</p>
+                        <p style="color: #0f0;">subfinder -d "$TARGET" -o "$OUTPUT_DIR/subdomains.txt" -silent</p>
+                        <p style="color: #0f0;">amass enum -passive -d "$TARGET" -o "$OUTPUT_DIR/amass.txt"</p>
+                        <p style="color: #0f0;">cat "$OUTPUT_DIR"/*.txt | sort -u > "$OUTPUT_DIR/all_subdomains.txt"</p>
+                        <br>
+                        <p style="color: #888;"># Check which subdomains are alive</p>
+                        <p style="color: #0f0;">echo "[+] Checking live hosts..."</p>
+                        <p style="color: #0f0;">httpx -l "$OUTPUT_DIR/all_subdomains.txt" -o "$OUTPUT_DIR/live_hosts.txt" -silent</p>
+                        <br>
+                        <p style="color: #888;"># Port scanning (fast but thorough)</p>
+                        <p style="color: #0f0;">echo "[+] Port scanning..."</p>
+                        <p style="color: #0f0;">nmap -iL "$OUTPUT_DIR/live_hosts.txt" -T4 -A -oN "$OUTPUT_DIR/nmap.txt"</p>
+                        <br>
+                        <p style="color: #888;"># Directory bruteforce</p>
+                        <p style="color: #0f0;">echo "[+] Directory fuzzing..."</p>
+                        <p style="color: #0f0;">while IFS= read -r host; do</p>
+                        <p style="color: #0f0;">    gobuster dir -u "$host" -w /usr/share/wordlists/dirb/common.txt \</p>
+                        <p style="color: #0f0;">        -o "$OUTPUT_DIR/dirs_$(echo $host | tr '/:' '_').txt" -q</p>
+                        <p style="color: #0f0;">done < "$OUTPUT_DIR/live_hosts.txt"</p>
+                        <br>
+                        <p style="color: #888;"># Screenshot all sites</p>
+                        <p style="color: #0f0;">echo "[+] Taking screenshots..."</p>
+                        <p style="color: #0f0;">gowitness file -f "$OUTPUT_DIR/live_hosts.txt" --screenshot-path "$OUTPUT_DIR/screenshots"</p>
+                        <br>
+                        <p style="color: #888;"># Generate report</p>
+                        <p style="color: #0f0;">echo "[+] Generating report..."</p>
+                        <p style="color: #0f0;">cat << EOF > "$OUTPUT_DIR/report.html"</p>
+                        <p style="color: #fff;"><html><head><title>Recon Report: $TARGET</title></head><body></p>
+                        <p style="color: #fff;"><h1>Reconnaissance Report</h1></p>
+                        <p style="color: #fff;"><h2>Target: $TARGET</h2></p>
+                        <p style="color: #fff;"><h3>Subdomains Found: $(wc -l < "$OUTPUT_DIR/all_subdomains.txt")</h3></p>
+                        <p style="color: #fff;"><h3>Live Hosts: $(wc -l < "$OUTPUT_DIR/live_hosts.txt")</h3></p>
+                        <p style="color: #fff;"></body></html></p>
+                        <p style="color: #0f0;">EOF</p>
+                        <br>
+                        <p style="color: #0f0;">echo "[+] Recon complete! Results in $OUTPUT_DIR/"</p>
+                    </div>
+                </div>
+
+                <div style="background: rgba(255,193,7,0.1); padding: 2rem; border-radius: 10px; border-left: 4px solid #ffc107;">
+                    <h4 style="color: #ffc107; margin: 0 0 1rem 0; font-size: 1.6rem;">Parallel Processing for Speed</h4>
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem;">
+                        Process multiple targets simultaneously using GNU Parallel:
+                    </p>
+                    <div style="background: #000; padding: 1.5rem; border-radius: 8px; font-family: monospace;">
+                        <p style="color: #888;"># Sequential (slow) - one at a time</p>
+                        <p style="color: #0f0;">while read ip; do nmap $ip; done < ips.txt</p>
+                        <br>
+                        <p style="color: #888;"># Parallel (FAST) - 10 at once</p>
+                        <p style="color: #0f0;">parallel -j 10 nmap {} :::: ips.txt</p>
+                        <br>
+                        <p style="color: #888;"># Ping sweep 100 IPs in parallel</p>
+                        <p style="color: #0f0;">seq 1 100 | parallel -j 50 'ping -c1 192.168.1.{} | grep "bytes from"'</p>
+                        <br>
+                        <p style="color: #888;"># Download multiple files at once</p>
+                        <p style="color: #0f0;">cat urls.txt | parallel -j 20 wget {}</p>
+                        <br>
+                        <p style="color: #888;"># Crack passwords in parallel</p>
+                        <p style="color: #0f0;">parallel -j 4 hydra -l admin -p {} 192.168.1.1 ssh :::: passwords.txt</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXPANDED SECTION: Log Analysis & Forensics -->
+            <div class="topic-section" style="background: linear-gradient(135deg, rgba(244,67,54,0.05) 0%, rgba(233,30,99,0.05) 100%); padding: 3rem; border-radius: 20px; margin: 3rem 0;">
+                <h2 style="color: #f44336; font-size: 2.2rem; margin-bottom: 2rem;">8. Log Analysis & Digital Forensics</h2>
+                
+                <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 15px; margin: 2rem 0;">
+                    <p style="margin: 0; font-size: 1.25rem; line-height: 1.9;">
+                        Logs tell the story of what happened. As a hacker, you hunt for clues. As a defender, you hunt for attacks.
+                    </p>
+                </div>
+
+                <div style="background: rgba(244,67,54,0.1); padding: 2rem; border-radius: 10px; border-left: 4px solid #f44336; margin-bottom: 2rem;">
+                    <h4 style="color: #f44336; margin: 0 0 1rem 0; font-size: 1.6rem;">Critical Log Files</h4>
+                    <div style="background: #000; padding: 1.5rem; border-radius: 8px; font-family: monospace;">
+                        <p style="color: #888;"># Authentication logs (failed logins, sudo usage)</p>
+                        <p style="color: #0f0;">/var/log/auth.log       # Debian/Ubuntu</p>
+                        <p style="color: #0f0;">/var/log/secure         # RedHat/CentOS</p>
+                        <br>
+                        <p style="color: #888;"># System messages</p>
+                        <p style="color: #0f0;">/var/log/syslog         # General system log</p>
+                        <p style="color: #0f0;">/var/log/messages       # RedHat systems</p>
+                        <br>
+                        <p style="color: #888;"># Kernel ring buffer</p>
+                        <p style="color: #0f0;">dmesg                   # Hardware/driver messages</p>
+                        <br>
+                        <p style="color: #888;"># Web server logs</p>
+                        <p style="color: #0f0;">/var/log/apache2/access.log</p>
+                        <p style="color: #0f0;">/var/log/nginx/access.log</p>
+                        <br>
+                        <p style="color: #888;"># Last logins</p>
+                        <p style="color: #0f0;">last                    # Show login history</p>
+                        <p style="color: #0f0;">lastb                   # Show bad login attempts</p>
+                        <p style="color: #0f0;">w                       # Who's logged in now</p>
+                    </div>
+                </div>
+
+                <div style="background: rgba(156,39,176,0.1); padding: 2rem; border-radius: 10px; border-left: 4px solid #9c27b0; margin-bottom: 2rem;">
+                    <h4 style="color: #9c27b0; margin: 0 0 1rem 0; font-size: 1.6rem;">Hunting for Suspicious Activity</h4>
+                    <div style="background: #000; padding: 1.5rem; border-radius: 8px; font-family: monospace;">
+                        <p style="color: #888;"># Find failed SSH login attempts</p>
+                        <p style="color: #0f0;">grep "Failed password" /var/log/auth.log</p>
+                        <br>
+                        <p style="color: #888;"># Count attempts by IP</p>
+                        <p style="color: #0f0;">grep "Failed password" /var/log/auth.log | awk '{print $(NF-3)}' | sort | uniq -c | sort -nr</p>
+                        <br>
+                        <p style="color: #888;"># Find successful root logins</p>
+                        <p style="color: #0f0;">grep "session opened for user root" /var/log/auth.log</p>
+                        <br>
+                        <p style="color: #888;"># Check for new users added</p>
+                        <p style="color: #0f0;">grep "useradd" /var/log/auth.log</p>
+                        <br>
+                        <p style="color: #888;"># Find large file transfers (potential data exfiltration)</p>
+                        <p style="color: #0f0;">awk '$10 > 10000000' /var/log/apache2/access.log</p>
+                        <br>
+                        <p style="color: #888;"># Detect port scans</p>
+                        <p style="color: #0f0;">grep "SYN" /var/log/syslog | awk '{print $NF}' | sort | uniq -c | sort -nr | head -20</p>
+                        <br>
+                        <p style="color: #888;"># Find commands run with sudo</p>
+                        <p style="color: #0f0;">grep "sudo.*COMMAND" /var/log/auth.log</p>
+                        <br>
+                        <p style="color: #888;"># Check for reverse shells (common backdoor ports)</p>
+                        <p style="color: #0f0;">netstat -antp | grep -E ":(4444|5555|6666|7777|8888|9999)"</p>
+                    </div>
+                    <p style="font-size: 1.05rem; color: #ffc107; margin-top: 1rem;">
+                        ⚠️ <strong>Red Flag:</strong> Multiple failed logins from same IP = brute force attack. Successful login after failures = possible compromise!
+                    </p>
+                </div>
+
+                <div style="background: rgba(0,188,212,0.1); padding: 2rem; border-radius: 10px; border-left: 4px solid #00bcd4;">
+                    <h4 style="color: #00bcd4; margin: 0 0 1rem 0; font-size: 1.6rem;">Timeline Analysis for Incident Response</h4>
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem;">
+                        Reconstruct what happened during a breach:
+                    </p>
+                    <div style="background: #000; padding: 1.5rem; border-radius: 8px; font-family: monospace; font-size: 0.95rem;">
+                        <p style="color: #888;"># Create timeline of all security events</p>
+                        <p style="color: #0f0;">cat /var/log/auth.log | grep -E "Failed|session opened|sudo" | sort -k1,2</p>
+                        <br>
+                        <p style="color: #888;"># File modification timeline (what files changed?)</p>
+                        <p style="color: #0f0;">find / -type f -mtime -1 -ls 2>/dev/null  # Last 24 hours</p>
+                        <br>
+                        <p style="color: #888;"># Check file access times (stat command)</p>
+                        <p style="color: #0f0;">stat /etc/passwd</p>
+                        <p style="color: #888;"># Access: 2025-12-13 14:23:45 (when file was read)</p>
+                        <p style="color: #888;"># Modify: 2025-12-13 12:10:32 (when content changed)</p>
+                        <p style="color: #888;"># Change: 2025-12-13 12:10:32 (when metadata changed)</p>
+                        <br>
+                        <p style="color: #888;"># Check command history of all users</p>
+                        <p style="color: #0f0;">for user in $(cut -d: -f1 /etc/passwd); do</p>
+                        <p style="color: #0f0;">    history_file="/home/$user/.bash_history"</p>
+                        <p style="color: #0f0;">    [[ -f $history_file ]] && echo "=== $user ===" && tail -20 $history_file</p>
+                        <p style="color: #0f0;">done</p>
+                        <br>
+                        <p style="color: #888;"># Network connections at time of incident</p>
+                        <p style="color: #0f0;">grep "Dec 13 14:" /var/log/syslog | grep -E "ESTABLISHED|LISTEN"</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXPANDED SECTION: Performance Tuning & Optimization -->
+            <div class="topic-section" style="background: linear-gradient(135deg, rgba(76,175,80,0.05) 0%, rgba(139,195,74,0.05) 100%); padding: 3rem; border-radius: 20px; margin: 3rem 0;">
+                <h2 style="color: #4caf50; font-size: 2.2rem; margin-bottom: 2rem;">9. Performance Tuning: Making Linux FAST</h2>
+                
+                <div style="background: rgba(76,175,80,0.1); padding: 2rem; border-radius: 10px; border-left: 4px solid #4caf50; margin-bottom: 2rem;">
+                    <h4 style="color: #4caf50; margin: 0 0 1rem 0; font-size: 1.6rem;">System Resource Monitoring</h4>
+                    <div style="background: #000; padding: 1.5rem; border-radius: 8px; font-family: monospace;">
+                        <p style="color: #888;"># htop - Better than top (install it!)</p>
+                        <p style="color: #0f0;">sudo apt install htop</p>
+                        <p style="color: #0f0;">htop</p>
+                        <p style="color: #888;"># F2=setup, F6=sort, F9=kill, F10=quit</p>
+                        <br>
+                        <p style="color: #888;"># Check disk I/O (who's hammering the disk?)</p>
+                        <p style="color: #0f0;">iotop -o  # Only show processes doing I/O</p>
+                        <br>
+                        <p style="color: #888;"># Network bandwidth usage per process</p>
+                        <p style="color: #0f0;">sudo apt install nethogs</p>
+                        <p style="color: #0f0;">sudo nethogs</p>
+                        <br>
+                        <p style="color: #888;"># Memory usage breakdown</p>
+                        <p style="color: #0f0;">free -h                           # Human-readable</p>
+                        <p style="color: #0f0;">cat /proc/meminfo                 # Detailed info</p>
+                        <p style="color: #0f0;">ps aux --sort=-%mem | head -10   # Top memory hogs</p>
+                        <br>
+                        <p style="color: #888;"># CPU info</p>
+                        <p style="color: #0f0;">lscpu                   # CPU architecture details</p>
+                        <p style="color: #0f0;">cat /proc/cpuinfo       # Detailed per-core info</p>
+                        <p style="color: #0f0;">uptime                  # Load average</p>
+                        <br>
+                        <p style="color: #888;"># Disk usage</p>
+                        <p style="color: #0f0;">df -h                   # Filesystem usage</p>
+                        <p style="color: #0f0;">du -sh /*              # Size of root directories</p>
+                        <p style="color: #0f0;">ncdu /                 # Interactive disk analyzer</p>
+                    </div>
+                </div>
+
+                <div style="background: rgba(255,152,0,0.1); padding: 2rem; border-radius: 10px; border-left: 4px solid #ff9800;">
+                    <h4 style="color: #ff9800; margin: 0 0 1rem 0; font-size: 1.6rem;">Kill Zombie Processes</h4>
+                    <div style="background: #000; padding: 1.5rem; border-radius: 8px; font-family: monospace;">
+                        <p style="color: #888;"># Find zombies</p>
+                        <p style="color: #0f0;">ps aux | grep 'Z'</p>
+                        <br>
+                        <p style="color: #888;"># Kill process by name</p>
+                        <p style="color: #0f0;">pkill firefox</p>
+                        <p style="color: #0f0;">killall chrome</p>
+                        <br>
+                        <p style="color: #888;"># Force kill stuck process</p>
+                        <p style="color: #0f0;">kill -9 <PID></p>
+                        <br>
+                        <p style="color: #888;"># Kill all processes by user</p>
+                        <p style="color: #0f0;">pkill -u username</p>
+                        <br>
+                        <p style="color: #888;"># Kill parent of zombie to reap it</p>
+                        <p style="color: #0f0;">ps -o ppid= -p <zombie_pid> | xargs kill</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FINAL BOSS CHALLENGE -->
+            <div style="background: linear-gradient(135deg, #ff5722 0%, #f44336 100%); padding: 4rem 3rem; border-radius: 20px; margin: 4rem 0; text-align: center;">
+                <h2 style="font-size: 3rem; margin-bottom: 2rem; color: #fff;">🏆 FINAL BOSS CHALLENGE</h2>
+                <p style="font-size: 1.4rem; line-height: 1.9; color: rgba(255,255,255,0.95); max-width: 900px; margin: 0 auto 3rem;">
+                    Write a comprehensive system health check script that:
+                </p>
+                <div style="text-align: left; max-width: 800px; margin: 0 auto;">
+                    <ul style="font-size: 1.2rem; line-height: 2; color: rgba(255,255,255,0.9);">
+                        <li>✅ Checks disk space and warns if >80% full</li>
+                        <li>✅ Finds and kills processes using >80% CPU</li>
+                        <li>✅ Scans for SUID binaries and logs suspicious ones</li>
+                        <li>✅ Checks for failed login attempts in last hour</li>
+                        <li>✅ Lists all listening ports and their processes</li>
+                        <li>✅ Sends email alert if anomalies found</li>
+                        <li>✅ Runs as cron job every hour</li>
+                    </ul>
+                </div>
+                <p style="font-size: 1.2rem; margin-top: 3rem; color: rgba(255,255,255,0.85);">
+                    If you can build this, you've mastered Linux automation. This is EXACTLY what sysadmins and security engineers do daily.
+                </p>
+            </div>
         </div>
     </section>
 

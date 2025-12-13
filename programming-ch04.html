@@ -493,6 +493,321 @@
                     </a>
                 </div>
             </div>
+
+            <!-- EXPANDED SECTION: Advanced Debugging Mastery -->
+            <div class="topic-section" style="background: linear-gradient(135deg, rgba(156,39,176,0.05) 0%, rgba(233,30,99,0.05) 100%); padding: 3rem; border-radius: 20px; margin: 3rem 0;">
+                <h2 style="color: #9c27b0; font-size: 2.2rem; margin-bottom: 2rem;">7. Advanced Debugging: Become a Bug Hunter</h2>
+                
+                <div style="background: rgba(156,39,176,0.1); padding: 2rem; border-radius: 10px; border-left: 4px solid #9c27b0; margin-bottom: 2rem;">
+                    <h4 style="color: #9c27b0; margin: 0 0 1rem 0; font-size: 1.6rem;">The Debugging Mindset</h4>
+                    <div style="background: #000; padding: 1.5rem; border-radius: 8px; color: #fff; font-family: monospace;">
+                        <p style="color: #888;">1. Reproduce the bug consistently</p>
+                        <p style="color: #888;">2. Isolate the problem (binary search approach)</p>
+                        <p style="color: #888;">3. Form a hypothesis</p>
+                        <p style="color: #888;">4. Test the hypothesis</p>
+                        <p style="color: #888;">5. Fix and verify</p>
+                        <br>
+                        <p style="color: #fc0;">💡 <strong>Golden Rule:</strong> If you can't reproduce it, you can't fix it.</p>
+                    </div>
+                </div>
+
+                <div style="background: rgba(233,30,99,0.1); padding: 2rem; border-radius: 10px; border-left: 4px solid #e91e63; margin-bottom: 2rem;">
+                    <h4 style="color: #e91e63; margin: 0 0 1rem 0; font-size: 1.6rem;">Python Debugger (pdb) Power Moves</h4>
+                    <div style="background: #000; padding: 1.5rem; border-radius: 8px; font-family: monospace; font-size: 0.95rem;">
+                        <p style="color: #888;"># Insert breakpoint in code</p>
+                        <p style="color: #0f0;">import pdb; pdb.set_trace()  # Old way</p>
+                        <p style="color: #0f0;">breakpoint()                  # Python 3.7+ - cleaner!</p>
+                        <br>
+                        <p style="color: #888;"># Common pdb commands:</p>
+                        <p style="color: #0ff;">n (next)      # Execute current line</p>
+                        <p style="color: #0ff;">s (step)      # Step into function</p>
+                        <p style="color: #0ff;">c (continue)  # Continue execution</p>
+                        <p style="color: #0ff;">l (list)      # Show code context</p>
+                        <p style="color: #0ff;">p variable    # Print variable value</p>
+                        <p style="color: #0ff;">pp variable   # Pretty print</p>
+                        <p style="color: #0ff;">w (where)     # Show stack trace</p>
+                        <p style="color: #0ff;">u (up)        # Go up stack frame</p>
+                        <p style="color: #0ff;">d (down)      # Go down stack frame</p>
+                        <p style="color: #0ff;">q (quit)      # Exit debugger</p>
+                        <br>
+                        <p style="color: #888;"># Conditional breakpoint</p>
+                        <p style="color: #0f0;">import pdb</p>
+                        <p style="color: #0f0;">if user_id == 12345:</p>
+                        <p style="color: #0f0;">    pdb.set_trace()  # Only break for specific user</p>
+                        <br>
+                        <p style="color: #888;"># Post-mortem debugging (after crash)</p>
+                        <p style="color: #0f0;">import pdb</p>
+                        <p style="color: #0f0;">try:</p>
+                        <p style="color: #0f0;">    risky_operation()</p>
+                        <p style="color: #0f0;">except:</p>
+                        <p style="color: #0f0;">    pdb.post_mortem()  # Jump into crash state</p>
+                    </div>
+                </div>
+
+                <div style="background: rgba(255,193,7,0.1); padding: 2rem; border-radius: 10px; border-left: 4px solid #ffc107; margin-bottom: 2rem;">
+                    <h4 style="color: #ffc107; margin: 0 0 1rem 0; font-size: 1.6rem;">VS Code Debugging Like a Pro</h4>
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem;">
+                        Stop using print statements. Use a REAL debugger:
+                    </p>
+                    <div style="background: #000; padding: 1.5rem; border-radius: 8px; color: #fff;">
+                        <p style="color: #888;"># launch.json for Python debugging</p>
+                        <pre style="color: #0f0; overflow-x: auto;">{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": false  // Debug into libraries
+        }
+    ]
+}</pre>
+                        <br>
+                        <p style="color: #888;"># Keyboard shortcuts (memorize these!):</p>
+                        <p style="color: #0ff;">F5      - Start debugging</p>
+                        <p style="color: #0ff;">F9      - Toggle breakpoint</p>
+                        <p style="color: #0ff;">F10     - Step over (next line)</p>
+                        <p style="color: #0ff;">F11     - Step into function</p>
+                        <p style="color: #0ff;">Shift+F11 - Step out of function</p>
+                        <p style="color: #0ff;">F5      - Continue to next breakpoint</p>
+                        <p style="color: #0ff;">Shift+F5 - Stop debugging</p>
+                        <br>
+                        <p style="color: #fc0;">💡 <strong>Pro Tip:</strong> Use "Watch" panel to track variables in real-time!</p>
+                    </div>
+                </div>
+
+                <div style="background: rgba(33,150,243,0.1); padding: 2rem; border-radius: 10px; border-left: 4px solid #2196f3;">
+                    <h4 style="color: #2196f3; margin: 0 0 1rem 0; font-size: 1.6rem;">Logging: The Professional's Print Statement</h4>
+                    <div style="background: #000; padding: 1.5rem; border-radius: 8px; font-family: monospace; font-size: 0.95rem;">
+                        <p style="color: #888;"># Bad: Using print statements</p>
+                        <p style="color: #f00;">print("User logged in")  # ❌ No context, hard to filter</p>
+                        <br>
+                        <p style="color: #888;"># Good: Using logging module</p>
+                        <p style="color: #0f0;">import logging</p>
+                        <p style="color: #0f0;">logging.basicConfig(</p>
+                        <p style="color: #0f0;">    level=logging.DEBUG,</p>
+                        <p style="color: #0f0;">    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',</p>
+                        <p style="color: #0f0;">    filename='app.log'</p>
+                        <p style="color: #0f0;">)</p>
+                        <p style="color: #0f0;">logger = logging.getLogger(__name__)</p>
+                        <br>
+                        <p style="color: #888;"># Log levels (use appropriately!)</p>
+                        <p style="color: #0f0;">logger.debug("Detailed info for diagnosing")</p>
+                        <p style="color: #0f0;">logger.info("General informational messages")</p>
+                        <p style="color: #0f0;">logger.warning("Something unexpected happened")</p>
+                        <p style="color: #0f0;">logger.error("Serious problem, function failed")</p>
+                        <p style="color: #0f0;">logger.critical("Program may crash")</p>
+                        <br>
+                        <p style="color: #888;"># Include context in logs</p>
+                        <p style="color: #0f0;">logger.info(f"User {user_id} logged in from IP {ip_address}")</p>
+                        <br>
+                        <p style="color: #888;"># Exception logging with traceback</p>
+                        <p style="color: #0f0;">try:</p>
+                        <p style="color: #0f0;">    process_payment()</p>
+                        <p style="color: #0f0;">except Exception:</p>
+                        <p style="color: #0f0;">    logger.exception("Payment failed")  # Auto-includes traceback!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXPANDED SECTION: Reading Open Source Code -->
+            <div class="topic-section" style="background: linear-gradient(135deg, rgba(244,67,54,0.05) 0%, rgba(233,30,99,0.05) 100%); padding: 3rem; border-radius: 20px; margin: 3rem 0;">
+                <h2 style="color: #f44336; font-size: 2.2rem; margin-bottom: 2rem;">8. Reading Open Source: Learn from the Masters</h2>
+                
+                <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 15px; margin: 2rem 0;">
+                    <p style="margin: 0; font-size: 1.25rem; line-height: 1.9;">
+                        Want to see how GREAT code looks? Read open source projects. You'll learn patterns, best practices, and clever tricks you'd never discover alone.
+                    </p>
+                </div>
+
+                <div style="background: rgba(244,67,54,0.1); padding: 2rem; border-radius: 10px; border-left: 4px solid #f44336; margin-bottom: 2rem;">
+                    <h4 style="color: #f44336; margin: 0 0 1rem 0; font-size: 1.6rem;">How to Navigate a Large Codebase</h4>
+                    <div style="background: #000; padding: 1.5rem; border-radius: 8px; font-family: monospace;">
+                        <p style="color: #888;"># Clone and explore a popular project</p>
+                        <p style="color: #0f0;">git clone https://github.com/django/django.git</p>
+                        <p style="color: #0f0;">cd django</p>
+                        <br>
+                        <p style="color: #888;"># Step 1: Read the README</p>
+                        <p style="color: #0f0;">cat README.md</p>
+                        <br>
+                        <p style="color: #888;"># Step 2: Check project structure</p>
+                        <p style="color: #0f0;">tree -L 2  # Show 2 levels deep</p>
+                        <br>
+                        <p style="color: #888;"># Step 3: Find entry point</p>
+                        <p style="color: #0f0;">grep -r "if __name__ == '__main__'" .</p>
+                        <br>
+                        <p style="color: #888;"># Step 4: Search for specific feature</p>
+                        <p style="color: #0f0;">grep -r "def login" --include="*.py"</p>
+                        <br>
+                        <p style="color: #888;"># Step 5: Check tests (BEST way to understand usage)</p>
+                        <p style="color: #0f0;">find . -name "*test*.py" | head -5</p>
+                        <br>
+                        <p style="color: #888;"># Step 6: Use ripgrep (faster than grep)</p>
+                        <p style="color: #0f0;">rg "class.*Model" --type py  # Find all Model classes</p>
+                    </div>
+                </div>
+
+                <div style="background: rgba(103,58,183,0.1); padding: 2rem; border-radius: 10px; border-left: 4px solid #673ab7; margin-bottom: 2rem;">
+                    <h4 style="color: #673ab7; margin: 0 0 1rem 0; font-size: 1.6rem;">Projects to Study (Ranked by Difficulty)</h4>
+                    <div style="display: grid; gap: 1rem;">
+                        <div style="background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 8px;">
+                            <p style="color: #4caf50; font-weight: 700; font-size: 1.2rem; margin-bottom: 0.5rem;">🟢 BEGINNER:</p>
+                            <ul style="line-height: 2; font-size: 1.05rem;">
+                                <li><strong>Flask</strong> (github.com/pallets/flask) - Clean, well-commented web framework</li>
+                                <li><strong>Requests</strong> (github.com/psf/requests) - "Code for humans" - super readable</li>
+                                <li><strong>Click</strong> (github.com/pallets/click) - CLI framework with great docs</li>
+                            </ul>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 8px;">
+                            <p style="color: #ff9800; font-weight: 700; font-size: 1.2rem; margin-bottom: 0.5rem;">🟡 INTERMEDIATE:</p>
+                            <ul style="line-height: 2; font-size: 1.05rem;">
+                                <li><strong>FastAPI</strong> (github.com/tiangolo/fastapi) - Modern async patterns</li>
+                                <li><strong>SQLAlchemy</strong> (github.com/sqlalchemy/sqlalchemy) - Advanced ORM patterns</li>
+                                <li><strong>Celery</strong> (github.com/celery/celery) - Distributed task queue</li>
+                            </ul>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 8px;">
+                            <p style="color: #f44336; font-weight: 700; font-size: 1.2rem; margin-bottom: 0.5rem;">🔴 ADVANCED:</p>
+                            <ul style="line-height: 2; font-size: 1.05rem;">
+                                <li><strong>Django</strong> (github.com/django/django) - Full-featured framework</li>
+                                <li><strong>NumPy</strong> (github.com/numpy/numpy) - C extensions + Python</li>
+                                <li><strong>PyTorch</strong> (github.com/pytorch/pytorch) - Deep learning framework</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background: rgba(0,188,212,0.1); padding: 2rem; border-radius: 10px; border-left: 4px solid #00bcd4;">
+                    <h4 style="color: #00bcd4; margin: 0 0 1rem 0; font-size: 1.6rem;">What to Look For While Reading</h4>
+                    <div style="background: #000; padding: 1.5rem; border-radius: 8px; color: #fff;">
+                        <p style="color: #0ff; font-size: 1.1rem; line-height: 2;">
+                            ✅ <strong>Project Structure:</strong> How are files organized? What naming conventions?<br>
+                            ✅ <strong>Design Patterns:</strong> Factory? Observer? Singleton? Learn the classics.<br>
+                            ✅ <strong>Error Handling:</strong> How do they handle exceptions? Custom errors?<br>
+                            ✅ <strong>Testing:</strong> What's their test coverage? How do they mock?<br>
+                            ✅ <strong>Documentation:</strong> Docstrings? Type hints? README quality?<br>
+                            ✅ <strong>Code Style:</strong> PEP 8 compliance? Consistent formatting?<br>
+                            ✅ <strong>Performance:</strong> Any optimization tricks? Caching? Lazy loading?
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXPANDED SECTION: Refactoring & Code Quality -->
+            <div class="topic-section" style="background: linear-gradient(135deg, rgba(76,175,80,0.05) 0%, rgba(139,195,74,0.05) 100%); padding: 3rem; border-radius: 20px; margin: 3rem 0;">
+                <h2 style="color: #4caf50; font-size: 2.2rem; margin-bottom: 2rem;">9. Refactoring: Making Bad Code Good</h2>
+                
+                <div style="background: rgba(76,175,80,0.1); padding: 2rem; border-radius: 10px; border-left: 4px solid #4caf50; margin-bottom: 2rem;">
+                    <h4 style="color: #4caf50; margin: 0 0 1rem 0; font-size: 1.6rem;">Common Code Smells (Bad Patterns)</h4>
+                    <div style="background: #000; padding: 1.5rem; border-radius: 8px; font-family: monospace; font-size: 0.95rem;">
+                        <p style="color: #888;"># 1. MAGIC NUMBERS (BAD)</p>
+                        <p style="color: #f00;">if user.age > 18:  # ❌ What's special about 18?</p>
+                        <br>
+                        <p style="color: #888;"># GOOD: Use named constants</p>
+                        <p style="color: #0f0;">MINIMUM_AGE = 18</p>
+                        <p style="color: #0f0;">if user.age > MINIMUM_AGE:  # ✅ Self-documenting</p>
+                        <br><br>
+                        <p style="color: #888;"># 2. LONG FUNCTIONS (BAD)</p>
+                        <p style="color: #f00;">def process_order():  # ❌ 200 lines of code!</p>
+                        <p style="color: #f00;">    # validate, calculate, update DB, send email, log...</p>
+                        <br>
+                        <p style="color: #888;"># GOOD: Break into small functions</p>
+                        <p style="color: #0f0;">def process_order():</p>
+                        <p style="color: #0f0;">    validate_order()</p>
+                        <p style="color: #0f0;">    calculate_total()</p>
+                        <p style="color: #0f0;">    update_database()</p>
+                        <p style="color: #0f0;">    send_confirmation()</p>
+                        <p style="color: #0f0;">    log_transaction()</p>
+                        <br><br>
+                        <p style="color: #888;"># 3. NESTED IFS (BAD)</p>
+                        <p style="color: #f00;">if user:</p>
+                        <p style="color: #f00;">    if user.is_active:</p>
+                        <p style="color: #f00;">        if user.has_permission:</p>
+                        <p style="color: #f00;">            if not user.is_banned:</p>
+                        <br>
+                        <p style="color: #888;"># GOOD: Early returns</p>
+                        <p style="color: #0f0;">if not user: return False</p>
+                        <p style="color: #0f0;">if not user.is_active: return False</p>
+                        <p style="color: #0f0;">if not user.has_permission: return False</p>
+                        <p style="color: #0f0;">if user.is_banned: return False</p>
+                        <p style="color: #0f0;">return True</p>
+                    </div>
+                </div>
+
+                <div style="background: rgba(255,152,0,0.1); padding: 2rem; border-radius: 10px; border-left: 4px solid #ff9800;">
+                    <h4 style="color: #ff9800; margin: 0 0 1rem 0; font-size: 1.6rem;">Refactoring Techniques</h4>
+                    <div style="background: #000; padding: 1.5rem; border-radius: 8px; font-family: monospace; font-size: 0.95rem;">
+                        <p style="color: #888;"># Extract Method: Pull code into separate function</p>
+                        <p style="color: #f00;"># BEFORE (BAD)</p>
+                        <p style="color: #f00;">total = 0</p>
+                        <p style="color: #f00;">for item in cart:</p>
+                        <p style="color: #f00;">    total += item.price * item.quantity</p>
+                        <p style="color: #f00;">    if item.discount:</p>
+                        <p style="color: #f00;">        total -= item.discount</p>
+                        <br>
+                        <p style="color: #888;"># AFTER (GOOD)</p>
+                        <p style="color: #0f0;">def calculate_item_total(item):</p>
+                        <p style="color: #0f0;">    subtotal = item.price * item.quantity</p>
+                        <p style="color: #0f0;">    return subtotal - item.discount if item.discount else subtotal</p>
+                        <br>
+                        <p style="color: #0f0;">total = sum(calculate_item_total(item) for item in cart)</p>
+                        <br><br>
+                        <p style="color: #888;"># Replace Conditionals with Polymorphism</p>
+                        <p style="color: #f00;"># BAD: Type checking everywhere</p>
+                        <p style="color: #f00;">if payment_type == "credit":</p>
+                        <p style="color: #f00;">    process_credit()</p>
+                        <p style="color: #f00;">elif payment_type == "paypal":</p>
+                        <p style="color: #f00;">    process_paypal()</p>
+                        <br>
+                        <p style="color: #888;"># GOOD: Use strategy pattern</p>
+                        <p style="color: #0f0;">class CreditCardPayment:</p>
+                        <p style="color: #0f0;">    def process(self): ...</p>
+                        <p style="color: #0f0;">class PayPalPayment:</p>
+                        <p style="color: #0f0;">    def process(self): ...</p>
+                        <br>
+                        <p style="color: #0f0;">payment_method.process()  # Polymorphic call</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FINAL PROJECT CHALLENGE -->
+            <div style="background: linear-gradient(135deg, #ff5722 0%, #f44336 100%); padding: 4rem 3rem; border-radius: 20px; margin: 4rem 0; text-align: center;">
+                <h2 style="font-size: 3rem; margin-bottom: 2rem; color: #fff;">🏆 ULTIMATE CODE READING CHALLENGE</h2>
+                <p style="font-size: 1.4rem; line-height: 1.9; color: rgba(255,255,255,0.95); max-width: 900px; margin: 0 auto 3rem;">
+                    Pick ONE of these real-world tasks (this is what you'll do on the job):
+                </p>
+                <div style="text-align: left; max-width: 800px; margin: 0 auto;">
+                    <div style="background: rgba(0,0,0,0.3); padding: 2rem; border-radius: 12px; margin-bottom: 1.5rem;">
+                        <h3 style="color: #fff; margin-bottom: 1rem;">Challenge 1: Bug Hunt</h3>
+                        <p style="color: rgba(255,255,255,0.9); line-height: 1.8;">
+                            Clone Django (github.com/django/django). Find a closed bug report from last year. 
+                            Read the issue, locate the buggy code, understand the fix. Write a summary of:
+                            1) What caused the bug, 2) How they fixed it, 3) What you learned.
+                        </p>
+                    </div>
+                    <div style="background: rgba(0,0,0,0.3); padding: 2rem; border-radius: 12px; margin-bottom: 1.5rem;">
+                        <h3 style="color: #fff; margin-bottom: 1rem;">Challenge 2: Feature Trace</h3>
+                        <p style="color: rgba(255,255,255,0.9); line-height: 1.8;">
+                            Clone FastAPI (github.com/tiangolo/fastapi). Trace how a simple GET request flows through the codebase.
+                            Start from the @app.get() decorator. Follow the code path. Document every function call.
+                            You'll learn routing, middleware, dependency injection, and response handling.
+                        </p>
+                    </div>
+                    <div style="background: rgba(0,0,0,0.3); padding: 2rem; border-radius: 12px;">
+                        <h3 style="color: #fff; margin-bottom: 1rem;">Challenge 3: Refactoring Practice</h3>
+                        <p style="color: rgba(255,255,255,0.9); line-height: 1.8;">
+                            Find a small Python project on GitHub with messy code (search for "beginner projects").
+                            Fork it. Refactor it. Improve naming, extract functions, add docstrings, fix code smells.
+                            Submit a Pull Request. Explain your changes. This is EXACTLY how to contribute to open source.
+                        </p>
+                    </div>
+                </div>
+                <p style="font-size: 1.2rem; margin-top: 3rem; color: rgba(255,255,255,0.85);">
+                    Complete ANY of these and you're in the top 10% of developers. Most never read others' code. You will.
+                </p>
+            </div>
         </div>
     </section>
 

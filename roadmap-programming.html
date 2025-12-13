@@ -10,11 +10,27 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-15px); } }
+        .fade-in-up { animation: fadeInUp 0.6s ease-out forwards; opacity: 0; }
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .roadmap-section { opacity: 0; animation: fadeInUp 0.5s ease-out forwards; }
+        .roadmap-section:nth-child(1) { animation-delay: 0.1s; }
+        .roadmap-section:nth-child(2) { animation-delay: 0.2s; }
+        .roadmap-section:nth-child(3) { animation-delay: 0.3s; }
+        .roadmap-section:nth-child(4) { animation-delay: 0.4s; }
+        .roadmap-section:nth-child(5) { animation-delay: 0.5s; }
+    </style>
 </head>
 <body>
     <div class="stars"></div>
     <div class="twinkling"></div>
+    
+    <div style="position: fixed; top: -10%; left: -5%; width: 40%; height: 40%; background: radial-gradient(circle, rgba(0,204,255,0.15) 0%, transparent 70%); border-radius: 50%; filter: blur(80px); animation: float 15s ease-in-out infinite; z-index: 0;"></div>
+    <div style="position: fixed; bottom: -10%; right: -5%; width: 50%; height: 50%; background: radial-gradient(circle, rgba(156,39,176,0.12) 0%, transparent 70%); border-radius: 50%; filter: blur(100px); animation: float 20s ease-in-out infinite reverse; z-index: 0;"></div>
     
     <nav class="navbar">
         <div class="nav-container">
@@ -41,14 +57,18 @@
         </div>
     </nav>
 
-    <section class="content-page">
+    <section class="content-page" style="position: relative; z-index: 1;">
         <div class="content-container">
-            <div class="breadcrumb">
-                <a href="index.html">Home</a> / <a href="choose-path.html">Choose Path</a> / <span>Programming</span>
+            <div class="breadcrumb fade-in-up" style="background: rgba(0,204,255,0.1); border: 1px solid rgba(0,204,255,0.3); padding: 1rem 1.5rem; border-radius: 12px; display: inline-flex; gap: 0.5rem; backdrop-filter: blur(10px);">
+                <a href="index.html" style="color: #00ccff; font-weight: 600; text-decoration: none; transition: all 0.2s;" onmouseover="this.style.color='#0099cc'" onmouseout="this.style.color='#00ccff'">Home</a>
+                <span style="color: rgba(255,255,255,0.5);">/</span>
+                <a href="choose-path.html" style="color: #00ccff; font-weight: 600; text-decoration: none; transition: all 0.2s;" onmouseover="this.style.color='#0099cc'" onmouseout="this.style.color='#00ccff'">Choose Path</a>
+                <span style="color: rgba(255,255,255,0.5);">/</span>
+                <span style="color: rgba(255,255,255,0.9); font-weight: 600;">Programming</span>
             </div>
             
-            <h1 class="page-title">💻 Programming & Development Roadmap</h1>
-            <p class="page-subtitle">From Zero to Professional Developer — 10 Comprehensive Chapters</p>
+            <h1 class="page-title fade-in-up delay-1" style="font-size: clamp(3rem, 7vw, 5rem); font-weight: 900; margin: 3rem 0 1.5rem;"><span style="background: linear-gradient(135deg, #00ccff 0%, #0099cc 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-shadow: 0 0 60px rgba(0,204,255,0.3);">💻 Programming & Development Roadmap</span></h1>
+            <p class="page-subtitle fade-in-up delay-2" style="font-size: 1.4rem; color: rgba(255,255,255,0.85); max-width: 700px; line-height: 1.6; margin-bottom: 3rem;">From Zero to Professional Developer — 27 Comprehensive Chapters</p>
 
             <div class="key-takeaways" style="margin-bottom:3rem;">
                 <h3>🎯 What Makes This Roadmap Unique:</h3>

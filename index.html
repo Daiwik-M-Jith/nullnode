@@ -23,11 +23,48 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(0,255,136,0.4), 0 0 40px rgba(0,255,136,0.2); }
+            50% { box-shadow: 0 0 30px rgba(0,255,136,0.6), 0 0 60px rgba(0,255,136,0.3); }
+        }
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+    </style>
 </head>
 <body>
     <div class="stars"></div>
     <div class="twinkling"></div>
+    
+    <!-- Animated Background Orbs -->
+    <div style="position: fixed; top: -10%; left: -5%; width: 40%; height: 40%; background: radial-gradient(circle, rgba(0,255,136,0.15) 0%, transparent 70%); border-radius: 50%; filter: blur(80px); animation: float 15s ease-in-out infinite; z-index: 0;"></div>
+    <div style="position: fixed; bottom: -10%; right: -5%; width: 50%; height: 50%; background: radial-gradient(circle, rgba(0,204,255,0.12) 0%, transparent 70%); border-radius: 50%; filter: blur(100px); animation: float 20s ease-in-out infinite reverse; z-index: 0;"></div>
+    <div style="position: fixed; top: 40%; right: 10%; width: 30%; height: 30%; background: radial-gradient(circle, rgba(156,39,176,0.1) 0%, transparent 70%); border-radius: 50%; filter: blur(70px); animation: float 18s ease-in-out infinite; z-index: 0;"></div>
     
     <!-- Navigation -->
     <nav class="navbar">
@@ -64,49 +101,50 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; padding: 2rem;">
+    <section class="hero fade-in-up" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; padding: 2rem; z-index: 1;">
         <div style="max-width: 1200px; width: 100%; text-align: center;">
             <!-- Live Badge -->
-            <div style="display: inline-flex; align-items: center; gap: 0.75rem; background: rgba(0,20,10,0.8); border: 1px solid rgba(0,255,136,0.3); padding: 0.75rem 1.75rem; border-radius: 50px; margin-bottom: 3rem; backdrop-filter: blur(10px);">
-                <span style="width: 10px; height: 10px; background: #00ff88; border-radius: 50%; box-shadow: 0 0 15px #00ff88; animation: pulse 2s infinite;"></span>
-                <span style="font-size: 0.95rem; color: #00ff88; font-weight: 700; letter-spacing: 1px;">LIVE COMMUNITY</span>
+            <div class="fade-in-up delay-1" style="display: inline-flex; align-items: center; gap: 0.75rem; background: rgba(0,20,10,0.9); border: 1px solid rgba(0,255,136,0.4); padding: 0.85rem 2rem; border-radius: 50px; margin-bottom: 3rem; backdrop-filter: blur(20px); box-shadow: 0 8px 32px rgba(0,255,136,0.15); transition: all 0.3s;" onmouseover="this.style.transform='scale(1.05)'; this.style.borderColor='rgba(0,255,136,0.6)'" onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(0,255,136,0.4)'">
+                <span style="width: 12px; height: 12px; background: #00ff88; border-radius: 50%; box-shadow: 0 0 20px #00ff88, 0 0 40px rgba(0,255,136,0.5); animation: pulse 2s infinite;"></span>
+                <span style="font-size: 1rem; color: #00ff88; font-weight: 700; letter-spacing: 1.5px;">LIVE COMMUNITY</span>
             </div>
             
             <!-- Main Title -->
-            <h1 style="font-size: clamp(4rem, 12vw, 8rem); font-weight: 900; margin: 0 0 2rem 0; line-height: 1; letter-spacing: -0.02em;">
-                <span style="display: block; background: linear-gradient(to right, #00ff88, #00ccff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">NullSector</span>
+            <h1 class="fade-in-up delay-2" style="font-size: clamp(4rem, 12vw, 9rem); font-weight: 900; margin: 0 0 2.5rem 0; line-height: 1; letter-spacing: -0.03em;">
+                <span style="display: block; background: linear-gradient(135deg, #00ff88 0%, #00ccff 50%, #9c27b0 100%); background-size: 200% 200%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: gradient-shift 8s ease infinite; filter: drop-shadow(0 0 40px rgba(0,255,136,0.3));">NullSector</span>
             </h1>
             
             <!-- Description -->
-            <p style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); color: rgba(255,255,255,0.9); max-width: 800px; margin: 0 auto 4rem; line-height: 1.6; font-weight: 400;">
-                A <span style="color: #00ff88; font-weight: 600;">community</span> of tech and security enthusiasts. We provide comprehensive <span style="color: #00ccff; font-weight: 600;">educational resources</span> and assistance in <span style="color: #ffc800; font-weight: 600;">Cybersecurity</span> and <span style="color: #ffc800; font-weight: 600;">Programming</span>.
+            <p class="fade-in-up delay-3" style="font-size: clamp(1.25rem, 2.5vw, 1.85rem); color: rgba(255,255,255,0.95); max-width: 850px; margin: 0 auto 4.5rem; line-height: 1.7; font-weight: 400;">
+                A <span style="color: #00ff88; font-weight: 700; text-shadow: 0 0 20px rgba(0,255,136,0.4);">community</span> of tech and security enthusiasts. We provide comprehensive <span style="color: #00ccff; font-weight: 700; text-shadow: 0 0 20px rgba(0,204,255,0.4);">educational resources</span> and assistance in <span style="color: #ffc800; font-weight: 700; text-shadow: 0 0 20px rgba(255,200,0,0.4);">Cybersecurity</span> and <span style="color: #9c27b0; font-weight: 700; text-shadow: 0 0 20px rgba(156,39,176,0.4);">Programming</span>.
             </p>
             
             <!-- CTA Buttons -->
-            <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 5rem;">
-                <a href="hacking-ch01.html" style="text-decoration: none; background: #00ff88; color: #000; padding: 1.25rem 3rem; border-radius: 15px; font-weight: 800; font-size: 1.15rem; transition: all 0.3s; box-shadow: 0 10px 40px rgba(0,255,136,0.4); display: inline-flex; align-items: center; gap: 0.75rem;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 15px 50px rgba(0,255,136,0.6)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 40px rgba(0,255,136,0.4)'">
-                    <span>🔒</span>
+            <div class="fade-in-up delay-4" style="display: flex; gap: 1.75rem; justify-content: center; flex-wrap: wrap; margin-bottom: 6rem;">
+                <a href="hacking-ch01.html" style="text-decoration: none; background: linear-gradient(135deg, #00ff88 0%, #00cc6f 100%); color: #000; padding: 1.4rem 3.5rem; border-radius: 16px; font-weight: 900; font-size: 1.2rem; transition: all 0.4s; box-shadow: 0 15px 50px rgba(0,255,136,0.5), 0 0 0 0 rgba(0,255,136,0.4); display: inline-flex; align-items: center; gap: 0.85rem; position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-8px) scale(1.03)'; this.style.boxShadow='0 20px 60px rgba(0,255,136,0.7), 0 0 0 8px rgba(0,255,136,0.1)'; this.style.animation='glow 1.5s infinite'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 15px 50px rgba(0,255,136,0.5), 0 0 0 0 rgba(0,255,136,0.4)'; this.style.animation='none'">
+                    <span style="font-size: 1.5rem;">🔒</span>
                     <span>Start Hacking Path</span>
+                    <div style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); transition: left 0.5s;"></div>
                 </a>
-                <a href="programming-ch01.html" style="text-decoration: none; background: rgba(0,204,255,0.15); color: #fff; padding: 1.25rem 3rem; border-radius: 15px; font-weight: 800; font-size: 1.15rem; border: 2px solid #00ccff; transition: all 0.3s; display: inline-flex; align-items: center; gap: 0.75rem; backdrop-filter: blur(10px);" onmouseover="this.style.background='rgba(0,204,255,0.25)'; this.style.transform='translateY(-5px)'; this.style.boxShadow='0 15px 50px rgba(0,204,255,0.3)'" onmouseout="this.style.background='rgba(0,204,255,0.15)'; this.style.transform='translateY(0)'; this.style.boxShadow='none'">
-                    <span>💻</span>
+                <a href="programming-ch01.html" style="text-decoration: none; background: rgba(0,204,255,0.12); color: #fff; padding: 1.4rem 3.5rem; border-radius: 16px; font-weight: 900; font-size: 1.2rem; border: 2.5px solid #00ccff; transition: all 0.4s; display: inline-flex; align-items: center; gap: 0.85rem; backdrop-filter: blur(20px); box-shadow: 0 10px 40px rgba(0,204,255,0.3); position: relative; overflow: hidden;" onmouseover="this.style.background='rgba(0,204,255,0.25)'; this.style.transform='translateY(-8px) scale(1.03)'; this.style.boxShadow='0 20px 60px rgba(0,204,255,0.5), 0 0 0 8px rgba(0,204,255,0.1)'" onmouseout="this.style.background='rgba(0,204,255,0.12)'; this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 10px 40px rgba(0,204,255,0.3)'">
+                    <span style="font-size: 1.5rem;">💻</span>
                     <span>Start Programming Path</span>
                 </a>
             </div>
             
             <!-- Stats -->
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 3rem; max-width: 700px; margin: 0 auto;">
-                <div style="text-align: center;">
-                    <div style="font-size: 3.5rem; font-weight: 900; color: #00ff88; margin-bottom: 0.5rem; line-height: 1;">27</div>
-                    <div style="color: rgba(255,255,255,0.7); font-size: 1.05rem; font-weight: 500;">Hacking Chapters</div>
+            <div class="fade-in-up delay-4" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3.5rem; max-width: 800px; margin: 0 auto;">
+                <div style="text-align: center; padding: 2rem; background: rgba(0,255,136,0.05); border-radius: 20px; border: 1px solid rgba(0,255,136,0.2); backdrop-filter: blur(10px); transition: all 0.3s;" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='rgba(0,255,136,0.5)'; this.style.background='rgba(0,255,136,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(0,255,136,0.2)'; this.style.background='rgba(0,255,136,0.05)'">
+                    <div style="font-size: 4rem; font-weight: 900; background: linear-gradient(135deg, #00ff88, #00cc6f); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.75rem; line-height: 1; text-shadow: 0 0 40px rgba(0,255,136,0.4);">27</div>
+                    <div style="color: rgba(255,255,255,0.85); font-size: 1.1rem; font-weight: 600; letter-spacing: 0.5px;">Hacking Chapters</div>
                 </div>
-                <div style="text-align: center;">
-                    <div style="font-size: 3.5rem; font-weight: 900; color: #00ccff; margin-bottom: 0.5rem; line-height: 1;">27</div>
-                    <div style="color: rgba(255,255,255,0.7); font-size: 1.05rem; font-weight: 500;">Programming Chapters</div>
+                <div style="text-align: center; padding: 2rem; background: rgba(0,204,255,0.05); border-radius: 20px; border: 1px solid rgba(0,204,255,0.2); backdrop-filter: blur(10px); transition: all 0.3s;" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='rgba(0,204,255,0.5)'; this.style.background='rgba(0,204,255,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(0,204,255,0.2)'; this.style.background='rgba(0,204,255,0.05)'">
+                    <div style="font-size: 4rem; font-weight: 900; background: linear-gradient(135deg, #00ccff, #0099cc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.75rem; line-height: 1; text-shadow: 0 0 40px rgba(0,204,255,0.4);">27</div>
+                    <div style="color: rgba(255,255,255,0.85); font-size: 1.1rem; font-weight: 600; letter-spacing: 0.5px;">Programming Chapters</div>
                 </div>
-                <div style="text-align: center;">
-                    <div style="font-size: 3.5rem; font-weight: 900; color: #ffc800; margin-bottom: 0.5rem; line-height: 1;">1000+</div>
-                    <div style="color: rgba(255,255,255,0.7); font-size: 1.05rem; font-weight: 500;">Hours of Content</div>
+                <div style="text-align: center; padding: 2rem; background: rgba(255,193,7,0.05); border-radius: 20px; border: 1px solid rgba(255,193,7,0.2); backdrop-filter: blur(10px); transition: all 0.3s;" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='rgba(255,193,7,0.5)'; this.style.background='rgba(255,193,7,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,193,7,0.2)'; this.style.background='rgba(255,193,7,0.05)'">
+                    <div style="font-size: 4rem; font-weight: 900; background: linear-gradient(135deg, #ffc800, #ff9800); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.75rem; line-height: 1; text-shadow: 0 0 40px rgba(255,193,7,0.4);">1000+</div>
+                    <div style="color: rgba(255,255,255,0.85); font-size: 1.1rem; font-weight: 600; letter-spacing: 0.5px;">Hours of Content</div>
                 </div>
             </div>
         </div>
@@ -114,88 +152,89 @@
         <style>
             @keyframes pulse {
                 0%, 100% { opacity: 1; transform: scale(1); }
-                50% { opacity: 0.6; transform: scale(1.3); }
+                50% { opacity: 0.6; transform: scale(1.4); }
             }
         </style>
     </section>
 
     <!-- Cards Section -->
-    <section style="padding: 6rem 2rem; background: rgba(0,0,0,0.3);">
+    <section style="padding: 7rem 2rem; background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.5) 100%); position: relative; z-index: 1;">
         <div style="max-width: 1200px; margin: 0 auto;">
             <!-- Section Header -->
-            <div style="text-align: center; margin-bottom: 4rem;">
-                <h2 style="font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 900; color: #fff; margin-bottom: 1rem;">
+            <div class="fade-in-up" style="text-align: center; margin-bottom: 5rem;">
+                <h2 style="font-size: clamp(2.75rem, 6vw, 4rem); font-weight: 900; background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.7) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 1.25rem; text-shadow: 0 0 60px rgba(255,255,255,0.1);">
                     Explore Resources
                 </h2>
-                <p style="color: rgba(255,255,255,0.7); font-size: 1.2rem; max-width: 600px; margin: 0 auto;">
+                <p style="color: rgba(255,255,255,0.8); font-size: 1.35rem; max-width: 650px; margin: 0 auto; line-height: 1.6;">
                     Everything you need to master cybersecurity and programming
                 </p>
             </div>
             
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2.5rem;">
                 <!-- Card 1: Hacking -->
-                <a href="roadmap-hacking.html" style="text-decoration: none; background: rgba(0,255,136,0.08); border: 1px solid rgba(0,255,136,0.3); border-radius: 20px; padding: 2.5rem; transition: all 0.3s; display: block; backdrop-filter: blur(10px);" onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='#00ff88'; this.style.background='rgba(0,255,136,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(0,255,136,0.3)'; this.style.background='rgba(0,255,136,0.08)'">
-                    <div style="font-size: 3rem; margin-bottom: 1.5rem;">🔒</div>
-                    <h3 style="font-size: 1.75rem; font-weight: 800; color: #00ff88; margin-bottom: 1rem;">Hacking Roadmap</h3>
-                    <p style="color: rgba(255,255,255,0.8); line-height: 1.7; margin-bottom: 1.5rem; font-size: 1.05rem;">27 chapters covering everything from computer fundamentals to advanced penetration testing</p>
-                    <div style="color: #00ff88; font-weight: 700; display: flex; align-items: center; gap: 0.5rem;">
+                <a href="roadmap-hacking.html" class="fade-in-up delay-1" style="text-decoration: none; background: linear-gradient(135deg, rgba(0,255,136,0.1) 0%, rgba(0,255,136,0.05) 100%); border: 2px solid rgba(0,255,136,0.3); border-radius: 24px; padding: 3rem; transition: all 0.4s; display: block; backdrop-filter: blur(20px); box-shadow: 0 10px 40px rgba(0,0,0,0.3); position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-12px) scale(1.02)'; this.style.borderColor='#00ff88'; this.style.background='linear-gradient(135deg, rgba(0,255,136,0.15) 0%, rgba(0,255,136,0.08) 100%)'; this.style.boxShadow='0 20px 60px rgba(0,255,136,0.4)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.borderColor='rgba(0,255,136,0.3)'; this.style.background='linear-gradient(135deg, rgba(0,255,136,0.1) 0%, rgba(0,255,136,0.05) 100%)'; this.style.boxShadow='0 10px 40px rgba(0,0,0,0.3)'">
+                    <div style="position: absolute; top: -50%; right: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(0,255,136,0.15) 0%, transparent 60%); opacity: 0; transition: opacity 0.4s; pointer-events: none;"></div>
+                    <div style="font-size: 3.5rem; margin-bottom: 2rem; filter: drop-shadow(0 0 20px rgba(0,255,136,0.5));">🔒</div>
+                    <h3 style="font-size: 2rem; font-weight: 900; color: #00ff88; margin-bottom: 1.25rem; text-shadow: 0 0 30px rgba(0,255,136,0.4);">Hacking Roadmap</h3>
+                    <p style="color: rgba(255,255,255,0.85); line-height: 1.75; margin-bottom: 2rem; font-size: 1.1rem;">27 chapters covering everything from computer fundamentals to advanced penetration testing and cloud security</p>
+                    <div style="color: #00ff88; font-weight: 800; display: flex; align-items: center; gap: 0.75rem; font-size: 1.05rem;">
                         <span>Start Learning</span>
-                        <span>→</span>
+                        <span style="transition: transform 0.3s;">→</span>
                     </div>
                 </a>
 
                 <!-- Card 2: Programming -->
-                <a href="roadmap-programming.html" style="text-decoration: none; background: rgba(0,204,255,0.08); border: 1px solid rgba(0,204,255,0.3); border-radius: 20px; padding: 2.5rem; transition: all 0.3s; display: block; backdrop-filter: blur(10px);" onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='#00ccff'; this.style.background='rgba(0,204,255,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(0,204,255,0.3)'; this.style.background='rgba(0,204,255,0.08)'">
-                    <div style="font-size: 3rem; margin-bottom: 1.5rem;">💻</div>
-                    <h3 style="font-size: 1.75rem; font-weight: 800; color: #00ccff; margin-bottom: 1rem;">Programming Roadmap</h3>
-                    <p style="color: rgba(255,255,255,0.8); line-height: 1.7; margin-bottom: 1.5rem; font-size: 1.05rem;">27 chapters from Python basics to advanced algorithms and software engineering</p>
-                    <div style="color: #00ccff; font-weight: 700; display: flex; align-items: center; gap: 0.5rem;">
+                <a href="roadmap-programming.html" class="fade-in-up delay-2" style="text-decoration: none; background: linear-gradient(135deg, rgba(0,204,255,0.1) 0%, rgba(0,204,255,0.05) 100%); border: 2px solid rgba(0,204,255,0.3); border-radius: 24px; padding: 3rem; transition: all 0.4s; display: block; backdrop-filter: blur(20px); box-shadow: 0 10px 40px rgba(0,0,0,0.3); position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-12px) scale(1.02)'; this.style.borderColor='#00ccff'; this.style.background='linear-gradient(135deg, rgba(0,204,255,0.15) 0%, rgba(0,204,255,0.08) 100%)'; this.style.boxShadow='0 20px 60px rgba(0,204,255,0.4)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.borderColor='rgba(0,204,255,0.3)'; this.style.background='linear-gradient(135deg, rgba(0,204,255,0.1) 0%, rgba(0,204,255,0.05) 100%)'; this.style.boxShadow='0 10px 40px rgba(0,0,0,0.3)'">
+                    <div style="font-size: 3.5rem; margin-bottom: 2rem; filter: drop-shadow(0 0 20px rgba(0,204,255,0.5));">💻</div>
+                    <h3 style="font-size: 2rem; font-weight: 900; color: #00ccff; margin-bottom: 1.25rem; text-shadow: 0 0 30px rgba(0,204,255,0.4);">Programming Roadmap</h3>
+                    <p style="color: rgba(255,255,255,0.85); line-height: 1.75; margin-bottom: 2rem; font-size: 1.1rem;">27 chapters from Python basics to advanced algorithms, web development, and software engineering</p>
+                    <div style="color: #00ccff; font-weight: 800; display: flex; align-items: center; gap: 0.75rem; font-size: 1.05rem;">
                         <span>Start Learning</span>
-                        <span>→</span>
+                        <span style="transition: transform 0.3s;">→</span>
                     </div>
                 </a>
 
                 <!-- Card 3: Terminal -->
-                <a href="null-terminal.html" style="text-decoration: none; background: rgba(156,39,176,0.08); border: 1px solid rgba(156,39,176,0.3); border-radius: 20px; padding: 2.5rem; transition: all 0.3s; display: block; backdrop-filter: blur(10px);" onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='#9c27b0'; this.style.background='rgba(156,39,176,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(156,39,176,0.3)'; this.style.background='rgba(156,39,176,0.08)'">
-                    <div style="font-size: 3rem; margin-bottom: 1.5rem;">⚡</div>
-                    <h3 style="font-size: 1.75rem; font-weight: 800; color: #9c27b0; margin-bottom: 1rem;">Null Terminal</h3>
-                    <p style="color: rgba(255,255,255,0.8); line-height: 1.7; margin-bottom: 1.5rem; font-size: 1.05rem;">Practice Linux commands in a safe browser-based terminal environment</p>
-                    <div style="color: #9c27b0; font-weight: 700; display: flex; align-items: center; gap: 0.5rem;">
+                <a href="null-terminal.html" class="fade-in-up delay-3" style="text-decoration: none; background: linear-gradient(135deg, rgba(156,39,176,0.1) 0%, rgba(156,39,176,0.05) 100%); border: 2px solid rgba(156,39,176,0.3); border-radius: 24px; padding: 3rem; transition: all 0.4s; display: block; backdrop-filter: blur(20px); box-shadow: 0 10px 40px rgba(0,0,0,0.3); position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-12px) scale(1.02)'; this.style.borderColor='#9c27b0'; this.style.background='linear-gradient(135deg, rgba(156,39,176,0.15) 0%, rgba(156,39,176,0.08) 100%)'; this.style.boxShadow='0 20px 60px rgba(156,39,176,0.4)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.borderColor='rgba(156,39,176,0.3)'; this.style.background='linear-gradient(135deg, rgba(156,39,176,0.1) 0%, rgba(156,39,176,0.05) 100%)'; this.style.boxShadow='0 10px 40px rgba(0,0,0,0.3)'">
+                    <div style="font-size: 3.5rem; margin-bottom: 2rem; filter: drop-shadow(0 0 20px rgba(156,39,176,0.5));">⚡</div>
+                    <h3 style="font-size: 2rem; font-weight: 900; color: #9c27b0; margin-bottom: 1.25rem; text-shadow: 0 0 30px rgba(156,39,176,0.4);">Null Terminal</h3>
+                    <p style="color: rgba(255,255,255,0.85); line-height: 1.75; margin-bottom: 2rem; font-size: 1.1rem;">Practice Linux commands in a safe browser-based terminal environment with real-time feedback</p>
+                    <div style="color: #9c27b0; font-weight: 800; display: flex; align-items: center; gap: 0.75rem; font-size: 1.05rem;">
                         <span>Launch Terminal</span>
-                        <span>→</span>
+                        <span style="transition: transform 0.3s;">→</span>
                     </div>
                 </a>
 
                 <!-- Card 4: FAQ -->
-                <a href="faq.html" style="text-decoration: none; background: rgba(255,193,7,0.08); border: 1px solid rgba(255,193,7,0.3); border-radius: 20px; padding: 2.5rem; transition: all 0.3s; display: block; backdrop-filter: blur(10px);" onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='#ffc800'; this.style.background='rgba(255,193,7,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,193,7,0.3)'; this.style.background='rgba(255,193,7,0.08)'">
-                    <div style="font-size: 3rem; margin-bottom: 1.5rem;">📚</div>
-                    <h3 style="font-size: 1.75rem; font-weight: 800; color: #ffc800; margin-bottom: 1rem;">FAQ</h3>
-                    <p style="color: rgba(255,255,255,0.8); line-height: 1.7; margin-bottom: 1.5rem; font-size: 1.05rem;">Answers to frequently asked questions from our community</p>
-                    <div style="color: #ffc800; font-weight: 700; display: flex; align-items: center; gap: 0.5rem;">
+                <a href="faq.html" class="fade-in-up delay-4" style="text-decoration: none; background: linear-gradient(135deg, rgba(255,193,7,0.1) 0%, rgba(255,193,7,0.05) 100%); border: 2px solid rgba(255,193,7,0.3); border-radius: 24px; padding: 3rem; transition: all 0.4s; display: block; backdrop-filter: blur(20px); box-shadow: 0 10px 40px rgba(0,0,0,0.3); position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-12px) scale(1.02)'; this.style.borderColor='#ffc800'; this.style.background='linear-gradient(135deg, rgba(255,193,7,0.15) 0%, rgba(255,193,7,0.08) 100%)'; this.style.boxShadow='0 20px 60px rgba(255,193,7,0.4)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.borderColor='rgba(255,193,7,0.3)'; this.style.background='linear-gradient(135deg, rgba(255,193,7,0.1) 0%, rgba(255,193,7,0.05) 100%)'; this.style.boxShadow='0 10px 40px rgba(0,0,0,0.3)'">
+                    <div style="font-size: 3.5rem; margin-bottom: 2rem; filter: drop-shadow(0 0 20px rgba(255,193,7,0.5));">📚</div>
+                    <h3 style="font-size: 2rem; font-weight: 900; color: #ffc800; margin-bottom: 1.25rem; text-shadow: 0 0 30px rgba(255,193,7,0.4);">FAQ</h3>
+                    <p style="color: rgba(255,255,255,0.85); line-height: 1.75; margin-bottom: 2rem; font-size: 1.1rem;">Answers to frequently asked questions from our community of learners and experts</p>
+                    <div style="color: #ffc800; font-weight: 800; display: flex; align-items: center; gap: 0.75rem; font-size: 1.05rem;">
                         <span>View FAQs</span>
-                        <span>→</span>
+                        <span style="transition: transform 0.3s;">→</span>
                     </div>
                 </a>
 
                 <!-- Card 5: Discord -->
-                <a href="https://discord.gg/Tz9Y3wea32" target="_blank" style="text-decoration: none; background: rgba(114,137,218,0.08); border: 1px solid rgba(114,137,218,0.3); border-radius: 20px; padding: 2.5rem; transition: all 0.3s; display: block; backdrop-filter: blur(10px);" onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='#7289da'; this.style.background='rgba(114,137,218,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(114,137,218,0.3)'; this.style.background='rgba(114,137,218,0.08)'">
-                    <div style="font-size: 3rem; margin-bottom: 1.5rem;">💬</div>
-                    <h3 style="font-size: 1.75rem; font-weight: 800; color: #7289da; margin-bottom: 1rem;">Join Discord</h3>
-                    <p style="color: rgba(255,255,255,0.8); line-height: 1.7; margin-bottom: 1.5rem; font-size: 1.05rem;">Connect with the community, get help, and share your journey</p>
-                    <div style="color: #7289da; font-weight: 700; display: flex; align-items: center; gap: 0.5rem;">
+                <a href="https://discord.gg/Tz9Y3wea32" target="_blank" class="fade-in-up delay-1" style="text-decoration: none; background: linear-gradient(135deg, rgba(114,137,218,0.1) 0%, rgba(114,137,218,0.05) 100%); border: 2px solid rgba(114,137,218,0.3); border-radius: 24px; padding: 3rem; transition: all 0.4s; display: block; backdrop-filter: blur(20px); box-shadow: 0 10px 40px rgba(0,0,0,0.3); position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-12px) scale(1.02)'; this.style.borderColor='#7289da'; this.style.background='linear-gradient(135deg, rgba(114,137,218,0.15) 0%, rgba(114,137,218,0.08) 100%)'; this.style.boxShadow='0 20px 60px rgba(114,137,218,0.4)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.borderColor='rgba(114,137,218,0.3)'; this.style.background='linear-gradient(135deg, rgba(114,137,218,0.1) 0%, rgba(114,137,218,0.05) 100%)'; this.style.boxShadow='0 10px 40px rgba(0,0,0,0.3)'">
+                    <div style="font-size: 3.5rem; margin-bottom: 2rem; filter: drop-shadow(0 0 20px rgba(114,137,218,0.5));">💬</div>
+                    <h3 style="font-size: 2rem; font-weight: 900; color: #7289da; margin-bottom: 1.25rem; text-shadow: 0 0 30px rgba(114,137,218,0.4);">Join Discord</h3>
+                    <p style="color: rgba(255,255,255,0.85); line-height: 1.75; margin-bottom: 2rem; font-size: 1.1rem;">Connect with the community, get help, share your journey, and collaborate with peers</p>
+                    <div style="color: #7289da; font-weight: 800; display: flex; align-items: center; gap: 0.75rem; font-size: 1.05rem;">
                         <span>Join Now</span>
-                        <span>→</span>
+                        <span style="transition: transform 0.3s;">→</span>
                     </div>
                 </a>
 
                 <!-- Card 6: GitHub -->
-                <a href="https://github.com/4fqr/nullnode" target="_blank" style="text-decoration: none; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.3); border-radius: 20px; padding: 2.5rem; transition: all 0.3s; display: block; backdrop-filter: blur(10px);" onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='#fff'; this.style.background='rgba(255,255,255,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.3)'; this.style.background='rgba(255,255,255,0.08)'">
-                    <div style="font-size: 3rem; margin-bottom: 1.5rem;">⭐</div>
-                    <h3 style="font-size: 1.75rem; font-weight: 800; color: #fff; margin-bottom: 1rem;">Contribute</h3>
-                    <p style="color: rgba(255,255,255,0.8); line-height: 1.7; margin-bottom: 1.5rem; font-size: 1.05rem;">Help us build the best learning platform - open source on GitHub</p>
-                    <div style="color: #fff; font-weight: 700; display: flex; align-items: center; gap: 0.5rem;">
+                <a href="https://github.com/4fqr/nullnode" target="_blank" class="fade-in-up delay-2" style="text-decoration: none; background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%); border: 2px solid rgba(255,255,255,0.3); border-radius: 24px; padding: 3rem; transition: all 0.4s; display: block; backdrop-filter: blur(20px); box-shadow: 0 10px 40px rgba(0,0,0,0.3); position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-12px) scale(1.02)'; this.style.borderColor='#fff'; this.style.background='linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.08) 100%)'; this.style.boxShadow='0 20px 60px rgba(255,255,255,0.3)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.borderColor='rgba(255,255,255,0.3)'; this.style.background='linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)'; this.style.boxShadow='0 10px 40px rgba(0,0,0,0.3)'">
+                    <div style="font-size: 3.5rem; margin-bottom: 2rem; filter: drop-shadow(0 0 20px rgba(255,255,255,0.5));">⭐</div>
+                    <h3 style="font-size: 2rem; font-weight: 900; color: #fff; margin-bottom: 1.25rem; text-shadow: 0 0 30px rgba(255,255,255,0.3);">Contribute</h3>
+                    <p style="color: rgba(255,255,255,0.85); line-height: 1.75; margin-bottom: 2rem; font-size: 1.1rem;">Help us build the best learning platform - open source, MIT licensed, and community-driven</p>
+                    <div style="color: #fff; font-weight: 800; display: flex; align-items: center; gap: 0.75rem; font-size: 1.05rem;">
                         <span>View on GitHub</span>
-                        <span>→</span>
+                        <span style="transition: transform 0.3s;">→</span>
                     </div>
                 </a>
             </div>
