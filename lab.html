@@ -442,7 +442,22 @@
         const GUILD_ID = '1356978572027367624';
         const STUDENT_ROLE_ID = '1444364842378199050';
         
-        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        // Detect production environment
+        const isProduction = window.location.hostname === 'nullnode.vercel.app';
+        const siteUrl = isProduction ? 'https://nullnode.vercel.app' : window.location.origin;
+
+        console.log('[Lab Auth] Environment:', isProduction ? 'PRODUCTION' : 'DEVELOPMENT');
+        console.log('[Lab Auth] Site URL:', siteUrl);
+        
+        // Initialize Supabase client with correct site URL
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+            auth: {
+                autoRefreshToken: true,
+                persistSession: true,
+                detectSessionInUrl: true,
+                flowType: 'pkce'
+            }
+        });
 
         // UI Elements
         const authButton = document.getElementById('authButton');
@@ -554,11 +569,15 @@
 
         // Login with Discord
         async function loginWithDiscord() {
+            console.log('[Lab Auth] Login button clicked');
+            console.log('[Lab Auth] Current page:', window.location.href);
+            console.log('[Lab Auth] Using site URL:', siteUrl);
+            
             const { data, error } = await supabase.auth.signInWithOAuth({
                 provider: 'discord',
                 options: {
                     scopes: 'identify guilds guilds.members.read',
-                    redirectTo: window.location.origin + '/lab.html'
+                    redirectTo: siteUrl
                 }
             });
             if (error) {
