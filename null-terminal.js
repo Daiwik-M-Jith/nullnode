@@ -678,23 +678,57 @@ class NullTerminal {
         'nmap': function(args) {
             if (!args.length) {
                 return `<span class="output-info">Nmap 7.94 ( https://nmap.org )</span>
-<span class="output-warning">Usage: nmap [target]</span>
-<span class="output-muted">Example: nmap 192.168.1.1</span>`;
+<span class="output-warning">Usage: nmap [Scan Type(s)] [Options] {target}</span>
+<span class="output-muted">Example: nmap -sS -A -p 80,443 192.168.1.1</span>
+<span class="output-muted">Example: nmap -sV -O --top-ports 100 target.com</span>`;
             }
             
-            const target = args[0];
-            return `<span class="output-info">Starting Nmap scan on ${target}</span>
-<span class="output-muted">═══════════════════════════════════════</span>
-<span class="output-success">Nmap scan report for ${target}</span>
-<span class="output-info">Host is up (0.00050s latency)</span>
-
-<span class="output-muted">PORT     STATE SERVICE</span>
-<span class="output-success">22/tcp   open  ssh</span>
-<span class="output-success">80/tcp   open  http</span>
-<span class="output-success">443/tcp  open  https</span>
-<span class="output-info">3306/tcp closed mysql</span>
-
-<span class="output-success">Nmap done: 1 IP address scanned in 2.84 seconds</span>`;
+            // Parse flags
+            let scanType = 'TCP SYN';
+            let osDetection = false;
+            let serviceVersion = false;
+            let aggressive = false;
+            let ports = '22,80,443';
+            let target = args[args.length - 1];
+            
+            for (let i = 0; i < args.length - 1; i++) {
+                const arg = args[i];
+                if (arg === '-sS') scanType = 'TCP SYN';
+                if (arg === '-sT') scanType = 'TCP Connect';
+                if (arg === '-sU') scanType = 'UDP';
+                if (arg === '-sn') scanType = 'Ping (no port)';
+                if (arg === '-sV') serviceVersion = true;
+                if (arg === '-O') osDetection = true;
+                if (arg === '-A') { aggressive = true; osDetection = true; serviceVersion = true; }
+                if (arg === '-p') ports = args[i + 1];
+                if (arg === '--top-ports') ports = `top ${args[i + 1]}`;
+            }
+            
+            let output = `<span class="output-info">Starting Nmap 7.94 ( https://nmap.org )</span>\n`;
+            output += `<span class="output-muted">Scan Type: ${scanType} Scan</span>\n`;
+            output += `<span class="output-muted">═══════════════════════════════════════</span>\n`;
+            output += `<span class="output-success">Nmap scan report for ${target}</span>\n`;
+            output += `<span class="output-info">Host is up (0.00050s latency)</span>\n\n`;
+            
+            output += `<span class="output-muted">PORT     STATE SERVICE${serviceVersion ? '     VERSION' : ''}</span>\n`;
+            output += `<span class="output-success">22/tcp   open  ssh${serviceVersion ? '         OpenSSH 8.9p1 Ubuntu' : ''}</span>\n`;
+            output += `<span class="output-success">80/tcp   open  http${serviceVersion ? '        Apache httpd 2.4.52' : ''}</span>\n`;
+            output += `<span class="output-success">443/tcp  open  https${serviceVersion ? '       nginx 1.21.6' : ''}</span>\n`;
+            
+            if (osDetection) {
+                output += `\n<span class="output-info">OS detection performed:</span>\n`;
+                output += `<span class="output-success">Running: Linux 5.X</span>\n`;
+                output += `<span class="output-success">OS CPE: cpe:/o:linux:linux_kernel:5</span>\n`;
+                output += `<span class="output-info">OS details: Linux 5.4 - 5.19</span>\n`;
+            }
+            
+            if (aggressive) {
+                output += `\n<span class="output-info">Aggressive scan extras:</span>\n`;
+                output += `<span class="output-muted">Traceroute, scripts, and OS detection included</span>\n`;
+            }
+            
+            output += `\n<span class="output-success">Nmap done: 1 IP address scanned in 2.84 seconds</span>`;
+            return output;
         },
 
         'traceroute': function(args) {
@@ -774,8 +808,9 @@ class NullTerminal {
         },
 
         // Security Tools
-        'metasploit': function() {
-            return `<span class="output-success">
+        'metasploit': function(args) {
+            if (!args.length) {
+                return `<span class="output-success">
        =[ metasploit v6.3.16-dev                          ]
 + -- --=[ 2328 exploits - 1218 auxiliary - 413 post       ]
 + -- --=[ 1318 payloads - 46 encoders - 11 nops          ]
@@ -783,10 +818,56 @@ class NullTerminal {
 </span>
 <span class="output-info">Metasploit tip: Use 'search' to find modules</span>
 <span class="output-warning">⚠️  Educational simulation only</span>`;
+            }
+            
+            // Parse metasploit commands
+            const cmd = args[0];
+            if (cmd === 'use') {
+                const module = args.slice(1).join(' ');
+                return `<span class="output-success">[*] Using module: ${module}</span>
+<span class="output-info">Module loaded. Set options with 'set' command</span>`;
+            }
+            if (cmd === 'search') {
+                const term = args.slice(1).join(' ');
+                return `<span class="output-info">Searching for modules matching: ${term}</span>
+<span class="output-muted">═══════════════════════════════════════</span>
+<span class="output-success">#  Name                               Rank    Description</span>
+<span class="output-info">0  exploit/windows/smb/ms17_010       excellent  MS17-010 EternalBlue</span>
+<span class="output-info">1  exploit/multi/handler              manual     Generic Payload Handler</span>
+<span class="output-info">2  auxiliary/scanner/http/dir_scanner normal     HTTP Directory Scanner</span>
+<span class="output-warning">⚠️  Educational simulation</span>`;
+            }
+            if (cmd === 'set') {
+                const option = args[1];
+                const value = args.slice(2).join(' ');
+                return `<span class="output-success">${option} => ${value}</span>`;
+            }
+            if (cmd === 'show') {
+                if (args[1] === 'options') {
+                    return `<span class="output-info">Module options:</span>
+<span class="output-muted">Name       Current Setting  Required  Description</span>
+<span class="output-info">RHOSTS                      yes       Target address</span>
+<span class="output-info">RPORT      445              yes       Target port</span>
+<span class="output-info">LHOST                       yes       Local host for reverse connection</span>`;
+                }
+                if (args[1] === 'payloads') {
+                    return `<span class="output-info">Compatible payloads:</span>
+<span class="output-success">windows/meterpreter/reverse_tcp</span>
+<span class="output-success">windows/shell/reverse_tcp</span>
+<span class="output-success">generic/shell_reverse_tcp</span>`;
+                }
+            }
+            if (cmd === 'exploit' || cmd === 'run') {
+                return `<span class="output-info">[*] Starting exploit...</span>
+<span class="output-success">[+] Exploit completed successfully (simulated)</span>
+<span class="output-warning">⚠️  Educational simulation only</span>`;
+            }
+            return `<span class="output-error">Unknown command: ${cmd}</span>
+<span class="output-muted">Try: use, search, set, show, exploit</span>`;
         },
 
-        'msfconsole': function() {
-            return this.commands.metasploit.call(this);
+        'msfconsole': function(args) {
+            return this.commands.metasploit.call(this, args);
         },
 
         'aircrack-ng': function() {
@@ -803,18 +884,111 @@ class NullTerminal {
 <span class="output-muted">Usage: john [options] password-files</span>`;
         },
 
-        'hydra': function() {
-            return `<span class="output-info">Hydra v9.5 - Network Logon Cracker</span>
+        'hydra': function(args) {
+            if (!args.length) {
+                return `<span class="output-info">Hydra v9.5 - Network Logon Cracker</span>
 <span class="output-success">Fast password brute-forcing tool</span>
 <span class="output-warning">⚠️  Use responsibly - Educational only</span>
-<span class="output-muted">Usage: hydra [[[-l LOGIN|-L FILE] [-p PASS|-P FILE]] target service</span>`;
+<span class="output-muted">Usage: hydra [options] target service</span>
+<span class="output-muted">Example: hydra -l admin -P passwords.txt 192.168.1.1 ssh</span>
+<span class="output-muted">Example: hydra -L users.txt -p password ftp://10.0.0.1</span>`;
+            }
+            
+            let username = 'admin';
+            let password = 'wordlist.txt';
+            let target = 'target';
+            let service = 'ssh';
+            
+            for (let i = 0; i < args.length; i++) {
+                if (args[i] === '-l') username = args[i + 1];
+                if (args[i] === '-L') username = `file: ${args[i + 1]}`;
+                if (args[i] === '-p') password = args[i + 1];
+                if (args[i] === '-P') password = `file: ${args[i + 1]}`;
+                if (args[i] === '-t') /* tasks */ ;
+                if (args[i] === '-V') /* verbose */ ;
+            }
+            
+            target = args[args.length - 2] || 'target';
+            service = args[args.length - 1] || 'ssh';
+            
+            return `<span class="output-info">Hydra v9.5 starting at ${new Date().toLocaleTimeString()}</span>
+<span class="output-muted">═══════════════════════════════════════</span>
+<span class="output-info">[INFO] Target: ${target}</span>
+<span class="output-info">[INFO] Service: ${service}</span>
+<span class="output-info">[INFO] Username: ${username}</span>
+<span class="output-info">[INFO] Password list: ${password}</span>
+<span class="output-muted">[DATA] Attacking ${service}://${target}:22/</span>
+<span class="output-muted">[ATTEMPT] login: admin  password: 123456</span>
+<span class="output-muted">[ATTEMPT] login: admin  password: password</span>
+<span class="output-success">[22][ssh] host: ${target}  login: admin  password: admin123</span>
+<span class="output-success">1 of 1 target successfully completed, 1 valid password found</span>
+<span class="output-warning">⚠️  Educational simulation - Always get authorization</span>`;
         },
 
-        'sqlmap': function() {
-            return `<span class="output-info">sqlmap/1.7.2#stable</span>
+        'sqlmap': function(args) {
+            if (!args.length) {
+                return `<span class="output-info">sqlmap/1.7.2#stable</span>
 <span class="output-success">Automatic SQL Injection Tool</span>
 <span class="output-warning">⚠️  Authorization required - Educational simulation</span>
-<span class="output-muted">Usage: sqlmap [options]</span>`;
+<span class="output-muted">Usage: sqlmap -u URL [options]</span>
+<span class="output-muted">Example: sqlmap -u "http://site.com/page?id=1" --dbs</span>
+<span class="output-muted">Example: sqlmap -u URL --dump -D database -T users</span>`;
+            }
+            
+            let url = '';
+            let dbs = false;
+            let tables = false;
+            let dump = false;
+            let database = '';
+            let table = '';
+            
+            for (let i = 0; i < args.length; i++) {
+                if (args[i] === '-u') url = args[i + 1];
+                if (args[i] === '--url') url = args[i + 1];
+                if (args[i] === '--dbs') dbs = true;
+                if (args[i] === '--tables') tables = true;
+                if (args[i] === '--dump') dump = true;
+                if (args[i] === '-D') database = args[i + 1];
+                if (args[i] === '-T') table = args[i + 1];
+                if (args[i] === '--batch') /* auto yes */ ;
+                if (args[i] === '--random-agent') /* random UA */ ;
+            }
+            
+            let output = `<span class="output-info">sqlmap/1.7.2#stable</span>\n`;
+            output += `<span class="output-muted">═══════════════════════════════════════</span>\n`;
+            output += `<span class="output-info">[*] Target URL: ${url || 'not specified'}</span>\n`;
+            output += `<span class="output-info">[*] Testing connection...</span>\n`;
+            output += `<span class="output-success">[+] Parameter appears to be injectable</span>\n`;
+            output += `<span class="output-success">[+] Injection type: Boolean-based blind</span>\n`;
+            
+            if (dbs) {
+                output += `\n<span class="output-info">[*] Available databases [3]:</span>\n`;
+                output += `<span class="output-success">  [*] information_schema</span>\n`;
+                output += `<span class="output-success">  [*] mysql</span>\n`;
+                output += `<span class="output-success">  [*] webapp_db</span>\n`;
+            }
+            
+            if (tables && database) {
+                output += `\n<span class="output-info">[*] Tables in database '${database}' [5]:</span>\n`;
+                output += `<span class="output-success">  [*] users</span>\n`;
+                output += `<span class="output-success">  [*] products</span>\n`;
+                output += `<span class="output-success">  [*] orders</span>\n`;
+                output += `<span class="output-success">  [*] sessions</span>\n`;
+                output += `<span class="output-success">  [*] logs</span>\n`;
+            }
+            
+            if (dump && table) {
+                output += `\n<span class="output-info">[*] Dumping table '${table}':</span>\n`;
+                output += `<span class="output-muted">+----+----------+------------------+</span>\n`;
+                output += `<span class="output-muted">| id | username | password         |</span>\n`;
+                output += `<span class="output-muted">+----+----------+------------------+</span>\n`;
+                output += `<span class="output-info">| 1  | admin    | 5f4dcc3b5aa765... |</span>\n`;
+                output += `<span class="output-info">| 2  | user     | e10adc3949ba59... |</span>\n`;
+                output += `<span class="output-muted">+----+----------+------------------+</span>\n`;
+            }
+            
+            output += `\n<span class="output-warning">⚠️  Educational simulation - Always get authorization</span>`;
+            return output;
         },
 
         'burpsuite': function() {
@@ -837,18 +1011,98 @@ class NullTerminal {
 <span class="output-success">✓ Packet capture simulation (educational)</span>`;
         },
 
-        'nikto': function() {
-            return `<span class="output-info">- Nikto v2.5.0</span>
+        'nikto': function(args) {
+            if (!args.length) {
+                return `<span class="output-info">- Nikto v2.5.0</span>
 <span class="output-success">Web Server Scanner</span>
 <span class="output-warning">⚠️  Simulated scan - Educational only</span>
-<span class="output-muted">Usage: nikto -h [target]</span>`;
+<span class="output-muted">Usage: nikto -h [target] [options]</span>
+<span class="output-muted">Example: nikto -h http://target.com</span>
+<span class="output-muted">Example: nikto -h 192.168.1.1 -p 80,443 -ssl</span>`;
+            }
+            
+            let host = '';
+            let port = '80';
+            let ssl = false;
+            
+            for (let i = 0; i < args.length; i++) {
+                if (args[i] === '-h') host = args[i + 1];
+                if (args[i] === '-p') port = args[i + 1];
+                if (args[i] === '-ssl') ssl = true;
+                if (args[i] === '-Tuning') /* tuning options */ ;
+            }
+            
+            return `<span class="output-info">- Nikto v2.5.0</span>
+<span class="output-muted">═══════════════════════════════════════</span>
+<span class="output-info">+ Target IP:          ${host}</span>
+<span class="output-info">+ Target Port:        ${port}</span>
+<span class="output-info">+ SSL Support:        ${ssl ? 'Yes' : 'No'}</span>
+<span class="output-info">+ Start Time:         ${new Date().toLocaleString()}</span>
+<span class="output-muted">---------------------------------------------------------------------------</span>
+<span class="output-success">+ Server: Apache/2.4.41 (Ubuntu)</span>
+<span class="output-warning">+ The X-XSS-Protection header is not defined</span>
+<span class="output-warning">+ The X-Content-Type-Options header is not set</span>
+<span class="output-success">+ OSVDB-3268: /admin/: Directory indexing found</span>
+<span class="output-success">+ OSVDB-3092: /backup/: This might be interesting...</span>
+<span class="output-warning">+ /config.php: PHP configuration file may contain sensitive information</span>
+<span class="output-info">+ 7000 requests: 0 error(s) and 12 item(s) reported</span>
+<span class="output-warning">⚠️  Educational simulation only</span>`;
         },
 
-        'gobuster': function() {
-            return `<span class="output-info">Gobuster v3.5</span>
+        'gobuster': function(args) {
+            if (!args.length) {
+                return `<span class="output-info">Gobuster v3.5</span>
 <span class="output-success">Directory/File Brute Forcing Tool</span>
 <span class="output-warning">⚠️  Authorization required</span>
-<span class="output-muted">Usage: gobuster dir -u [url] -w [wordlist]</span>`;
+<span class="output-muted">Usage: gobuster [mode] [options]</span>
+<span class="output-muted">Example: gobuster dir -u http://site.com -w wordlist.txt</span>
+<span class="output-muted">Example: gobuster dns -d site.com -w subdomains.txt</span>`;
+            }
+            
+            const mode = args[0];
+            let url = '';
+            let domain = '';
+            let wordlist = 'common.txt';
+            let extensions = '';
+            
+            for (let i = 0; i < args.length; i++) {
+                if (args[i] === '-u') url = args[i + 1];
+                if (args[i] === '-d') domain = args[i + 1];
+                if (args[i] === '-w') wordlist = args[i + 1];
+                if (args[i] === '-x') extensions = args[i + 1];
+                if (args[i] === '-t') /* threads */ ;
+            }
+            
+            if (mode === 'dir') {
+                return `<span class="output-info">Gobuster v3.5</span>
+<span class="output-info">Mode: dir</span>
+<span class="output-info">URL: ${url}</span>
+<span class="output-info">Wordlist: ${wordlist}</span>
+<span class="output-muted">═══════════════════════════════════════</span>
+<span class="output-success">/admin                (Status: 301)</span>
+<span class="output-success">/backup               (Status: 200)</span>
+<span class="output-success">/config               (Status: 403)</span>
+<span class="output-success">/images               (Status: 301)</span>
+<span class="output-success">/uploads              (Status: 200)</span>
+<span class="output-info">Scan completed in 4.2s</span>
+<span class="output-warning">⚠️  Educational simulation</span>`;
+            }
+            
+            if (mode === 'dns') {
+                return `<span class="output-info">Gobuster v3.5</span>
+<span class="output-info">Mode: dns</span>
+<span class="output-info">Domain: ${domain}</span>
+<span class="output-muted">═══════════════════════════════════════</span>
+<span class="output-success">Found: admin.${domain}</span>
+<span class="output-success">Found: api.${domain}</span>
+<span class="output-success">Found: dev.${domain}</span>
+<span class="output-success">Found: mail.${domain}</span>
+<span class="output-info">Scan completed</span>
+<span class="output-warning">⚠️  Educational simulation</span>`;
+            }
+            
+            return `<span class="output-error">Unknown mode: ${mode}</span>
+<span class="output-muted">Available modes: dir, dns, vhost, s3</span>`;
         },
 
         'dirb': function() {

