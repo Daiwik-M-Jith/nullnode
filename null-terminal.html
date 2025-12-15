@@ -382,10 +382,20 @@
                 <img src="logo.svg" alt="NullSector" style="width: 36px; height: 36px;">
                 <span>NullSector</span>
             </a>
-            <nav class="nav" style="display: flex; gap: 2rem;">
+            <nav class="nav" style="display: flex; gap: 2rem; align-items: center;">
                 <a href="roadmap-hacking.html" style="color: #888; text-decoration: none; font-weight: 500; transition: color 0.2s;">Hacking</a>
                 <a href="roadmap-programming.html" style="color: #888; text-decoration: none; font-weight: 500; transition: color 0.2s;">Programming</a>
                 <a href="resources.html" style="color: #888; text-decoration: none; font-weight: 500; transition: color 0.2s;">Resources</a>
+                <div style="position: relative; display: inline-block;">
+                    <span style="cursor: pointer; display: flex; align-items: center; gap: 0.5rem; color: #888; font-weight: 500; transition: color 0.2s;" onmouseover="this.nextElementSibling.style.opacity='1'; this.nextElementSibling.style.visibility='visible'; this.nextElementSibling.style.transform='translateY(0)'" onmouseout="setTimeout(() => {if (!this.nextElementSibling.matches(':hover')) {this.nextElementSibling.style.opacity='0'; this.nextElementSibling.style.visibility='hidden'; this.nextElementSibling.style.transform='translateY(-10px)'}}, 100)">
+                        Null Tools
+                        <span style="font-size: 0.7rem;">▼</span>
+                    </span>
+                    <div style="position: absolute; top: 100%; left: 0; background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); border: 1px solid #222; border-radius: 8px; margin-top: 0.5rem; min-width: 200px; opacity: 0; visibility: hidden; transform: translateY(-10px); transition: all 0.3s cubic-bezier(0.16,1,0.3,1); z-index: 1001;" onmouseover="this.style.opacity='1'; this.style.visibility='visible'; this.style.transform='translateY(0)'" onmouseout="this.style.opacity='0'; this.style.visibility='hidden'; this.style.transform='translateY(-10px)'">
+                        <a href="https://github.com/4fqr/null-cli" target="_blank" style="display: block; padding: 1rem 1.5rem; color: #888; text-decoration: none; transition: all 0.2s; border-bottom: 1px solid rgba(255,255,255,0.05);" onmouseover="this.style.background='rgba(255,255,255,0.05)'; this.style.color='#fff'; this.style.paddingLeft='2rem'" onmouseout="this.style.background=''; this.style.color='#888'; this.style.paddingLeft='1.5rem'">Null CLI</a>
+                        <a href="https://nullheadline.vercel.app/" target="_blank" style="display: block; padding: 1rem 1.5rem; color: #888; text-decoration: none; transition: all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'; this.style.color='#fff'; this.style.paddingLeft='2rem'" onmouseout="this.style.background=''; this.style.color='#888'; this.style.paddingLeft='1.5rem'">Null Hacker's Headlines</a>
+                    </div>
+                </div>
                 <a href="null-terminal.html" style="color: #fff; text-decoration: none; font-weight: 500;">Null Terminal</a>
                 <a href="faq.html" style="color: #888; text-decoration: none; font-weight: 500; transition: color 0.2s;">FAQs</a>
                 <a href="https://discord.gg/Tz9Y3wea32" target="_blank" style="color: #888; text-decoration: none; font-weight: 500; transition: color 0.2s;">Discord</a>

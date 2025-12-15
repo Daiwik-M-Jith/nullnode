@@ -26,6 +26,62 @@
         .delay-2 { animation-delay: 0.2s; }
         .delay-3 { animation-delay: 0.3s; }
         .delay-4 { animation-delay: 0.4s; }
+        
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-toggle {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 1000;
+        }
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .dropdown-menu a {
+            display: block;
+            padding: 1rem 1.5rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.2s;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .dropdown-menu a:last-child {
+            border-bottom: none;
+        }
+        .dropdown-menu a:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            padding-left: 2rem;
+        }
+        .dropdown-arrow {
+            font-size: 0.7rem;
+            transition: transform 0.3s;
+        }
+        .dropdown:hover .dropdown-arrow {
+            transform: rotate(180deg);
+        }
     </style>
 </head>
 <body>
@@ -48,6 +104,16 @@
                 <a href="roadmap-hacking.html" class="nav-link">Hacking</a>
                 <a href="roadmap-programming.html" class="nav-link">Programming</a>
                 <a href="resources.html" class="nav-link active">Resources</a>
+                <div class="dropdown">
+                    <span class="nav-link dropdown-toggle">
+                        Null Tools
+                        <span class="dropdown-arrow">▼</span>
+                    </span>
+                    <div class="dropdown-menu">
+                        <a href="https://github.com/4fqr/null-cli" target="_blank">Null CLI</a>
+                        <a href="https://nullheadline.vercel.app/" target="_blank">Null Hacker's Headlines</a>
+                    </div>
+                </div>
                 <a href="faq.html" class="nav-link">FAQ</a>
                 <a href="https://discord.gg/Tz9Y3wea32" target="_blank" class="nav-link">Discord</a>
             </div>
@@ -63,10 +129,70 @@
                     <span style="color: #ffc107; font-weight: 700; font-size: 1rem; letter-spacing: 1px;">🎓 LEARNING RESOURCES</span>
                 </div>
                 <h1 style="font-size: clamp(3rem, 6vw, 5rem); font-weight: 900; margin: 0 0 1.5rem 0; background: linear-gradient(135deg, #ffc107 0%, #ff9800 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
-                    Practice Platforms
+                    Resources & Tools
                 </h1>
                 <p style="font-size: 1.4rem; color: rgba(255,255,255,0.85); max-width: 800px; margin: 0 auto; line-height: 1.7;">
-                    Master cybersecurity through hands-on challenges. Complete walkthroughs and solutions for absolute beginners.
+                    Essential tools and practice platforms for your cybersecurity journey.
+                </p>
+            </div>
+
+            <!-- Null Resources Section -->
+            <div style="margin-bottom: 6rem;">
+                <div style="text-align: center; margin-bottom: 3rem;">
+                    <h2 style="font-size: 2.5rem; font-weight: 800; color: #fff; margin-bottom: 1rem;">🖤 Null Resources 🤍</h2>
+                    <p style="font-size: 1.2rem; color: rgba(255,255,255,0.7); max-width: 700px; margin: 0 auto;">
+                        Our own tools built for the community — safe learning, real-time intelligence, pure minimalism.
+                    </p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 3rem; margin: 2rem 0;">
+                    
+                    <!-- Null CLI -->
+                    <a href="https://github.com/4fqr/null-cli" target="_blank" class="fade-in-up delay-1" style="text-decoration: none; background: linear-gradient(135deg, rgba(138,43,226,0.1) 0%, rgba(75,0,130,0.05) 100%); border: 2px solid rgba(138,43,226,0.3); border-radius: 24px; padding: 3rem; transition: all 0.3s; display: block; position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='#8a2be2'; this.style.boxShadow='0 20px 60px rgba(138,43,226,0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(138,43,226,0.3)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: 20px; right: 20px; background: rgba(138,43,226,0.2); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 700; color: #8a2be2;">SAFE LEARNING</div>
+                        <div style="font-size: 4rem; margin-bottom: 1.5rem;">⚡</div>
+                        <h3 style="font-size: 2.2rem; font-weight: 900; color: #8a2be2; margin-bottom: 1rem;">Null CLI</h3>
+                        <p style="color: rgba(255,255,255,0.9); font-size: 1.15rem; line-height: 1.7; margin-bottom: 1.5rem;">
+                            Safely learn offensive security tools without legal risk. 100% realistic simulation of Nmap, Metasploit, Hydra, John, SQLmap & more.
+                        </p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 2rem;">
+                            <span style="background: rgba(138,43,226,0.2); color: #8a2be2; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.95rem; font-weight: 600;">Zero Network Traffic</span>
+                            <span style="background: rgba(138,43,226,0.2); color: #8a2be2; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.95rem; font-weight: 600;">8 Security Tools</span>
+                            <span style="background: rgba(138,43,226,0.2); color: #8a2be2; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.95rem; font-weight: 600;">Educational Mode</span>
+                        </div>
+                        <div style="color: #8a2be2; font-weight: 800; display: flex; align-items: center; gap: 0.75rem; font-size: 1.1rem;">
+                            <span>View on GitHub</span>
+                            <span style="transition: transform 0.3s;">→</span>
+                        </div>
+                    </a>
+
+                    <!-- Null Hacker's Headlines -->
+                    <a href="https://nullheadline.vercel.app/" target="_blank" class="fade-in-up delay-2" style="text-decoration: none; background: linear-gradient(135deg, rgba(0,0,0,0.5) 0%, rgba(50,50,50,0.3) 100%); border: 2px solid rgba(255,255,255,0.3); border-radius: 24px; padding: 3rem; transition: all 0.3s; display: block; position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='#fff'; this.style.boxShadow='0 20px 60px rgba(255,255,255,0.3)'" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.3)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: 20px; right: 20px; background: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 700; color: #fff;">REAL-TIME CVE</div>
+                        <div style="font-size: 4rem; margin-bottom: 1.5rem;">📰</div>
+                        <h3 style="font-size: 2.2rem; font-weight: 900; color: #fff; margin-bottom: 1rem;">Null Hacker's Headlines</h3>
+                        <p style="color: rgba(255,255,255,0.9); font-size: 1.15rem; line-height: 1.7; margin-bottom: 1.5rem;">
+                            Minimalistic real-time cybersecurity vulnerability notifications from NIST NVD. Pure monochrome design. Blazing fast serverless architecture.
+                        </p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 2rem;">
+                            <span style="background: rgba(255,255,255,0.2); color: #fff; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.95rem; font-weight: 600;">NIST NVD API</span>
+                            <span style="background: rgba(255,255,255,0.2); color: #fff; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.95rem; font-weight: 600;">CVSS Scoring</span>
+                            <span style="background: rgba(255,255,255,0.2); color: #fff; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.95rem; font-weight: 600;">Live Feed</span>
+                        </div>
+                        <div style="color: #fff; font-weight: 800; display: flex; align-items: center; gap: 0.75rem; font-size: 1.1rem;">
+                            <span>Launch Web App</span>
+                            <span style="transition: transform 0.3s;">→</span>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+
+            <!-- Practice Platforms Section -->
+            <div style="text-align: center; margin-bottom: 3rem; margin-top: 6rem;">
+                <h2 style="font-size: 2.5rem; font-weight: 800; color: #fff; margin-bottom: 1rem;">🎯 Practice Platforms</h2>
+                <p style="font-size: 1.2rem; color: rgba(255,255,255,0.7); max-width: 700px; margin: 0 auto;">
+                    Master cybersecurity through hands-on challenges with complete walkthroughs.
                 </p>
             </div>
 
